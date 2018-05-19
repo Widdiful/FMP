@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GameCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Games>
+		<Game name="Tap/FightMonsterHorizontal">
+			<Landscape>true</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
+		<Game name="Tap/FightMonsterVertical">
+			<Landscape>false</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
+		<Game name="Tap/PetDog">
+			<Landscape>false</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
+		<Game name="Tap/RollToiletPaper">
+			<Landscape>false</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
+		<Game name="Tap/MakeItRain">
+			<Landscape>false</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
+		<Game name="Motion/CombineRobots">
+			<Landscape>true</Landscape>
+			<Motion>true</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
+		<Game name="Mic/Scare">
+			<Landscape>false</Landscape>
+			<Motion>false</Motion>
+			<Mic>true</Mic>
+			<Proximity>false</Proximity>
+		</Game>
+		<Game name="Proximity/PretendToSleep">
+			<Landscape>true</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>true</Proximity>
+		</Game>
+	</Games>
+</GameCollection>
