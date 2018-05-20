@@ -7,6 +7,8 @@ public class Timer : MonoBehaviour {
 
     public float seconds;
     public float timer;
+    public Font font1;
+    public Font font2;
     private gameManager gm;
     private RectTransform timerBar;
     private Text countdown;
@@ -37,6 +39,18 @@ public class Timer : MonoBehaviour {
 
                 timerBar.sizeDelta = new Vector2(timerWidth * (timer / seconds), timerBar.sizeDelta.y);
                 countdown.text = timer.ToString("#");
+                if (countdown.text == "1") {
+                    countdown.color = Color.red;
+                }
+                if (countdown.text == "") {
+                    countdown.font = font2;
+                    countdown.text = "!!!";
+                    countdown.fontSize = 130;
+                }
+                else {
+                    countdown.font = font1;
+                    countdown.fontSize = 100;
+                }
                 if (timer.ToString("#") != prevTime) countdown.gameObject.GetComponent<squish>().Squish(new Vector2(1, 1));
                 prevTime = timer.ToString("#");
 
