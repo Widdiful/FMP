@@ -31,7 +31,7 @@ public class PlatformerCharacter : MonoBehaviour {
             else {
                 if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f) {
                     rb.AddForce(Vector2.right * moveSpeed * Horizontal * 3);
-                    rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed * 1.333f, maxSpeed * 1.333f), rb.velocity.y);
+                    rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
                 }
             }
         }
@@ -57,6 +57,16 @@ public class PlatformerCharacter : MonoBehaviour {
         RaycastHit2D ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -transform.up, 1);
         if (!ray.collider) {
             grounded = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.GetComponent<PlatformerEnemy>()) {
+            if (rb.velocity.y <= 0) {
+                col.GetComponent<PlatformerEnemy>().Kill();
+                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                jumps--;
+            }
         }
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour {
+
+    public static gameManager instance = null;
+
     public enum GameTypes { Endless, Challenge, Practice };
     public enum OrientationModes { Portrait, Landscape, Both };
     public enum DifficultyLevels { Chill, Easy, Normal, Hard, Extra };
@@ -33,8 +36,16 @@ public class gameManager : MonoBehaviour {
     // Challenge variables
     public int challengeLength;
 
+    void Awake() {
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     void Start() {
         gc = GameContainer.Load(path);
+        StartGame();
     }
 
     void StartGame() {

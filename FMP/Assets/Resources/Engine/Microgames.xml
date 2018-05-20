@@ -49,5 +49,11 @@
 			<Mic>false</Mic>
 			<Proximity>true</Proximity>
 		</Game>
+		<Game name="Tap/Platformer">
+			<Landscape>true</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
 	</Games>
 </GameCollection>
