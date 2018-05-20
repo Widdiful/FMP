@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour {
     private Text countdown;
     private float timerWidth = 600;
     private string prevTime;
+    public bool active = true;
 
 	void Start () {
         timer = seconds;
@@ -33,8 +34,8 @@ public class Timer : MonoBehaviour {
 	}
 	
 	void Update () {
-        if (gm) {
-            if (gm.currentDifficulty != gameManager.DifficultyLevels.Chill) {
+        if (gm && active) {
+            if (gm.currentDifficulty != gameManager.DifficultyLevels.Chill && !gm.endingGame) {
                 timer -= Time.deltaTime;
 
                 timerBar.sizeDelta = new Vector2(timerWidth * (timer / seconds), timerBar.sizeDelta.y);
@@ -55,6 +56,7 @@ public class Timer : MonoBehaviour {
                 prevTime = timer.ToString("#");
 
                 if (timer <= 0) {
+                    active = false;
                     gm.FailGame();
                 }
             }

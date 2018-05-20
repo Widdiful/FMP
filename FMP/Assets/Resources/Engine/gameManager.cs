@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour {
 
@@ -23,12 +24,17 @@ public class gameManager : MonoBehaviour {
     // Generic variables
     public GameTypes gameType;
     public DifficultyLevels currentDifficulty;
-    private List<Microgame> gamesCompleted = new List<Microgame>();
+    public List<Microgame> gamesCompleted = new List<Microgame>();
     private List<Microgame> gamesQueue = new List<Microgame>();
     private Microgame currentGame;
     private int livesLeft;
     private int gamesSinceLastOrientationChange;
     private bool currentLandscape;
+    private bool startingGame;
+    public bool endingGame;
+    private bool completedGame;
+    private bool failedGame;
+    private float startTimer;
 
     // Endless variables
 
@@ -46,6 +52,48 @@ public class gameManager : MonoBehaviour {
     void Start() {
         gc = GameContainer.Load(path);
         StartGame();
+    }
+
+    void Update() {
+        print(gamesCompleted.Count);
+        if (startingGame || endingGame) {
+            GameObject bg = GameObject.Find("Timer/Canvas/Background");
+            if (bg) {
+                if (startingGame) {
+                    startTimer += Time.deltaTime;
+                    if (startTimer >= 1) {
+                        bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(400, 0, 0), 0.2f);
+                        if (400 - bg.transform.localPosition.x <= 0.001) {
+                            bg.transform.localPosition = new Vector3(400, 0, 0);
+                            startingGame = false;
+                            startTimer = 0;
+                            GameObject.Find("HintText").SetActive(false);
+                        }
+                    }
+                }
+                else if (endingGame) {
+                    bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(-400, 0, 0), 0.2f);
+                    if (Mathf.Abs(-400 - bg.transform.localPosition.x) <= 0.001) {
+                        bg.transform.localPosition = new Vector3(-400, 0, 0);
+                        endingGame = false;
+
+                        if (completedGame) {
+                            LoadGame();
+                            completedGame = false;
+                        }
+                        else if (failedGame) {
+                            failedGame = false;
+                            if (livesLeft > 0) {
+                                LoadGame();
+                            }
+                            else {
+                                GameOver();
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void StartGame() {
@@ -66,22 +114,24 @@ public class gameManager : MonoBehaviour {
     }
 
     public void GameOver() {
-
+        SceneManager.LoadScene("Scenes/GameOver");
+        startingGame = true;
     }
 
     public void CompleteGame() {
-        gamesCompleted.Add(currentGame);
-        UnlockGame(currentGame, currentDifficulty);
-        LoadGame();
+        if (!endingGame) {
+            gamesCompleted.Add(currentGame);
+            UnlockGame(currentGame, currentDifficulty);
+            endingGame = true;
+            completedGame = true;
+        }
     }
 
     public void FailGame() {
-        livesLeft--;
-        if (livesLeft > 0) {
-            LoadGame();
-        }
-        else {
-            GameOver();
+        if (!endingGame) {
+            livesLeft--;
+            endingGame = true;
+            failedGame = true;
         }
     }
 
@@ -177,6 +227,7 @@ public class gameManager : MonoBehaviour {
             SceneManager.LoadScene("Scenes/" + gamesQueue[0].name);
             gamesQueue.Remove(gamesQueue[0]);
         }
+        startingGame = true;
     }
 
     public void UnlockGame(Microgame game, DifficultyLevels difficulty) {

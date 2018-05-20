@@ -17,7 +17,7 @@ public class squish : MonoBehaviour {
 
     void Start() {
         baseScale = transform.localScale;
-        pulseCD = pulseTime;
+        //pulseCD = pulseTime;
     }
 
     void Update() {

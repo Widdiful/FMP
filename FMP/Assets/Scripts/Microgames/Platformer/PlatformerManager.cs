@@ -11,6 +11,7 @@ public class PlatformerManager : MonoBehaviour {
     private Timer timer;
     private int enemiesToSpawn;
     private int enemiesSpawned;
+    private bool cleared;
 
 	void Start () {
         gm = GameObject.FindObjectOfType<gameManager>();
@@ -49,7 +50,8 @@ public class PlatformerManager : MonoBehaviour {
 
 	void Update () {
         if (enemiesSpawned > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
-            if (difficulty != gameManager.DifficultyLevels.Chill) {
+            if (difficulty != gameManager.DifficultyLevels.Chill && !cleared) {
+                cleared = true;
                 gm.CompleteGame();
             }
             else {
