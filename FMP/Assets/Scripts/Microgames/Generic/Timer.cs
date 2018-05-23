@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour {
     private gameManager gm;
     private RectTransform timerBar;
     private Text countdown;
+    private Text lives;
     private float timerWidth = 600;
     private string prevTime;
     public bool active = true;
@@ -19,8 +20,9 @@ public class Timer : MonoBehaviour {
 	void Start () {
         timer = seconds;
         gm = GameObject.FindObjectOfType<gameManager>();
-        timerBar = GameObject.Find("TimerBar").GetComponent<RectTransform>();
-        countdown = GameObject.Find("Countdown").GetComponent<Text>();
+        if (GameObject.Find("TimerBar")) timerBar = GameObject.Find("TimerBar").GetComponent<RectTransform>();
+        if (GameObject.Find("Countdown")) countdown = GameObject.Find("Countdown").GetComponent<Text>();
+        if (GameObject.Find("Lives")) lives = GameObject.Find("Lives").GetComponent<Text>();
         if (gm) {
             if (gm.currentDifficulty == gameManager.DifficultyLevels.Chill) {
                 foreach (Transform trans in transform) {
@@ -36,24 +38,35 @@ public class Timer : MonoBehaviour {
 	void Update () {
         if (gm && active) {
             if (gm.currentDifficulty != gameManager.DifficultyLevels.Chill && !gm.endingGame) {
-                timer -= Time.deltaTime;
+                if (!gm.startingGame) timer -= Time.deltaTime;
 
-                timerBar.sizeDelta = new Vector2(timerWidth * (timer / seconds), timerBar.sizeDelta.y);
-                countdown.text = timer.ToString("#");
-                if (countdown.text == "1") {
-                    countdown.color = Color.red;
+                if (timerBar) timerBar.sizeDelta = new Vector2(timerWidth * (timer / seconds), timerBar.sizeDelta.y);
+
+                if (countdown) {
+                    countdown.text = timer.ToString("#");
+
+                    if (countdown.text == "1") {
+                        countdown.color = Color.red;
+                    }
+                    if (countdown.text == "") {
+                        countdown.font = font2;
+                        countdown.text = "!!!";
+                        countdown.fontSize = 130;
+                    }
+                    else {
+                        countdown.font = font1;
+                        countdown.fontSize = 100;
+                    }
+                    if (timer.ToString("#") != prevTime) countdown.gameObject.GetComponent<squish>().Squish(new Vector2(1, 1));
+                    prevTime = timer.ToString("#");
                 }
-                if (countdown.text == "") {
-                    countdown.font = font2;
-                    countdown.text = "!!!";
-                    countdown.fontSize = 130;
+
+                if (lives) {
+                    lives.text = gm.livesLeft.ToString();
+                    if (lives.text == "1") {
+                        lives.color = Color.red;
+                    }
                 }
-                else {
-                    countdown.font = font1;
-                    countdown.fontSize = 100;
-                }
-                if (timer.ToString("#") != prevTime) countdown.gameObject.GetComponent<squish>().Squish(new Vector2(1, 1));
-                prevTime = timer.ToString("#");
 
                 if (timer <= 0) {
                     active = false;

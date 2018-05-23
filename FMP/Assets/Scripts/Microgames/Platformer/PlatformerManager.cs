@@ -26,23 +26,31 @@ public class PlatformerManager : MonoBehaviour {
                 break;
             case gameManager.DifficultyLevels.Easy:
                 enemiesToSpawn = 1;
-                timer.seconds = 5;
-                timer.timer = timer.seconds;
+                if (timer) {
+                    timer.seconds = 5;
+                    timer.timer = timer.seconds;
+                }
                 break;
             case gameManager.DifficultyLevels.Normal:
                 enemiesToSpawn = 3;
-                timer.seconds = 7;
-                timer.timer = timer.seconds;
+                if (timer) {
+                    timer.seconds = 7;
+                    timer.timer = timer.seconds;
+                }
                 break;
             case gameManager.DifficultyLevels.Hard:
                 enemiesToSpawn = 5;
-                timer.seconds = 10;
-                timer.timer = timer.seconds;
+                if (timer) {
+                    timer.seconds = 10;
+                    timer.timer = timer.seconds;
+                }
                 break;
             case gameManager.DifficultyLevels.Extra:
                 enemiesToSpawn = 7;
-                timer.seconds = 10;
-                timer.timer = timer.seconds;
+                if (timer) {
+                    timer.seconds = 10;
+                    timer.timer = timer.seconds;
+                }
                 break;
         }
         SpawnEnemies();
@@ -54,7 +62,7 @@ public class PlatformerManager : MonoBehaviour {
                 cleared = true;
                 gm.CompleteGame();
             }
-            else {
+            else if (!cleared) {
                 enemiesToSpawn++;
                 SpawnEnemies();
             }

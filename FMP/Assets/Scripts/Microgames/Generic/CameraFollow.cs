@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
+    public Vector2 offset;
     public Transform target;
     public bool clampPos;
     public Vector2 minPos;
@@ -17,7 +18,7 @@ public class CameraFollow : MonoBehaviour {
 
     void FixedUpdate() {
         if (target) {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x, target.position.y, transform.position.z), 0.2f);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z), 0.2f);
             if (clampPos) {
                 transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x + cam.orthographicSize * cam.aspect, maxPos.x - cam.orthographicSize * cam.aspect),
                                                  Mathf.Clamp(transform.position.y, minPos.y + cam.orthographicSize, maxPos.y - cam.orthographicSize),
