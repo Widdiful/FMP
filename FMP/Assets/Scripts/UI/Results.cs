@@ -82,7 +82,7 @@ public class Results : MonoBehaviour {
             }
             else {
                 result.enabled = true;
-                result.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(result.GetComponent<RectTransform>().sizeDelta, new Vector2(300, 300), 0.05f);
+                result.GetComponent<RectTransform>().sizeDelta = Vector2.Lerp(result.GetComponent<RectTransform>().sizeDelta, new Vector2(200, 200), 0.05f);
                 result.color = Color.Lerp(result.color, Color.white, 0.05f);
                 if (result.color.a >= 0.8f && result.sprite == results[6]) {
                     sparkle.enabled = true;

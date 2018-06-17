@@ -9,7 +9,7 @@ public class gameManager : MonoBehaviour {
     public static gameManager instance = null;
 
     public enum GameTypes { Endless, Challenge, Practice };
-    public enum OrientationModes { Portrait, Landscape, Both };
+    public enum OrientationModes { Both, Landscape, Portrait};
     public enum DifficultyLevels { Chill, Easy, Normal, Hard, Extra };
 
     private const string path = "Engine/Microgames";
@@ -24,6 +24,7 @@ public class gameManager : MonoBehaviour {
     // Generic variables
     public GameTypes gameType;
     public DifficultyLevels currentDifficulty;
+    public int totalLives;
     public List<Microgame> gamesCompleted = new List<Microgame>();
     private List<Microgame> gamesPlayed = new List<Microgame>();
     private List<Microgame> gamesQueue = new List<Microgame>();
@@ -62,9 +63,9 @@ public class gameManager : MonoBehaviour {
                 if (startingGame) {
                     startTimer += Time.deltaTime;
                     if (startTimer >= 1) {
-                        bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(400, 0, 0), 0.2f);
-                        if (400 - bg.transform.localPosition.x <= 0.01) {
-                            bg.transform.localPosition = new Vector3(400, 0, 0);
+                        bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(1600, 0, 0), 0.2f);
+                        if (1600 - bg.transform.localPosition.x <= 0.01) {
+                            bg.transform.localPosition = new Vector3(1600, 0, 0);
                             startingGame = false;
                             startTimer = 0;
                             if (GameObject.Find("HintText")) GameObject.Find("HintText").SetActive(false);
@@ -77,15 +78,21 @@ public class gameManager : MonoBehaviour {
                     endTimer -= Time.deltaTime;
 
                     if (endTimer < 0) {
-                        bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(-400, 0, 0), 0.2f);
-                        if (Mathf.Abs(-400 - bg.transform.localPosition.x) <= 0.01) {
-                            bg.transform.localPosition = new Vector3(-400, 0, 0);
+                        RectTransform bgRT = bg.GetComponent<RectTransform>();
+                        bgRT.offsetMin = Vector2.Lerp(bgRT.offsetMin, new Vector2(0, 0), 0.2f);
+                        bgRT.offsetMax = Vector2.Lerp(bgRT.offsetMax, new Vector2(0, 0), 0.2f);
+                        if (Mathf.Abs(0 - bgRT.offsetMin.x) <= 0.01) {
+                            bgRT.offsetMin = new Vector2(0, 0);
+                            bgRT.offsetMax = new Vector2(0, 0);
                             endingGame = false;
                             endTimer = 0;
 
                             if (completedGame) {
                                 LoadGame();
                                 completedGame = false;
+                                if (currentLandscape) Screen.orientation = ScreenOrientation.LandscapeRight;
+                                else Screen.orientation = ScreenOrientation.Portrait;
+                                Screen.orientation = ScreenOrientation.AutoRotation;
                             }
                             else if (failedGame) {
                                 failedGame = false;
@@ -116,7 +123,8 @@ public class gameManager : MonoBehaviour {
                 currentLandscape = false;
                 break;
         }
-        livesLeft = 4;
+        livesLeft = totalLives;
+        gamesCompleted.Clear();
         LoadGame();
     }
 
@@ -138,7 +146,7 @@ public class gameManager : MonoBehaviour {
     public void FailGame() {
         if (!endingGame) {
             gamesPlayed.Add(currentGame);
-            livesLeft--;
+            if (!GameObject.FindObjectOfType<RotateManager>()) livesLeft--;
             endingGame = true;
             failedGame = true;
         }
