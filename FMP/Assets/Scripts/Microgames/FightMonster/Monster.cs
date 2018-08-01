@@ -26,7 +26,7 @@ public class Monster : MonoBehaviour {
         alive = false;
     }
 
-    public void OnTap() {
+    public void OnTapStart() {
         fmm.Attack(enemyID);
     }
 }

@@ -27,7 +27,7 @@ public class FightMonsterManager : MonoBehaviour {
         for (int i = 0; i < heroes.Count;  i++) {
             if (attacking[i] >= 0) {
                 if (enemyHP[attacking[i]] > 0) {
-                    heroes[i].position = Vector3.Lerp(heroes[i].position, enemies[attacking[i]].position, 0.2f);
+                    heroes[i].position = Vector3.Lerp(heroes[i].position, enemies[attacking[i]].position, Time.deltaTime * 10);
                     if (Vector3.Distance(heroes[i].position, enemies[attacking[i]].position) <= 0.1f) {
                         enemyHP[attacking[i]] -= damage;
                         if (enemyHP[attacking[i]] <= 0) {
@@ -41,7 +41,7 @@ public class FightMonsterManager : MonoBehaviour {
                 }
             }
             else {
-                heroes[i].position = Vector3.Lerp(heroes[i].position, startPos[i], 0.2f);
+                heroes[i].position = Vector3.Lerp(heroes[i].position, startPos[i], Time.deltaTime * 10);
             }
         }
 

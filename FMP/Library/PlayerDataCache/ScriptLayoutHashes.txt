@@ -142,7 +142,7 @@ ecc84f5ecbbf508a604bdf87ab0ef9b8 Assembly-CSharp.dll:.LockPos
 bc8ada1fcab6c3ac4205f1219239a7de Assembly-CSharp.dll:.CameraFollow
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.MobileControlRig
 102ac3b04898a850d98945d92568a51c Assembly-CSharp.dll:.Monster
-f5c021d57144c0a4e67112726d182f8a Assembly-CSharp.dll:.MobileInput
+aebb875ebbdc4f339274356faa6e7c2b Assembly-CSharp.dll:.MobileInput
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
