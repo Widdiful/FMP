@@ -5,10 +5,18 @@ using UnityEngine;
 public class Dog : MonoBehaviour {
 
     public List<Color> colours = new List<Color>();
+    public int rubsRequired;
+    public int rubs;
     private float rubTime;
-    private float jumpSpeed = 2;
+    public float jumpSpeed = 2;
+    private bool completed;
+    public bool runOntoScreen;
+    public Vector3 runLocation;
 
     void Start() {
+        if (jumpSpeed == -1) {
+            jumpSpeed = Random.Range(5.0f, 15.0f);
+        }
         GetComponentInChildren<Renderer>().material.color = colours[Random.Range(0, colours.Count)];
         if (Random.Range(0, 2) == 0) {
             GetComponentInChildren<Renderer>().materials[1].color = colours[Random.Range(0, colours.Count)];
@@ -21,9 +29,27 @@ public class Dog : MonoBehaviour {
     public void Update() {
         rubTime += Time.deltaTime * jumpSpeed;
         transform.position = new Vector3(transform.position.x, Mathf.Abs(Mathf.Sin(rubTime) * 0.2f), transform.position.z);
+        if (runOntoScreen) {
+            transform.position = Vector3.Lerp(transform.position, runLocation, 0.2f);
+        }
     }
 
     public void OnTapRub() {
-        jumpSpeed += Time.deltaTime * 5;
+        if (!completed) {
+            jumpSpeed += Time.deltaTime * 2;
+            rubs++;
+        }
+        if (rubs >= rubsRequired && !completed) {
+            completed = true;
+            GetComponent<AudioSource>().Play();
+            if (FindObjectOfType<gameManager>()) {
+                FindObjectOfType<gameManager>().CompleteGame();
+            }
+            foreach (Dog dog in FindObjectsOfType<Dog>()) {
+                if (dog != this) {
+                    dog.runOntoScreen = true;
+                }
+            }
+        }
     }
 }
