@@ -38,8 +38,10 @@ public class TapInfo
 
 public class MobileInput : MonoBehaviour {
 
-    public enum TapTypes { Press, Hold, Drag };
+    public enum TapTypes { Press, Hold, Drag, ScreenTap };
     public TapTypes TapType;
+
+    public bool Use3D;
 
     private List<TapInfo> taps = new List<TapInfo>();
 
@@ -53,30 +55,59 @@ public class MobileInput : MonoBehaviour {
         int i = 0;
         while (i < Input.touchCount) {
             if (Input.GetTouch(i).phase == TouchPhase.Began) {
+                InvokeFunction("OnScreenTap", gameObject);
                 taps[i].setStart(Time.time, Input.GetTouch(i).position);
 
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero);
-                Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero, Color.yellow, 100);
+                if (!Use3D) {
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero);
 
-                if (hit) {
-                    InvokeFunction("OnTapStart", hit.collider.gameObject);
-                    print("hit!");
+                    if (hit) {
+                        InvokeFunction("OnTapStart", hit.collider.gameObject);
+                    }
                 }
-                else print("nope");
+
+                else {
+                    RaycastHit hit;
+                    if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Camera.main.transform.forward, out hit)) {
+                        InvokeFunction("OnTapStart", hit.collider.gameObject);
+                    }
+                }
             }
 
             else if (Input.GetTouch(i).phase == TouchPhase.Ended){
                 taps[i].setEnd(Time.time, Input.GetTouch(i).position);
 
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.down, 0.01f);
+                if (!Use3D) {
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero);
 
-                if (hit.collider != null) {
-                    InvokeFunction("OnTapEnd", hit.collider.gameObject);
+                    if (hit.collider != null) {
+                        InvokeFunction("OnTapEnd", hit.collider.gameObject);
+                    }
+                }
+
+                else {
+                    RaycastHit hit;
+                    if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Camera.main.transform.forward, out hit)) {
+                        InvokeFunction("OnTapEnd", hit.collider.gameObject);
+                    }
                 }
             }
 
             else if (Input.GetTouch(i).phase == TouchPhase.Moved) {
+                if (!Use3D) {
+                    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero);
 
+                    if (hit) {
+                        InvokeFunction("OnTapRub", hit.collider.gameObject);
+                    }
+                }
+
+                else {
+                    RaycastHit hit;
+                    if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Camera.main.transform.forward, out hit)) {
+                        InvokeFunction("OnTapRub", hit.collider.gameObject);
+                    }
+                }
             }
 
             taps[i].currentPos = Input.GetTouch(i).position;
