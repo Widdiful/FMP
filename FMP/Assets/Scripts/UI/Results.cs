@@ -56,6 +56,8 @@ public class Results : MonoBehaviour {
                 money = noCleared * 20;
                 break;
         }
+        gm.money += money;
+        PlayerPrefs.SetInt("money", gm.money);
     }
 	
 	void Update () {

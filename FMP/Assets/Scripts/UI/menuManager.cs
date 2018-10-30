@@ -48,11 +48,13 @@ public class menuManager : MonoBehaviour {
         gm.useMotion = intToBool(PlayerPrefs.GetInt("motion"));
         gm.useMic = intToBool(PlayerPrefs.GetInt("mic"));
         gm.useProximity = intToBool(PlayerPrefs.GetInt("prox"));
+        gm.money = PlayerPrefs.GetInt("money");
 
         GameObject.Find("Orientations/Dropdown").GetComponent<Dropdown>().value = PlayerPrefs.GetInt("orientation");
         GameObject.Find("Sensors/Motion").GetComponent<Toggle>().isOn = gm.useMotion;
         GameObject.Find("Sensors/Mic").GetComponent<Toggle>().isOn = gm.useMic;
         GameObject.Find("Sensors/Prox").GetComponent<Toggle>().isOn = gm.useProximity;
+        GameObject.Find("Main/MoneyText").GetComponent<Text>().text = gm.money.ToString();
     }
 
     public void saveSettings() {

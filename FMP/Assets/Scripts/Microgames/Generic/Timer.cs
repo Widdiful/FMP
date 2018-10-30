@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
 
+    public bool winOnTimeOver;
     public float seconds;
     public float timer;
     public Font font1;
@@ -70,7 +71,8 @@ public class Timer : MonoBehaviour {
 
                 if (timer <= 0) {
                     active = false;
-                    gm.FailGame();
+                    if (winOnTimeOver) gm.CompleteGame();
+                    else gm.FailGame();
                 }
             }
         }

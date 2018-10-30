@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/Platformer.unity
     guid: e0e02101c13977a48b8436303c19f670
+  - enabled: 1
+    path: Assets/Scenes/Tap/DivertTraffic.unity
+    guid: 02f16636e81021444ab31110b1a97d2d
   m_configObjects: {}

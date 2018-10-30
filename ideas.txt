@@ -1,0 +1,26 @@
+TAP
+ Platformer
+ Fight monster
+ Pet dog
+ Divert traffic
+ Make it rain
+ Roll toilet paper
+ Rhythm game
+ Obari pose
+ Stop disturbers from waking someone up
+ Swashbucklers clone
+ Collect coins
+ Open chest
+ Mario galaxy style 2d platformer
+ Type on keyboard
+
+MIC
+ Scare
+
+MOTION
+ Combine robots
+ Steer car
+ 
+
+PROXIMITY
+ Pretend to sleep

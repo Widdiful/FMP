@@ -55,5 +55,11 @@
 			<Mic>false</Mic>
 			<Proximity>false</Proximity>
 		</Game>
+		<Game name="Tap/DivertTraffic">
+			<Landscape>true</Landscape>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+		</Game>
 	</Games>
 </GameCollection>

@@ -20,6 +20,7 @@ public class gameManager : MonoBehaviour {
     public bool useMic;
     public bool useProximity;
     private GameContainer gc;
+    public int money;
 
     // Generic variables
     public GameTypes gameType;
