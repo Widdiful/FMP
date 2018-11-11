@@ -21,6 +21,7 @@ public class gameManager : MonoBehaviour {
     public bool useProximity;
     private GameContainer gc;
     public int money;
+    public float hintScreenDuration = 1;
 
     // Generic variables
     public GameTypes gameType;
@@ -29,7 +30,7 @@ public class gameManager : MonoBehaviour {
     public List<Microgame> gamesCompleted = new List<Microgame>();
     private List<Microgame> gamesPlayed = new List<Microgame>();
     private List<Microgame> gamesQueue = new List<Microgame>();
-    private Microgame currentGame;
+    public Microgame currentGame;
     public int livesLeft;
     private int gamesSinceLastOrientationChange;
     private bool currentLandscape;
@@ -63,13 +64,13 @@ public class gameManager : MonoBehaviour {
             if (bg) {
                 if (startingGame) {
                     startTimer += Time.deltaTime;
-                    if (startTimer >= 1) {
+                    if (startTimer >= hintScreenDuration) {
                         bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(1600, 0, 0), 0.2f);
                         if (1600 - bg.transform.localPosition.x <= 0.01) {
                             bg.transform.localPosition = new Vector3(1600, 0, 0);
                             startingGame = false;
                             startTimer = 0;
-                            if (GameObject.Find("HintText")) GameObject.Find("HintText").SetActive(false);
+                            //if (GameObject.Find("HintText")) GameObject.Find("HintText").SetActive(false);
                         }
                     }
                 }

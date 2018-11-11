@@ -1,65 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <GameCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Games>
-		<Game name="Tap/FightMonsterHorizontal">
-			<Landscape>true</Landscape>
-			<Motion>false</Motion>
-			<Mic>false</Mic>
-			<Proximity>false</Proximity>
-		</Game>
-		<Game name="Tap/FightMonsterVertical">
-			<Landscape>false</Landscape>
-			<Motion>false</Motion>
-			<Mic>false</Mic>
-			<Proximity>false</Proximity>
-		</Game>
-		<Game name="Tap/PetDog">
-			<Landscape>false</Landscape>
-			<Motion>false</Motion>
-			<Mic>false</Mic>
-			<Proximity>false</Proximity>
-		</Game>
-		<Game name="Tap/RollToiletPaper">
-			<Landscape>false</Landscape>
-			<Motion>false</Motion>
-			<Mic>false</Mic>
-			<Proximity>false</Proximity>
-		</Game>
-		<Game name="Tap/MakeItRain">
-			<Landscape>false</Landscape>
-			<Motion>false</Motion>
-			<Mic>false</Mic>
-			<Proximity>false</Proximity>
-		</Game>
-		<Game name="Motion/CombineRobots">
-			<Landscape>true</Landscape>
-			<Motion>true</Motion>
-			<Mic>false</Mic>
-			<Proximity>false</Proximity>
-		</Game>
 		<Game name="Mic/Scare">
 			<Landscape>false</Landscape>
+			<Tap>false</Tap>
 			<Motion>false</Motion>
 			<Mic>true</Mic>
 			<Proximity>false</Proximity>
+			<Hint>Scare!</Hint>
+		</Game>
+		<Game name="Motion/CombineRobots">
+			<Landscape>true</Landscape>
+			<Tap>false</Tap>
+			<Motion>true</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Combine!</Hint>
 		</Game>
 		<Game name="Proximity/PretendToSleep">
 			<Landscape>true</Landscape>
+			<Tap>false</Tap>
 			<Motion>false</Motion>
 			<Mic>false</Mic>
 			<Proximity>true</Proximity>
-		</Game>
-		<Game name="Tap/Platformer">
-			<Landscape>true</Landscape>
-			<Motion>false</Motion>
-			<Mic>false</Mic>
-			<Proximity>false</Proximity>
+			<Hint>Sleep!</Hint>
 		</Game>
 		<Game name="Tap/DivertTraffic">
 			<Landscape>true</Landscape>
+			<Tap>true</Tap>
 			<Motion>false</Motion>
 			<Mic>false</Mic>
 			<Proximity>false</Proximity>
+			<Hint>Avoid!</Hint>
+		</Game>
+		<Game name="Tap/FightMonsterHorizontal">
+			<Landscape>true</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Fight!</Hint>
+		</Game>
+		<Game name="Tap/FightMonsterVertical">
+			<Landscape>false</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Fight!</Hint>
+		</Game>
+		<Game name="Tap/MakeItRain">
+			<Landscape>false</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Make it rain!</Hint>
+		</Game>
+		<Game name="Tap/PetDog">
+			<Landscape>false</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Pet!</Hint>
+		</Game>
+		<Game name="Tap/Platformer">
+			<Landscape>true</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Stomp!</Hint>
+		</Game>
+		<Game name="Tap/RollToiletPaper">
+			<Landscape>false</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Roll!</Hint>
 		</Game>
 	</Games>
 </GameCollection>

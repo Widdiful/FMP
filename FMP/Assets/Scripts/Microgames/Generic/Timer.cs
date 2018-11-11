@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour {
     private RectTransform timerBar;
     private Text countdown;
     private Text lives;
+    private Text hintText;
     private float timerWidth = 600;
     private string prevTime;
     public bool active = true;
@@ -21,10 +22,16 @@ public class Timer : MonoBehaviour {
 	void Start () {
         timer = seconds;
         gm = GameObject.FindObjectOfType<gameManager>();
+
         if (GameObject.Find("TimerBar")) timerBar = GameObject.Find("TimerBar").GetComponent<RectTransform>();
         if (GameObject.Find("Countdown")) countdown = GameObject.Find("Countdown").GetComponent<Text>();
         if (GameObject.Find("Lives")) lives = GameObject.Find("Lives").GetComponent<Text>();
+        if (GameObject.Find("HintText")) hintText = GameObject.Find("HintText").GetComponent<Text>();
+
         if (gm) {
+            if (hintText)
+                hintText.text = gm.currentGame.hint;
+
             if (gm.currentDifficulty == gameManager.DifficultyLevels.Chill) {
                 foreach (Transform trans in transform) {
                     if (trans.name == "Canvas") {

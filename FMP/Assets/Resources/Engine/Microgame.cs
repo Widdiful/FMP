@@ -12,6 +12,9 @@ public class Microgame {
     [XmlElement("Landscape")]
     public bool isLandscape;
 
+    [XmlElement("Tap")]
+    public bool useTap;
+
     [XmlElement("Motion")]
     public bool useMotion;
 
@@ -23,4 +26,7 @@ public class Microgame {
 
     [XmlElement("Extra")]
     public bool hasExtra;
+
+    [XmlElement("Hint")]
+    public string hint;
 }

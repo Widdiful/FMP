@@ -1547,6 +1547,11 @@ Prefab:
       propertyPath: totalLives
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114718087017039378, guid: d72e72b43899b0c47a21e82f1708683d,
+        type: 2}
+      propertyPath: hintScreenDuration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d72e72b43899b0c47a21e82f1708683d, type: 2}
   m_IsPrefabAsset: 0
