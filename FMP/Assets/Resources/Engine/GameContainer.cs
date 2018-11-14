@@ -24,4 +24,13 @@ public class GameContainer {
 
         return games;
     }
+
+    public Microgame GetGame(string name) {
+        foreach(Microgame game in microgames) {
+            if (game.name == name) {
+                return game;
+            }
+        }
+        return null;
+    }
 }

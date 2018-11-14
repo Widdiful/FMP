@@ -155,103 +155,116 @@ public class gameManager : MonoBehaviour {
     }
 
     public void LoadGame() {
-        if (gamesQueue.Count == 0) {
-            // Change orientation
-            switch (orientationMode) {
-                case OrientationModes.Landscape:
-                    currentLandscape = true;
-                    break;
-                case OrientationModes.Portrait:
-                    currentLandscape = false;
-                    break;
-            }
-
-            if (orientationMode == OrientationModes.Both) {
-                gamesSinceLastOrientationChange++;
-            }
-
-            bool canChangeOrientation = false;
-            if (gamesSinceLastOrientationChange >= 5) {
-                canChangeOrientation = true;
-            }
-
-            // Manage difficulty
-            if (gameType == GameTypes.Challenge) {
-                float completionPercentage = (float)gamesCompleted.Count / (float)challengeLength;
-                if (completionPercentage >= 0.9f) {
-                    currentDifficulty = DifficultyLevels.Extra;
+        if (gameType == GameTypes.Practice) {
+            SceneManager.LoadScene("Scenes/" + currentGame.name);
+        }
+        else {
+            if (gamesQueue.Count == 0) {
+                // Change orientation
+                switch (orientationMode) {
+                    case OrientationModes.Landscape:
+                        currentLandscape = true;
+                        break;
+                    case OrientationModes.Portrait:
+                        currentLandscape = false;
+                        break;
                 }
-                if (completionPercentage >= 0.75f) {
-                    currentDifficulty = DifficultyLevels.Hard;
-                }
-                if (completionPercentage >= 0.5f) {
-                    currentDifficulty = DifficultyLevels.Normal;
-                }
-                if (completionPercentage >= 0.25f) {
-                    currentDifficulty = DifficultyLevels.Easy;
-                }
-            }
 
-            // Generate game list
-            GameContainer currentGames = GameContainer.Load(path);
-            int id = -1;
-            foreach (Microgame game in gc.microgames) {
-                id++;
-                if (gamesPlayed.Count > 0) {
-                    if (gamesPlayed[gamesPlayed.Count - 1].name == game.name) {
+                if (orientationMode == OrientationModes.Both) {
+                    gamesSinceLastOrientationChange++;
+                }
+
+                bool canChangeOrientation = false;
+                if (gamesSinceLastOrientationChange >= 5) {
+                    canChangeOrientation = true;
+                }
+
+                // Manage difficulty
+                if (gameType == GameTypes.Challenge) {
+                    float completionPercentage = (float)gamesCompleted.Count / (float)challengeLength;
+                    if (completionPercentage >= 0.9f) {
+                        currentDifficulty = DifficultyLevels.Extra;
+                    }
+                    if (completionPercentage >= 0.75f) {
+                        currentDifficulty = DifficultyLevels.Hard;
+                    }
+                    if (completionPercentage >= 0.5f) {
+                        currentDifficulty = DifficultyLevels.Normal;
+                    }
+                    if (completionPercentage >= 0.25f) {
+                        currentDifficulty = DifficultyLevels.Easy;
+                    }
+                }
+
+                // Generate game list
+                GameContainer currentGames = GameContainer.Load(path);
+                int id = -1;
+                foreach (Microgame game in gc.microgames) {
+                    id++;
+                    if (gamesPlayed.Count > 0) {
+                        if (gamesPlayed[gamesPlayed.Count - 1].name == game.name) {
+                            currentGames.microgames.RemoveAt(id);
+                            id--;
+                        }
+                    }
+
+                    if (currentDifficulty == DifficultyLevels.Extra && !game.hasExtra) {
+                        currentGames.microgames.RemoveAt(id);
+                        id--;
+                    }
+
+                    else if (!canChangeOrientation && game.isLandscape != currentLandscape) {
+                        currentGames.microgames.RemoveAt(id);
+                        id--;
+                    }
+
+                    else if (!useMotion && game.useMotion) {
+                        currentGames.microgames.RemoveAt(id);
+                        id--;
+                    }
+
+                    else if (!useMic && game.useMic) {
+                        currentGames.microgames.RemoveAt(id);
+                        id--;
+                    }
+
+                    else if (!useProximity && game.useProximity) {
                         currentGames.microgames.RemoveAt(id);
                         id--;
                     }
                 }
 
-                if (currentDifficulty == DifficultyLevels.Extra && !game.hasExtra) {
-                    currentGames.microgames.RemoveAt(id);
-                    id--;
-                }
-
-                else if (!canChangeOrientation && game.isLandscape != currentLandscape) {
-                    currentGames.microgames.RemoveAt(id);
-                    id--;
-                }
-
-                else if (!useMotion && game.useMotion) {
-                    currentGames.microgames.RemoveAt(id);
-                    id--;
-                }
-
-                else if (!useMic && game.useMic) {
-                    currentGames.microgames.RemoveAt(id);
-                    id--;
-                }
-
-                else if (!useProximity && game.useProximity) {
-                    currentGames.microgames.RemoveAt(id);
-                    id--;
-                }
+                Microgame nextGame = currentGames.microgames[Random.Range(0, currentGames.microgames.Count)];
+                currentGame = nextGame;
+                gamesQueue.Add(nextGame);
             }
 
-            Microgame nextGame = currentGames.microgames[Random.Range(0, currentGames.microgames.Count)];
-            currentGame = nextGame;
-            gamesQueue.Add(nextGame);
-        }
 
-
-        if (gamesQueue[0].isLandscape && !currentLandscape) {
-            SceneManager.LoadScene("Scenes/Motion/RotateHorizontal");
-            currentLandscape = true;
-        }
-        else if (!gamesQueue[0].isLandscape && currentLandscape) {
-            SceneManager.LoadScene("Scenes/Motion/RotateVertical");
-            currentLandscape = false;
-        }
-        else {
-            SceneManager.LoadScene("Scenes/" + gamesQueue[0].name);
-            gamesQueue.Remove(gamesQueue[0]);
+            if (gamesQueue[0].isLandscape && !currentLandscape) {
+                SceneManager.LoadScene("Scenes/Motion/RotateHorizontal");
+                currentLandscape = true;
+            }
+            else if (!gamesQueue[0].isLandscape && currentLandscape) {
+                SceneManager.LoadScene("Scenes/Motion/RotateVertical");
+                currentLandscape = false;
+            }
+            else {
+                SceneManager.LoadScene("Scenes/" + gamesQueue[0].name);
+                gamesQueue.Remove(gamesQueue[0]);
+            }
         }
         startingGame = true;
     }
 
     public void UnlockGame(Microgame game, DifficultyLevels difficulty) {
 
+    }
+
+    public void PractiseGame(string gameName) {
+        gameType = GameTypes.Practice;
+        livesLeft = 1;
+        currentGame = gc.GetGame(gameName);
+        SceneManager.LoadScene("Scenes/" + gameName);
+        startingGame = true;
     }
 }
