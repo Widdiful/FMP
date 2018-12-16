@@ -22,7 +22,7 @@ public class PlatformerCharacter : MonoBehaviour {
 	}
 	
 	void Update () {
-        Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - 1.5f, 0), Color.yellow);
+        Debug.DrawLine(transform.position, transform.position - (transform.up * 1.5f), Color.yellow);
         // Input
         Horizontal = Mathf.Clamp(CrossPlatformInputManager.GetAxis("Horizontal") + Input.GetAxis("Horizontal"), -1, 1);
         Jump = CrossPlatformInputManager.GetButtonDown("Jump") || Input.GetButtonDown("Jump");
@@ -36,14 +36,14 @@ public class PlatformerCharacter : MonoBehaviour {
             }
             else {
                 if (Mathf.Abs(Horizontal) > 0.1f) {
-                    rb.AddForce(Vector2.right * moveSpeed * Horizontal * 3);
+                    rb.AddForce(transform.right * moveSpeed * Horizontal * 3);
                     rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed), rb.velocity.y);
                 }
             }
         }
         if (Jump) {
             if (jumps > 0 && rb.velocity.y <= 0) {
-                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
                 GetComponent<squish>().Squish(new Vector2(-2, 2));
                 jumps--;
             }
@@ -58,7 +58,7 @@ public class PlatformerCharacter : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col) {
         // Ground check
-        RaycastHit2D ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -transform.up, 1.5f);
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, -transform.up, 1.5f);
         if (ray.collider) {
             if (!grounded) GetComponent<squish>().Squish(new Vector2(2, -2));
             grounded = true;
@@ -68,7 +68,7 @@ public class PlatformerCharacter : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D col) {
         // Ground check
-        RaycastHit2D ray = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -transform.up, 1.5f);
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, -transform.up, 1.5f);
         if (!ray.collider) {
             grounded = false;
         }
@@ -78,7 +78,7 @@ public class PlatformerCharacter : MonoBehaviour {
         if (col.GetComponent<PlatformerEnemy>()) {
             if (rb.velocity.y <= 0) {
                 col.GetComponent<PlatformerEnemy>().Kill();
-                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
                 GetComponent<squish>().Squish(new Vector2(-2, 2));
                 jumps--;
             }
