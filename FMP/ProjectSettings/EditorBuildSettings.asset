@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/DivertTraffic.unity
     guid: 02f16636e81021444ab31110b1a97d2d
+  - enabled: 1
+    path: Assets/Scenes/Motion/FillGlass.unity
+    guid: 44ecd1c186afcc6449a4a76efc3d2a21
   m_configObjects: {}

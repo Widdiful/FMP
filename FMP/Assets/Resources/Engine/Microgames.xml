@@ -81,5 +81,13 @@
 			<Proximity>false</Proximity>
 			<Hint>Roll!</Hint>
 		</Game>
+		<Game name="Motion/FillGlass">
+			<Landscape>false</Landscape>
+			<Tap>false</Tap>
+			<Motion>true</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Don't spill!</Hint>
+		</Game>
 	</Games>
 </GameCollection>
