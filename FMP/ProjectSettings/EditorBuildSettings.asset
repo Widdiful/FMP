@@ -50,4 +50,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Motion/FillGlass.unity
     guid: 44ecd1c186afcc6449a4a76efc3d2a21
+  - enabled: 1
+    path: Assets/Scenes/Motion/BalancePlates.unity
+    guid: 5caf321887d68304691a598ac8ff0afa
+  - enabled: 1
+    path: Assets/Scenes/Mic/BlowBoat.unity
+    guid: de7eea50515ace644b2400b5927f1787
   m_configObjects: {}

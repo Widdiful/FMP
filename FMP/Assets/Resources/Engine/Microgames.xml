@@ -89,5 +89,21 @@
 			<Proximity>false</Proximity>
 			<Hint>Don't spill!</Hint>
 		</Game>
+		<Game name="Motion/BalancePlates">
+			<Landscape>true</Landscape>
+			<Tap>false</Tap>
+			<Motion>true</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Balance!</Hint>
+		</Game>
+		<Game name="Mic/BlowBoat">
+			<Landscape>false</Landscape>
+			<Tap>false</Tap>
+			<Motion>false</Motion>
+			<Mic>true</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Blow!</Hint>
+		</Game>
 	</Games>
 </GameCollection>
