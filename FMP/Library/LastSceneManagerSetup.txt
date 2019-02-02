@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Motion/CombineRobots.unity
+- path: Assets/Scenes/Tap/PlugIntoMains.unity
   isLoaded: 1
   isActive: 1
