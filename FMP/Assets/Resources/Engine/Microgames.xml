@@ -105,5 +105,13 @@
 			<Proximity>false</Proximity>
 			<Hint>Blow!</Hint>
 		</Game>
+		<Game name="Tap/PlugIntoMains">
+			<Landscape>true</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Plug in!</Hint>
+		</Game>
 	</Games>
 </GameCollection>
