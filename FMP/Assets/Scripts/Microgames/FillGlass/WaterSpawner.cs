@@ -14,7 +14,7 @@ public class WaterSpawner : MonoBehaviour {
 
     private void Start() {
         startPos = transform.position;
-        //timer = Random.Range(0.0f, 1.0f);
+        timer = Random.Range(0.0f, 1.0f);
         spawner = FindObjectOfType<Spawner>();
     }
 

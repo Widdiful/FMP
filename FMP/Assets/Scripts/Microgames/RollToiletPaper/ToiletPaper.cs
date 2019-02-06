@@ -6,6 +6,7 @@ public class ToiletPaper : MonoBehaviour {
 
     public float speedMultiplier;
     public float minRollSize;
+    public float rollScaleSpeed;
     public Transform roll;
 
     private float startRollSize;
@@ -35,7 +36,7 @@ public class ToiletPaper : MonoBehaviour {
             transform.Translate(new Vector3(speed * 5f, 0, 0));
             transform.localPosition = new Vector3(transform.localPosition.x, (roll.transform.localScale.x - startRollSize) * 0.5f, 0);
             transform.localScale += new Vector3(speed, 0, 0);
-            roll.localScale = new Vector3(roll.localScale.x * (1f - (speed * 0.1f)), roll.localScale.y, roll.localScale.z * (1f - (speed * 0.1f)));
+            roll.localScale = new Vector3(roll.localScale.x * (1f - (speed * rollScaleSpeed)), roll.localScale.y, roll.localScale.z * (1f - (speed * rollScaleSpeed)));
             roll.Rotate(new Vector3(0, -speed * 360, 0));
             GetComponent<Renderer>().materials[0].mainTextureScale = new Vector2(transform.localScale.x * 2, 1);
         }

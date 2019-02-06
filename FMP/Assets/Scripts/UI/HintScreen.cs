@@ -31,15 +31,15 @@ public class HintScreen : MonoBehaviour {
 	}
 	
 	void Update () {
-        timer -= Time.deltaTime;
+        timer -= Time.unscaledDeltaTime;
 
         if (timer <= 0) {
             if (hintText) {
-                hintText.transform.Translate(Vector3.right * speed * Time.deltaTime);
+                hintText.transform.Translate(Vector3.right * speed * Time.unscaledDeltaTime);
             }
 
             if (inputPanel) {
-                inputPanel.transform.Translate(-Vector3.up * speed * Time.deltaTime);
+                inputPanel.transform.Translate(-Vector3.up * speed * Time.unscaledDeltaTime);
             }
         }
 	}

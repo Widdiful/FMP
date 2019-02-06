@@ -843,7 +843,7 @@ Prefab:
     - target: {fileID: 114431085694187724, guid: 60341c54c7bca3645beac9ec25249a2f,
         type: 2}
       propertyPath: winOnTimeOver
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60341c54c7bca3645beac9ec25249a2f, type: 2}

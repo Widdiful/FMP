@@ -40,6 +40,7 @@ public class gameManager : MonoBehaviour {
     private bool failedGame;
     private float startTimer;
     private float endTimer;
+    private float gameSpeed = 1;
 
     // Endless variables
 
@@ -63,9 +64,10 @@ public class gameManager : MonoBehaviour {
             GameObject bg = GameObject.Find("Timer/Canvas/Background");
             if (bg) {
                 if (startingGame) {
-                    startTimer += Time.deltaTime;
+                    startTimer += Time.unscaledDeltaTime;
                     if (startTimer >= hintScreenDuration) {
                         bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(1600, 0, 0), 0.2f);
+                        Time.timeScale = gameSpeed;
                         if (1600 - bg.transform.localPosition.x <= 0.01) {
                             bg.transform.localPosition = new Vector3(1600, 0, 0);
                             startingGame = false;
@@ -88,12 +90,25 @@ public class gameManager : MonoBehaviour {
                             bgRT.offsetMax = new Vector2(0, 0);
                             endingGame = false;
                             endTimer = 0;
+                            Time.timeScale = 0.0001f;
 
                             if (completedGame) {
                                 LoadGame();
                                 completedGame = false;
-                                if (currentLandscape) Screen.orientation = ScreenOrientation.LandscapeRight;
-                                else Screen.orientation = ScreenOrientation.Portrait;
+                                if (currentLandscape) {
+                                    Screen.orientation = ScreenOrientation.LandscapeRight;
+                                    Screen.autorotateToLandscapeLeft = true;
+                                    Screen.autorotateToLandscapeRight = true;
+                                    Screen.autorotateToPortrait = false;
+                                    Screen.autorotateToPortraitUpsideDown = false;
+                                }
+                                else {
+                                    Screen.orientation = ScreenOrientation.Portrait;
+                                    Screen.autorotateToLandscapeLeft = false;
+                                    Screen.autorotateToLandscapeRight = false;
+                                    Screen.autorotateToPortrait = true;
+                                    Screen.autorotateToPortraitUpsideDown = true;
+                                }
                                 Screen.orientation = ScreenOrientation.AutoRotation;
                             }
                             else if (failedGame) {
@@ -157,6 +172,7 @@ public class gameManager : MonoBehaviour {
     public void LoadGame() {
         if (gameType == GameTypes.Practice) {
             SceneManager.LoadScene("Scenes/" + currentGame.name);
+            currentLandscape = currentGame.isLandscape;
         }
         else {
             if (gamesQueue.Count == 0) {
@@ -263,8 +279,26 @@ public class gameManager : MonoBehaviour {
     public void PractiseGame(string gameName) {
         gameType = GameTypes.Practice;
         livesLeft = 1;
+        gamesCompleted.Clear();
         currentGame = gc.GetGame(gameName);
         SceneManager.LoadScene("Scenes/" + gameName);
         startingGame = true;
+        currentLandscape = currentGame.isLandscape;
+
+        if (currentLandscape) {
+            Screen.orientation = ScreenOrientation.LandscapeRight;
+            Screen.autorotateToLandscapeLeft = true;
+            Screen.autorotateToLandscapeRight = true;
+            Screen.autorotateToPortrait = false;
+            Screen.autorotateToPortraitUpsideDown = false;
+        }
+        else {
+            Screen.orientation = ScreenOrientation.Portrait;
+            Screen.autorotateToLandscapeLeft = false;
+            Screen.autorotateToLandscapeRight = false;
+            Screen.autorotateToPortrait = true;
+            Screen.autorotateToPortraitUpsideDown = true;
+        }
+        Screen.orientation = ScreenOrientation.AutoRotation;
     }
 }

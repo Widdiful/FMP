@@ -10,6 +10,7 @@ public class CameraFollow : MonoBehaviour {
     public bool clampPos;
     public Vector2 minPos;
     public Vector2 maxPos;
+    public float speed = 0.2f;
     private Camera cam;
 
     void Start() {
@@ -18,10 +19,15 @@ public class CameraFollow : MonoBehaviour {
 
     void FixedUpdate() {
         if (target) {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z), 0.2f);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z), speed);
             if (clampPos) {
-                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x + cam.orthographicSize * cam.aspect, maxPos.x - cam.orthographicSize * cam.aspect),
+                if (cam)
+                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x + cam.orthographicSize * cam.aspect, maxPos.x - cam.orthographicSize * cam.aspect),
                                                  Mathf.Clamp(transform.position.y, minPos.y + cam.orthographicSize, maxPos.y - cam.orthographicSize),
+                                                 transform.position.z);
+                else
+                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x, maxPos.x),
+                                                 Mathf.Clamp(transform.position.y, minPos.y, maxPos.y),
                                                  transform.position.z);
             }
         }
