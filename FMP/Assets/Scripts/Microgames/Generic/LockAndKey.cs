@@ -10,6 +10,7 @@ public class LockAndKey : MonoBehaviour {
     public bool snapToLock;
     public static int connectionsMade = 0;
     public int connectionsRequired;
+    public bool disableComponents = true;
 
     bool complete = false;
     Rigidbody2D rb;
@@ -31,9 +32,12 @@ public class LockAndKey : MonoBehaviour {
                 rb.gravityScale = 0;
                 rb.velocity = Vector3.zero;
             }
-            foreach (Behaviour comp in GetComponents<Behaviour>()) {
-                if (comp != this) {
-                    comp.enabled = false;
+
+            if (disableComponents) {
+                foreach (Behaviour comp in GetComponents<Behaviour>()) {
+                    if (comp != this) {
+                        comp.enabled = false;
+                    }
                 }
             }
 
