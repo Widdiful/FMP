@@ -9,6 +9,9 @@ public class Microgame {
     [XmlAttribute("name")]
     public string name;
 
+    [XmlElement("displayName")]
+    public string displayName;
+
     [XmlElement("Landscape")]
     public bool isLandscape;
 

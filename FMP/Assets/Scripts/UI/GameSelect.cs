@@ -21,13 +21,7 @@ public class GameSelect : MonoBehaviour {
 
         foreach(Microgame game in gc.microgames) {
             MicrogameButton newButton = Instantiate(microgameButton, transform).GetComponent<MicrogameButton>();
-            newButton.name = game.name;
-            newButton.isLandscape = game.isLandscape;
-            newButton.useTap = game.useTap;
-            newButton.useMotion = game.useMotion;
-            newButton.useMic = game.useMic;
-            newButton.useProximity = game.useProximity;
-            newButton.hasExtra = game.hasExtra;
+            newButton.game = game;
         }
     }
 }

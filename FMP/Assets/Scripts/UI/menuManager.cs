@@ -63,11 +63,21 @@ public class menuManager : MonoBehaviour {
         PlayerPrefs.SetInt("mic", Convert.ToInt32(GameObject.Find("Sensors/Mic").GetComponent<Toggle>().isOn));
         PlayerPrefs.SetInt("prox", Convert.ToInt32(GameObject.Find("Sensors/Prox").GetComponent<Toggle>().isOn));
         loadSettings();
-        MenuMain();
+        //MenuMain();
     }
 
     public void StartGame() {
         startingGame = true;
+    }
+
+    public void StartEndless() {
+        gameManager.instance.gameType = gameManager.GameTypes.Endless;
+        StartGame();
+    }
+
+    public void StartChallenge() {
+        gameManager.instance.gameType = gameManager.GameTypes.Challenge;
+        StartGame();
     }
 
     public void ReturnToMenu() {

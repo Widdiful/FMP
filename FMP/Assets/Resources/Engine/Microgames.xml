@@ -2,6 +2,7 @@
 <GameCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Games>
 		<Game name="Mic/Scare">
+			<displayName>Scare</displayName>
 			<Landscape>false</Landscape>
 			<Tap>false</Tap>
 			<Motion>false</Motion>
@@ -10,6 +11,7 @@
 			<Hint>Scare!</Hint>
 		</Game>
 		<Game name="Motion/CombineRobots">
+			<displayName>Combine Robots</displayName>
 			<Landscape>true</Landscape>
 			<Tap>false</Tap>
 			<Motion>true</Motion>
@@ -18,6 +20,7 @@
 			<Hint>Combine!</Hint>
 		</Game>
 		<Game name="Proximity/PretendToSleep">
+			<displayName>Pretend to Sleep</displayName>
 			<Landscape>true</Landscape>
 			<Tap>false</Tap>
 			<Motion>false</Motion>
@@ -26,6 +29,7 @@
 			<Hint>Sleep!</Hint>
 		</Game>
 		<Game name="Tap/DivertTraffic">
+			<displayName>Divert Traffic</displayName>
 			<Landscape>true</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -34,6 +38,7 @@
 			<Hint>Avoid!</Hint>
 		</Game>
 		<Game name="Tap/FightMonsterHorizontal">
+			<displayName>Fight Monster (Horizontal)</displayName>
 			<Landscape>true</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -42,6 +47,7 @@
 			<Hint>Fight!</Hint>
 		</Game>
 		<Game name="Tap/FightMonsterVertical">
+			<displayName>Fight Monster (Vertical)</displayName>
 			<Landscape>false</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -50,6 +56,7 @@
 			<Hint>Fight!</Hint>
 		</Game>
 		<Game name="Tap/MakeItRain">
+			<displayName>Make it Rain</displayName>
 			<Landscape>false</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -58,6 +65,7 @@
 			<Hint>Make it rain!</Hint>
 		</Game>
 		<Game name="Tap/PetDog">
+			<displayName>Pet Dog</displayName>
 			<Landscape>false</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -66,6 +74,7 @@
 			<Hint>Pet!</Hint>
 		</Game>
 		<Game name="Tap/Platformer">
+			<displayName>Platformer</displayName>
 			<Landscape>true</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -74,6 +83,7 @@
 			<Hint>Stomp!</Hint>
 		</Game>
 		<Game name="Tap/RollToiletPaper">
+			<displayName>Roll Toilet Paper</displayName>
 			<Landscape>false</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -82,6 +92,7 @@
 			<Hint>Roll!</Hint>
 		</Game>
 		<Game name="Motion/FillGlass">
+			<displayName>Fill Glass</displayName>
 			<Landscape>false</Landscape>
 			<Tap>false</Tap>
 			<Motion>true</Motion>
@@ -90,6 +101,7 @@
 			<Hint>Don't spill!</Hint>
 		</Game>
 		<Game name="Motion/BalancePlates">
+			<displayName>Balance Plates</displayName>
 			<Landscape>true</Landscape>
 			<Tap>false</Tap>
 			<Motion>true</Motion>
@@ -98,6 +110,7 @@
 			<Hint>Balance!</Hint>
 		</Game>
 		<Game name="Mic/BlowBoat">
+			<displayName>Blow Boat</displayName>
 			<Landscape>false</Landscape>
 			<Tap>false</Tap>
 			<Motion>false</Motion>
@@ -106,6 +119,7 @@
 			<Hint>Blow!</Hint>
 		</Game>
 		<Game name="Tap/PlugIntoMains">
+			<displayName>Plug into Mains</displayName>
 			<Landscape>true</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -114,6 +128,7 @@
 			<Hint>Plug in!</Hint>
 		</Game>
 		<Game name="Tap/DrawPath">
+			<displayName>Draw Path</displayName>
 			<Landscape>false</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>
@@ -122,6 +137,7 @@
 			<Hint>Guide!</Hint>
 		</Game>
 		<Game name="Tap/HerdCattle">
+			<displayName>Herd Cattle</displayName>
 			<Landscape>false</Landscape>
 			<Tap>true</Tap>
 			<Motion>false</Motion>

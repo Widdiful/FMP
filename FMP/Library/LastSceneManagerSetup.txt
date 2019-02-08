@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Mic/Scare.unity
+- path: Assets/Scenes/Tap/HerdCattle.unity
   isLoaded: 1
   isActive: 1
