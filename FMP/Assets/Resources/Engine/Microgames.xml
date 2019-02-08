@@ -121,5 +121,13 @@
 			<Proximity>false</Proximity>
 			<Hint>Guide!</Hint>
 		</Game>
+		<Game name="Tap/HerdCattle">
+			<Landscape>false</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Herd!</Hint>
+		</Game>
 	</Games>
 </GameCollection>

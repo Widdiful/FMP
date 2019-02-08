@@ -11,8 +11,10 @@ public class LockAndKey : MonoBehaviour {
     public static int connectionsMade = 0;
     public int connectionsRequired;
     public bool disableComponents = true;
+    public bool allowMultiple;
+    public bool failOnWrongLock;
 
-    bool complete = false;
+    public bool complete = false;
     Rigidbody2D rb;
 
     private void Start() {
@@ -21,29 +23,32 @@ public class LockAndKey : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         LockAndKey other = collision.GetComponent<LockAndKey>();
-        if (!complete && !other.complete && type == Types.Key && other.type == Types.Lock && id == other.id) {
-            connectionsMade++;
-            other.complete = true;
-            complete = true;
-            if (snapToLock) {
-                transform.position = collision.transform.position;
-            }
-            if (rb) {
-                rb.gravityScale = 0;
-                rb.velocity = Vector3.zero;
-            }
+        if (!complete && other && !other.complete && type == Types.Key && other.type == Types.Lock) {
+            if (id == other.id) {
+                connectionsMade++;
+                if (other.allowMultiple)
+                    other.complete = true;
+                complete = true;
+                if (snapToLock) {
+                    transform.position = collision.transform.position;
+                }
+                if (rb) {
+                    rb.gravityScale = 0;
+                    rb.velocity = Vector3.zero;
+                }
 
-            if (disableComponents) {
-                foreach (Behaviour comp in GetComponents<Behaviour>()) {
-                    if (comp != this) {
-                        comp.enabled = false;
+                if (disableComponents) {
+                    foreach (Behaviour comp in GetComponents<Behaviour>()) {
+                        if (comp != this) {
+                            comp.enabled = false;
+                        }
                     }
                 }
-            }
 
-            if (connectionsMade >= connectionsRequired) {
-                connectionsMade = 0;
-                gameManager.instance.CompleteGame();
+                if (connectionsMade >= connectionsRequired) {
+                    connectionsMade = 0;
+                    gameManager.instance.CompleteGame();
+                }
             }
         }
     }

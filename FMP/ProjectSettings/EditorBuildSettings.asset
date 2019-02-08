@@ -62,4 +62,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/DrawPath.unity
     guid: d9fc526ab5d03d04d8150416e68444e9
+  - enabled: 1
+    path: Assets/Scenes/Tap/HerdCattle.unity
+    guid: 5f125ad04aad50842b7034321e49d268
   m_configObjects: {}
