@@ -145,5 +145,14 @@
 			<Proximity>false</Proximity>
 			<Hint>Herd!</Hint>
 		</Game>
+		<Game name="Tap/DrawPlatform">
+			<displayName>Draw Platform</displayName>
+			<Landscape>true</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Draw platform!</Hint>
+		</Game>
 	</Games>
 </GameCollection>

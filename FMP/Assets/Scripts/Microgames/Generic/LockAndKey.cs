@@ -32,12 +32,13 @@ public class LockAndKey : MonoBehaviour {
                 if (snapToLock) {
                     transform.position = collision.transform.position;
                 }
-                if (rb) {
-                    rb.gravityScale = 0;
-                    rb.velocity = Vector3.zero;
-                }
 
                 if (disableComponents) {
+                    if (rb) {
+                        rb.gravityScale = 0;
+                        rb.velocity = Vector3.zero;
+                    }
+
                     foreach (Behaviour comp in GetComponents<Behaviour>()) {
                         if (comp != this) {
                             comp.enabled = false;
