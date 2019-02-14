@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tap/HerdCattle.unity
+- path: Assets/Scenes/Proximity/WaveToPerson.unity
   isLoaded: 1
   isActive: 1

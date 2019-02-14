@@ -163,5 +163,14 @@
 			<Proximity>true</Proximity>
 			<Hint>Wave!</Hint>
 		</Game>
+		<Game name="Tap/LaunchPerson">
+			<displayName>Launch Person</displayName>
+			<Landscape>true</Landscape>
+			<Tap>true</Tap>
+			<Motion>false</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Launch!</Hint>
+		</Game>
 	</Games>
 </GameCollection>

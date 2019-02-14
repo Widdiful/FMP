@@ -71,4 +71,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Proximity/WaveToPerson.unity
     guid: 57be540f483d4a4429c9db9d9dfddcff
+  - enabled: 1
+    path: Assets/Scenes/Tap/LaunchPerson.unity
+    guid: df33e2afe708eae41963fdf9a7b64769
   m_configObjects: {}
