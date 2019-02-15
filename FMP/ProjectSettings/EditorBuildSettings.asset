@@ -74,4 +74,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/LaunchPerson.unity
     guid: df33e2afe708eae41963fdf9a7b64769
+  - enabled: 1
+    path: Assets/Scenes/Tap/ZoomToFind.unity
+    guid: 851f4906fe0e6cf4fb529831cfcfadf4
   m_configObjects: {}

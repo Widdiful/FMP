@@ -22,22 +22,22 @@ public class CameraFollow : MonoBehaviour {
     void FixedUpdate() {
         if (target) {
             transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z), speed);
-            if (clampPos) {
-                if (cam && useOrthographicSize)
-                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x + cam.orthographicSize * cam.aspect, maxPos.x - cam.orthographicSize * cam.aspect),
-                                                 Mathf.Clamp(transform.position.y, minPos.y + cam.orthographicSize, maxPos.y - cam.orthographicSize),
-                                                 transform.position.z);
-                else
-                    transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x, maxPos.x),
-                                                 Mathf.Clamp(transform.position.y, minPos.y, maxPos.y),
-                                                 transform.position.z);
-            }
+        }
+        if (clampPos) {
+            if (cam && useOrthographicSize)
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x + cam.orthographicSize * cam.aspect, maxPos.x - cam.orthographicSize * cam.aspect),
+                                                Mathf.Clamp(transform.position.y, minPos.y + cam.orthographicSize, maxPos.y - cam.orthographicSize),
+                                                transform.position.z);
+            else
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minPos.x, maxPos.x),
+                                                Mathf.Clamp(transform.position.y, minPos.y, maxPos.y),
+                                                transform.position.z);
+        }
 
-            else if (clampLocal) {
-                transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, minPos.x, maxPos.x),
-                                                 Mathf.Clamp(transform.localPosition.y, minPos.y, maxPos.y),
-                                                 transform.localPosition.z);
-            }
+        else if (clampLocal) {
+            transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, minPos.x, maxPos.x),
+                                                Mathf.Clamp(transform.localPosition.y, minPos.y, maxPos.y),
+                                                transform.localPosition.z);
         }
 
         // alt method
