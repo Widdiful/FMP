@@ -755,7 +755,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 55
+  field of view: 70
   orthographic: 0
   orthographic size: 20
   m_Depth: -1
@@ -798,9 +798,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSpeed: 10
-  moveSpeed: 20
+  moveSpeed: 10
   minSize: 10
-  maxSize: 55
+  maxSize: 70
   detectionSize: 20
   sphere: {fileID: 891615426}
   axisX: {fileID: 1266161556}

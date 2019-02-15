@@ -59,9 +59,10 @@ public class ZoomToFind : MonoBehaviour {
                 //sphere.Rotate(0, 0, deltaAngle);
             }
 
+            float speedPercent = camera.fieldOfView / maxSize;
             if (rotateSphere) {
-                axisX.Rotate(deltaMove.y * moveSpeed * Time.deltaTime, 0, 0);
-                axisY.Rotate(0, -deltaMove.x * moveSpeed * Time.deltaTime, 0);
+                axisX.Rotate(deltaMove.y * moveSpeed * speedPercent * Time.deltaTime, 0, 0);
+                axisY.Rotate(0, -deltaMove.x * moveSpeed * speedPercent * Time.deltaTime, 0);
             }
             else {
                 transform.Translate(-deltaMove * moveSpeed * camera.fieldOfView);
