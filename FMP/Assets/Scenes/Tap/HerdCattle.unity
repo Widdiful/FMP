@@ -1338,7 +1338,7 @@ MonoBehaviour:
   objectsToSpawn:
   - {fileID: 620854667}
   - {fileID: 1704727104}
-  spawnRate: 2
+  spawnRate: 1
   max: 0
   finished: 0
 --- !u!4 &2027615474

@@ -65,7 +65,7 @@ public class Timer : MonoBehaviour {
                         countdown.font = font1;
                         countdown.fontSize = 100;
                     }
-                    if (timer.ToString("#") != prevTime) countdown.gameObject.GetComponent<squish>().Squish(new Vector2(1, 1));
+                    if (timer.ToString("#") != prevTime) countdown.gameObject.GetComponent<Squish>().Pulse(new Vector2(1, 1));
                     prevTime = timer.ToString("#");
                 }
 

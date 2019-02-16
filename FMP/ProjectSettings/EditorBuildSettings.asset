@@ -77,4 +77,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/ZoomToFind.unity
     guid: 851f4906fe0e6cf4fb529831cfcfadf4
+  - enabled: 1
+    path: Assets/Scenes/Motion/InfiniteJumper.unity
+    guid: 1ac415acd06da334297ff0bbd7998021
+  - enabled: 1
+    path: Assets/Scenes/Motion/InfiniteFaller.unity
+    guid: 916c4a44269cf4248878181b2adaee27
   m_configObjects: {}

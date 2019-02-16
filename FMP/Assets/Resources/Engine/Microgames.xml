@@ -181,5 +181,23 @@
 			<Proximity>false</Proximity>
 			<Hint>Find them!</Hint>
 		</Game>
+		<Game name="Motion/InfiniteJumper">
+			<displayName>Infinite Jumper</displayName>
+			<Landscape>false</Landscape>
+			<Tap>false</Tap>
+			<Motion>true</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Jump!</Hint>
+		</Game>
+		<Game name="Motion/InfiniteFaller">
+			<displayName>Infinite Faller</displayName>
+			<Landscape>false</Landscape>
+			<Tap>false</Tap>
+			<Motion>true</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Fall!</Hint>
+		</Game>
 	</Games>
 </GameCollection>

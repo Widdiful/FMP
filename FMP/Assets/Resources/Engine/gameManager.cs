@@ -193,6 +193,7 @@ public class gameManager : MonoBehaviour {
                 bool canChangeOrientation = false;
                 if (gamesSinceLastOrientationChange >= 5) {
                     canChangeOrientation = true;
+                    gamesSinceLastOrientationChange = 0;
                 }
 
                 // Manage difficulty

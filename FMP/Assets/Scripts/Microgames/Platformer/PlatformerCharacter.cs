@@ -44,7 +44,7 @@ public class PlatformerCharacter : MonoBehaviour {
         if (Jump) {
             if (jumps > 0 && rb.velocity.y <= 0) {
                 rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
-                GetComponent<squish>().Squish(new Vector2(-2, 2));
+                GetComponent<Squish>().Pulse(new Vector2(-2, 2));
                 jumps--;
             }
         }
@@ -60,7 +60,7 @@ public class PlatformerCharacter : MonoBehaviour {
         // Ground check
         RaycastHit2D ray = Physics2D.Raycast(transform.position, -transform.up, 1.5f);
         if (ray.collider) {
-            if (!grounded) GetComponent<squish>().Squish(new Vector2(2, -2));
+            if (!grounded) GetComponent<Squish>().Pulse(new Vector2(2, -2));
             grounded = true;
             jumps = maxJumps;
         }
@@ -79,7 +79,7 @@ public class PlatformerCharacter : MonoBehaviour {
             if (rb.velocity.y <= 0) {
                 col.GetComponent<PlatformerEnemy>().Kill();
                 rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
-                GetComponent<squish>().Squish(new Vector2(-2, 2));
+                GetComponent<Squish>().Pulse(new Vector2(-2, 2));
                 jumps--;
             }
         }

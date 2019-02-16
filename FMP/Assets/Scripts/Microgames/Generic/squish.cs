@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class squish : MonoBehaviour {
+public class Squish : MonoBehaviour {
 
     private float squishX;
     private float squishY;
@@ -39,12 +39,12 @@ public class squish : MonoBehaviour {
             pulseCD -= Time.deltaTime;
             if (pulseCD <= 0) {
                 pulseCD = pulseTime;
-                Squish(pulseSize);
+                Pulse(pulseSize);
             }
         }
     }
 
-    public void Squish(Vector2 scale, float _speed = 0.2f) {
+    public void Pulse(Vector2 scale, float _speed = 0.2f) {
         doSquish = true;
         squishX = scale.x;
         squishY = scale.y;
