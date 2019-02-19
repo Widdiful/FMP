@@ -7,7 +7,7 @@ public class InfiniteJumper : MonoBehaviour {
     public float jumpHeight, finishVelocity;
     public ParticleSystem fireParticle, smokeParticle;
     Rigidbody2D rb;
-    bool canJump;
+    bool canJump = false;
     Animator anim;
     Squish squish;
     SpriteRenderer sprite;
@@ -46,6 +46,22 @@ public class InfiniteJumper : MonoBehaviour {
         RaycastHit2D ray = Physics2D.Raycast(transform.position, -transform.up, 1.5f);
         if (ray.collider) {
             canJump = true;
+
+            LockAndKey lockAndKey = ray.collider.gameObject.GetComponent<LockAndKey>();
+            if (lockAndKey && lockAndKey.id != key.id) {
+                gameManager.instance.FailGame();
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        // Ground check
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, -transform.up, 1.5f);
+        if (ray.collider) {
+            LockAndKey lockAndKey = ray.collider.gameObject.GetComponent<LockAndKey>();
+            if (lockAndKey && lockAndKey.id != key.id) {
+                gameManager.instance.FailGame();
+            }
         }
     }
 }

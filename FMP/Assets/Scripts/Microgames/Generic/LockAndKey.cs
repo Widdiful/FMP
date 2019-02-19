@@ -13,8 +13,10 @@ public class LockAndKey : MonoBehaviour {
     public bool disableComponents = true;
     public bool allowMultiple;
     public bool failOnWrongLock;
+    public bool disableComponentsOnWrongLock;
 
     public bool complete = false;
+    public bool failed = false;
     Rigidbody2D rb;
 
     private void Start() {
@@ -23,7 +25,7 @@ public class LockAndKey : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         LockAndKey other = collision.GetComponent<LockAndKey>();
-        if (!complete && other && !other.complete && type == Types.Key && other.type == Types.Lock) {
+        if (!complete && !failed && other && !other.complete && type == Types.Key && other.type == Types.Lock) {
             if (id == other.id) {
                 connectionsMade++;
                 if (other.allowMultiple)
@@ -53,7 +55,20 @@ public class LockAndKey : MonoBehaviour {
             }
 
             else if (failOnWrongLock) {
-                complete = true;
+                if (disableComponentsOnWrongLock) {
+                    if (rb) {
+                        rb.gravityScale = 0;
+                        rb.velocity = Vector3.zero;
+                    }
+
+                    foreach (Behaviour comp in GetComponents<Behaviour>()) {
+                        if (comp != this) {
+                            comp.enabled = false;
+                        }
+                    }
+                }
+
+                failed = true;
                 gameManager.instance.FailGame();
             }
         }

@@ -208,5 +208,14 @@
 			<Proximity>false</Proximity>
 			<Hint>Don't fall!</Hint>
 		</Game>
+		<Game name="Motion/JumpAndDraw">
+			<displayName>Jump and Draw</displayName>
+			<Landscape>false</Landscape>
+			<Tap>true</Tap>
+			<Motion>true</Motion>
+			<Mic>false</Mic>
+			<Proximity>false</Proximity>
+			<Hint>Jump and draw!</Hint>
+		</Game>
 	</Games>
 </GameCollection>

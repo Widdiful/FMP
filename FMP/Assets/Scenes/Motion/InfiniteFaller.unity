@@ -441,7 +441,9 @@ MonoBehaviour:
   disableComponents: 0
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!198 &1146897956 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198554918303738408, guid: afa833da8f7fadd4eaab26af945ba254,
@@ -520,7 +522,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1160631384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: -1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2107840706}
@@ -538,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 332b99779c199ad4aa8df1fa6ee3783a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0}
+  offset: {x: 0, y: -2}
   target: {fileID: 1045509492}
   clampPos: 0
   clampLocal: 0
@@ -811,7 +813,9 @@ MonoBehaviour:
   disableComponents: 1
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!61 &1662803352
 BoxCollider2D:
   m_ObjectHideFlags: 0
