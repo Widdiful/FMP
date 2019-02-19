@@ -149,7 +149,9 @@ MonoBehaviour:
   disableComponents: 1
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!212 &126622219
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -490,7 +492,9 @@ MonoBehaviour:
   disableComponents: 0
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!58 &620854672
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -705,7 +709,9 @@ MonoBehaviour:
   disableComponents: 1
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!212 &812126391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -984,7 +990,9 @@ MonoBehaviour:
   disableComponents: 0
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!212 &1704727107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1342,6 +1350,7 @@ MonoBehaviour:
   - {fileID: 1704727104}
   spawnRate: 1
   max: 0
+  randomFirst: 1
   finished: 0
 --- !u!4 &2027615474
 Transform:

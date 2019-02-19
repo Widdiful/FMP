@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour {
             if (hintText)
                 hintText.text = gm.currentGame.hint;
 
-            if (gm.currentDifficulty == gameManager.DifficultyLevels.Chill) {
+            if (gm.currentDifficulty == gameManager.DifficultyLevels.Relax) {
                 foreach (Transform trans in transform) {
                     if (trans.name == "Canvas") {
                         trans.gameObject.SetActive(false);
@@ -45,7 +45,7 @@ public class Timer : MonoBehaviour {
 	
 	void Update () {
         if (gm && active) {
-            if (gm.currentDifficulty != gameManager.DifficultyLevels.Chill && !gm.endingGame) {
+            if (gm.currentDifficulty != gameManager.DifficultyLevels.Relax && !gm.endingGame) {
                 if (!gm.startingGame) timer -= Time.deltaTime;
 
                 if (timerBar) timerBar.sizeDelta = new Vector2(timerWidth * (timer / seconds), timerBar.sizeDelta.y);

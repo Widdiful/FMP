@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class MicrogameButton : MonoBehaviour {
 
-    public Microgame game;
+    public Game game;
+    public Image icon;
 
     void Start() {
-        transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("GameIcons/" + game.name);
+        //transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("GameIcons/" + game.name);
+        icon.sprite = game.icon;
+        GetComponent<Button>().interactable = game.IsUnlocked();
     }
 
     public void PlayGame() {

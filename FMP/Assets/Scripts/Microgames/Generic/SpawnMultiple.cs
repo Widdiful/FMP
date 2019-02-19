@@ -7,6 +7,7 @@ public class SpawnMultiple : MonoBehaviour {
     public List<GameObject> objectsToSpawn;
     public float spawnRate;
     public int max;
+    public bool randomFirst;
     public bool finished;
     private float spawnTimer;
     private int spawned;
@@ -14,6 +15,8 @@ public class SpawnMultiple : MonoBehaviour {
 
     private void Start() {
         finished = false;
+        if (randomFirst)
+            spawnIndex = Random.Range(0, objectsToSpawn.Count);
     }
 
     void Update() {

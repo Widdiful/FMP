@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,9 +11,11 @@ public class gameManager : MonoBehaviour {
 
     public enum GameTypes { Endless, Challenge, Practice };
     public enum OrientationModes { Both, Landscape, Portrait};
-    public enum DifficultyLevels { Chill, Easy, Normal, Hard, Extra };
+    public enum DifficultyLevels { Relax, Easy, Normal, Hard, Extra };
 
     private const string path = "Engine/Microgames";
+
+    public GameList gameList;
 
     // Settings
     public OrientationModes orientationMode;
@@ -27,10 +30,10 @@ public class gameManager : MonoBehaviour {
     public GameTypes gameType;
     public DifficultyLevels currentDifficulty;
     public int totalLives;
-    public List<Microgame> gamesCompleted = new List<Microgame>();
-    private List<Microgame> gamesPlayed = new List<Microgame>();
-    private List<Microgame> gamesQueue = new List<Microgame>();
-    public Microgame currentGame;
+    public List<Game> gamesCompleted = new List<Game>();
+    private List<Game> gamesPlayed = new List<Game>();
+    private List<Game> gamesQueue = new List<Game>();
+    public Game currentGame;
     public int livesLeft;
     private int gamesSinceLastOrientationChange;
     private bool currentLandscape;
@@ -53,6 +56,8 @@ public class gameManager : MonoBehaviour {
         else if (instance != this) Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+
+        SaveData.instance.Load();
     }
 
     void Start() {
@@ -218,44 +223,44 @@ public class gameManager : MonoBehaviour {
                 }
 
                 // Generate game list
-                GameContainer currentGames = GameContainer.Load(path);
+                List<Game> currentGames = gameList.GetAllGames();
                 int id = -1;
-                foreach (Microgame game in gc.microgames) {
+                foreach (Game game in gameList.GetAllGames()) {
                     id++;
                     if (gamesPlayed.Count > 0) {
                         if (gamesPlayed[gamesPlayed.Count - 1].name == game.name) {
-                            currentGames.microgames.RemoveAt(id);
+                            currentGames.RemoveAt(id);
                             id--;
                         }
                     }
 
                     if (currentDifficulty == DifficultyLevels.Extra && !game.hasExtra) {
-                        currentGames.microgames.RemoveAt(id);
+                        currentGames.RemoveAt(id);
                         id--;
                     }
 
                     else if (!canChangeOrientation && game.isLandscape != currentLandscape) {
-                        currentGames.microgames.RemoveAt(id);
+                        currentGames.RemoveAt(id);
                         id--;
                     }
 
                     else if (!useMotion && game.useMotion) {
-                        currentGames.microgames.RemoveAt(id);
+                        currentGames.RemoveAt(id);
                         id--;
                     }
 
                     else if (!useMic && game.useMic) {
-                        currentGames.microgames.RemoveAt(id);
+                        currentGames.RemoveAt(id);
                         id--;
                     }
 
                     else if (!useProximity && game.useProximity) {
-                        currentGames.microgames.RemoveAt(id);
+                        currentGames.RemoveAt(id);
                         id--;
                     }
                 }
 
-                Microgame nextGame = currentGames.microgames[Random.Range(0, currentGames.microgames.Count)];
+                Game nextGame = currentGames[Random.Range(0, currentGames.Count)];
                 currentGame = nextGame;
                 gamesQueue.Add(nextGame);
             }
@@ -277,15 +282,28 @@ public class gameManager : MonoBehaviour {
         startingGame = true;
     }
 
-    public void UnlockGame(Microgame game, DifficultyLevels difficulty) {
-
+    public void UnlockGame(Game game, DifficultyLevels difficulty) {
+        switch (difficulty) {
+            case DifficultyLevels.Easy:
+                game.unlocked.easy = true;
+                break;
+            case DifficultyLevels.Normal:
+                game.unlocked.normal = true;
+                break;
+            case DifficultyLevels.Hard:
+                game.unlocked.hard = true;
+                break;
+            case DifficultyLevels.Relax:
+                game.unlocked.relax = true;
+                break;
+        }
     }
 
     public void PractiseGame(string gameName) {
         gameType = GameTypes.Practice;
         livesLeft = 1;
         gamesCompleted.Clear();
-        currentGame = gc.GetGame(gameName);
+        currentGame = gameList.GetGame(gameName);
         SceneManager.LoadScene("Scenes/" + gameName);
         startingGame = true;
         currentLandscape = currentGame.isLandscape;

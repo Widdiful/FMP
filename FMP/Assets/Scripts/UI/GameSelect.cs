@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class GameSelect : MonoBehaviour {
 
+    public GameList gameList;
     public GameObject microgameButton;
-    private GameContainer gc;
+    //private GameContainer gc;
 
 	void Start () {
-        gc = GameContainer.Load("Engine/Microgames");
+        //gc = GameContainer.Load("Engine/Microgames");
         UpdateMenu();
 	}
 
@@ -19,7 +20,7 @@ public class GameSelect : MonoBehaviour {
             Destroy(child);
         }
 
-        foreach(Microgame game in gc.microgames) {
+        foreach(Game game in gameList.GetAllGames()) {
             MicrogameButton newButton = Instantiate(microgameButton, transform).GetComponent<MicrogameButton>();
             newButton.game = game;
         }

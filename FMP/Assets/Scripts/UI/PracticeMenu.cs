@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PracticeMenu : MonoBehaviour {
 
-    public Microgame selectedGame;
+    public Game selectedGame;
     public Canvas selectCanvas;
 
     public Image image;
@@ -33,7 +33,7 @@ public class PracticeMenu : MonoBehaviour {
         proxIconImage = inputPanel.Find("ProxIcon").GetComponent<Image>();
     }
 
-    public void SelectGame(Microgame game) {
+    public void SelectGame(Game game) {
         selectedGame = game;
         selectCanvas.enabled = false;
         thisCanvas.enabled = true;

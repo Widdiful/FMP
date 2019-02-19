@@ -21,7 +21,7 @@ public class PlatformerManager : MonoBehaviour {
         }
 
         switch (difficulty) {
-            case gameManager.DifficultyLevels.Chill:
+            case gameManager.DifficultyLevels.Relax:
                 enemiesToSpawn = 1;
                 break;
             case gameManager.DifficultyLevels.Easy:
@@ -58,7 +58,7 @@ public class PlatformerManager : MonoBehaviour {
 
 	void Update () {
         if (enemiesSpawned > 0 && GameObject.FindGameObjectsWithTag("Enemy").Length == 0) {
-            if (difficulty != gameManager.DifficultyLevels.Chill && !cleared) {
+            if (difficulty != gameManager.DifficultyLevels.Relax && !cleared) {
                 cleared = true;
                 gm.CompleteGame();
             }

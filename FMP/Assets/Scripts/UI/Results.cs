@@ -40,7 +40,7 @@ public class Results : MonoBehaviour {
         else if (noCleared >= 0) result.sprite = results[0];
 
         switch (difficulty) {
-            case gameManager.DifficultyLevels.Chill:
+            case gameManager.DifficultyLevels.Relax:
                 money = 0;
                 break;
             case gameManager.DifficultyLevels.Easy:
@@ -58,6 +58,7 @@ public class Results : MonoBehaviour {
         }
         gm.money += money;
         PlayerPrefs.SetInt("money", gm.money);
+        SaveData.instance.Save();
     }
 	
 	void Update () {

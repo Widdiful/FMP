@@ -9,9 +9,10 @@ public class MoveLeftRightSin : MonoBehaviour {
     private Vector3 startPos;
     private float timer = 0;
 
-    private void Start() {
+    private void Awake() {
         startPos = transform.position;
         timer = Random.Range(0.0f, 1.0f);
+        transform.position = startPos + new Vector3(Mathf.Sin(timer * speed) * moveRange, 0, 0);
     }
 
     private void Update() {

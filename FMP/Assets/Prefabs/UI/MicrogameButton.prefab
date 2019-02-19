@@ -115,14 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea633094ffbfb244bef780a46520c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: 
-  name: 
-  isLandscape: 0
-  useTap: 0
-  useMotion: 0
-  useMic: 0
-  useProximity: 0
-  hasExtra: 0
+  game: {fileID: 0}
+  icon: {fileID: 114657436863511884}
 --- !u!114 &114548636055938590
 MonoBehaviour:
   m_ObjectHideFlags: 1

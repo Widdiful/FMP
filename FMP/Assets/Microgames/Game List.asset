@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c7de337cbfb7e40b71491aab6efd54, type: 3}
+  m_Name: Game List
+  m_EditorClassIdentifier: 
+  tapGames:
+  - {fileID: 11400000, guid: cb5c10e960dc0b540b08727e15ef018c, type: 2}
+  - {fileID: 11400000, guid: ccf65d82c6ef23746a38aa6ab49decef, type: 2}
+  - {fileID: 11400000, guid: 3042eb4a1e967414a8b791c518c27634, type: 2}
+  - {fileID: 11400000, guid: 2cb1c4476fe9937408474efbc508f859, type: 2}
+  - {fileID: 11400000, guid: 5241439105ae47e478346df735849249, type: 2}
+  - {fileID: 11400000, guid: 2ae5f53678f87ed409cd0388409c3e52, type: 2}
+  - {fileID: 11400000, guid: ac4b9bd6b4d41ab4cbcc159135de205f, type: 2}
+  - {fileID: 11400000, guid: 9e4bb15adf09a9b4ebde37045df1751a, type: 2}
+  - {fileID: 11400000, guid: aafbe7dbdde26244a99353e8c9ce1231, type: 2}
+  - {fileID: 11400000, guid: 25479ab3164d0cd48b7d5b07a123f475, type: 2}
+  - {fileID: 11400000, guid: 0957e5562e75e584bab7acb21486ff26, type: 2}
+  - {fileID: 11400000, guid: b4cc741222d7dc241a604736fa92c014, type: 2}
+  - {fileID: 11400000, guid: abcf8862c769b9946ad9188279f28c95, type: 2}
+  - {fileID: 11400000, guid: 8b2cf6db237c8934b8de7e14d1ad64cc, type: 2}
+  motionGames:
+  - {fileID: 11400000, guid: ed54944861c3a09499e8bd1b0f62c033, type: 2}
+  - {fileID: 11400000, guid: f7e06769f30d28c4a92d34ffe6bba74d, type: 2}
+  - {fileID: 11400000, guid: 06c341eadb238f04d8dd895076d224e3, type: 2}
+  - {fileID: 11400000, guid: b96350d69d995e04da99b0706d33eadf, type: 2}
+  - {fileID: 11400000, guid: f66f589172026b245848e754e2b105cf, type: 2}
+  - {fileID: 11400000, guid: 562eb23e74fc42e4e933fb11ed7598ef, type: 2}
+  micGames:
+  - {fileID: 11400000, guid: fca1f621824378f4fbca9d09eee5c2f6, type: 2}
+  - {fileID: 11400000, guid: 1f45fe2cbc43f3c4ca4bdc028e909874, type: 2}
+  proximityGames:
+  - {fileID: 11400000, guid: c0fafe39178e048438354e012b73c4c9, type: 2}
+  - {fileID: 11400000, guid: 1fbcd6c8341f5714dbe0e0999e854e42, type: 2}

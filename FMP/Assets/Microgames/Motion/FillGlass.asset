@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be37eb2ba35e1d941a082c12dba04fcd, type: 3}
+  m_Name: FillGlass
+  m_EditorClassIdentifier: 
+  name: Motion/FillGlass
+  displayName: Fill Glass
+  isLandscape: 0
+  useTap: 0
+  useMotion: 1
+  useMic: 0
+  useProximity: 0
+  hasExtra: 0
+  hint: Don't spill!
+  unlocked:
+    easy: 0
+    normal: 0
+    hard: 0
+    relax: 0
+  icon: {fileID: 0}
+  previewImage: {fileID: 0}
