@@ -83,4 +83,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Motion/InfiniteFaller.unity
     guid: 916c4a44269cf4248878181b2adaee27
+  - enabled: 1
+    path: Assets/Scenes/Tap/BuildBridge.unity
+    guid: 568a55f8f5c004d4fa71072d8bd1760c
   m_configObjects: {}

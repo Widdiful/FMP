@@ -157,6 +157,10 @@ public class gameManager : MonoBehaviour {
             UnlockGame(currentGame, currentDifficulty);
             endingGame = true;
             completedGame = true;
+
+            if (gamesCompleted.Count % 5 == 0) {
+                gameSpeed += 0.1f;
+            }
         }
     }
 

@@ -51,6 +51,11 @@ public class LockAndKey : MonoBehaviour {
                     gameManager.instance.CompleteGame();
                 }
             }
+
+            else if (failOnWrongLock) {
+                complete = true;
+                gameManager.instance.FailGame();
+            }
         }
     }
 }

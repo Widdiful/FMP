@@ -489,7 +489,7 @@ MonoBehaviour:
   connectionsRequired: 100
   disableComponents: 0
   allowMultiple: 0
-  failOnWrongLock: 1
+  failOnWrongLock: 0
   complete: 0
 --- !u!58 &620854672
 CircleCollider2D:
@@ -537,6 +537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed484003c5e59d4fac1fb79ac727013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVelocity: 0
 --- !u!58 &620854675
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -982,7 +983,7 @@ MonoBehaviour:
   connectionsRequired: 100
   disableComponents: 0
   allowMultiple: 0
-  failOnWrongLock: 1
+  failOnWrongLock: 0
   complete: 0
 --- !u!212 &1704727107
 SpriteRenderer:
@@ -1090,6 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed484003c5e59d4fac1fb79ac727013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useVelocity: 0
 --- !u!58 &1704727112
 CircleCollider2D:
   m_ObjectHideFlags: 0
