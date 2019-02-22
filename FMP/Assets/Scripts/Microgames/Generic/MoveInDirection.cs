@@ -5,6 +5,8 @@ using UnityEngine;
 public class MoveInDirection : MonoBehaviour {
 
     public Vector3 direction;
+    public bool useRandom;
+    public Vector3 minRange, maxRange;
     public bool useVelocity;
     public bool useY;
     private Rigidbody2D rb2d;
@@ -13,6 +15,10 @@ public class MoveInDirection : MonoBehaviour {
     private void Start() {
         rb2d = GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody>();
+
+        if (useRandom) {
+            direction = new Vector3(Random.Range(minRange.x, maxRange.x), Random.Range(minRange.y, maxRange.y), Random.Range(minRange.z, maxRange.z));
+        }
     }
 
     void Update () {

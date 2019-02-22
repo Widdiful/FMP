@@ -43,7 +43,7 @@ public class MicManager : MonoBehaviour {
         }
         levelMax = tempMax;
 
-        if (!source.isPlaying && enablePlayback) {
+        if (source && !source.isPlaying && enablePlayback) {
             source.clip = recording;
             source.Play();
         }
@@ -52,7 +52,7 @@ public class MicManager : MonoBehaviour {
     void StartMic() {
         deviceName = Microphone.devices[0];
         recording = Microphone.Start(deviceName, true, 10, 44100);
-        source.clip = recording;
+        if (source) source.clip = recording;
     }
 
     void StopMic() {

@@ -11,7 +11,7 @@ public class MicrogameButton : MonoBehaviour {
     void Start() {
         //transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("GameIcons/" + game.name);
         icon.sprite = game.icon;
-        GetComponent<Button>().interactable = game.IsUnlocked();
+        //GetComponent<Button>().interactable = game.IsUnlocked();
     }
 
     public void PlayGame() {

@@ -53,11 +53,11 @@ public class gameManager : MonoBehaviour {
 
     void Awake() {
         if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);
+        else if (instance != this) Destroy(this);
 
         DontDestroyOnLoad(gameObject);
 
-        SaveData.instance.Load();
+        if (SaveData.instance) SaveData.instance.Load();
     }
 
     void Start() {
