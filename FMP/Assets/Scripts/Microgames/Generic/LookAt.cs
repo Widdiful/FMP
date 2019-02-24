@@ -6,7 +6,7 @@ public class LookAt : MonoBehaviour {
 
     public Transform target;
 
-	void Update () {
+	void LateUpdate () {
 		if (target) {
             transform.up = target.position - transform.position;
         }
