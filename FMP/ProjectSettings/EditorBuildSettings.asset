@@ -92,4 +92,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mic/FireCannons.unity
     guid: d7a924b67f8195145a771544356aab48
+  - enabled: 1
+    path: Assets/Scenes/Mic/Shush.unity
+    guid: a397fe424dbfbe6418c4a71f27d61aa4
+  - enabled: 1
+    path: Assets/Scenes/Tap/PickNose.unity
+    guid: d9483b3a8f268ac4fa30706ebc4847e6
+  - enabled: 1
+    path: Assets/Scenes/Tap/InputCode.unity
+    guid: 087d7de7b2325fc45a80f5cf997cf7ac
   m_configObjects: {}

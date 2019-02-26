@@ -5,6 +5,8 @@ using UnityEngine;
 public class Drag : MonoBehaviour {
 
     public bool useVelocity;
+    public bool alwaysGrabbed;
+    public float dragSpeed = 1;
     bool grabbed = false;
     Rigidbody2D rb;
     Vector3 grabOffset;
@@ -25,11 +27,11 @@ public class Drag : MonoBehaviour {
                     grabOffset.z = transform.position.z;
                 }
             }
-            if (grabbed) {
+            if (grabbed || alwaysGrabbed) {
                 Vector3 dragPos = Camera.main.ScreenToWorldPoint(Input.touches[0].position) + grabOffset;
                 dragPos.z = transform.position.z;
                 if (useVelocity) {
-                    rb.velocity = (dragPos - transform.position) / Time.deltaTime;
+                    rb.velocity = (dragPos - transform.position) / Time.deltaTime / Time.deltaTime;
                 }
                 else {
                     transform.position = dragPos;
