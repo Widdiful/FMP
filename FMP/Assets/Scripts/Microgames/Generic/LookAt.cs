@@ -5,10 +5,16 @@ using UnityEngine;
 public class LookAt : MonoBehaviour {
 
     public Transform target;
+    public bool use3d;
 
 	void LateUpdate () {
 		if (target) {
-            transform.up = target.position - transform.position;
+            if (use3d) {
+                transform.LookAt(target);
+            }
+            else {
+                transform.up = target.position - transform.position;
+            }
         }
 	}
 }

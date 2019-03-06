@@ -338,6 +338,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPos: {x: -19, y: 0, z: 3}
   maxPos: {x: 19, y: 0, z: 3}
+  x: 1
+  y: 1
+  z: 1
 --- !u!4 &75380082
 Transform:
   m_ObjectHideFlags: 0
@@ -901,6 +904,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPos: {x: -19, y: 1.5, z: 3}
   maxPos: {x: 19, y: 1.5, z: 3}
+  x: 1
+  y: 1
+  z: 1
 --- !u!4 &221359776
 Transform:
   m_ObjectHideFlags: 0
@@ -2079,7 +2085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawing: {fileID: 1124066891}
-  moveSpeed: 0.1
+  moveSpeed: 10
 --- !u!212 &620630353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2192,7 +2198,9 @@ MonoBehaviour:
   disableComponents: 0
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!95 &620630358
 Animator:
   serializedVersion: 3
@@ -2647,6 +2655,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPos: {x: -19, y: 6, z: 3}
   maxPos: {x: 19, y: 6, z: 3}
+  x: 1
+  y: 1
+  z: 1
 --- !u!4 &807534518
 Transform:
   m_ObjectHideFlags: 0
@@ -4570,7 +4581,9 @@ MonoBehaviour:
   disableComponents: 1
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!212 &1637759158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4960,6 +4973,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPos: {x: -19, y: 3, z: 3}
   maxPos: {x: 19, y: 3, z: 3}
+  x: 1
+  y: 1
+  z: 1
 --- !u!4 &1827943922
 Transform:
   m_ObjectHideFlags: 0
@@ -5207,6 +5223,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPos: {x: -19, y: 4.5, z: 3}
   maxPos: {x: 19, y: 4.5, z: 3}
+  x: 1
+  y: 1
+  z: 1
 --- !u!4 &1922929111
 Transform:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class DrawPathFollower : MonoBehaviour {
                 targetIndex++;
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, targetPoint, moveSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, targetPoint, moveSpeed * Time.deltaTime);
             //transform.up = targetPoint - transform.position;
 
             if ((targetPoint - transform.position).x < 0)

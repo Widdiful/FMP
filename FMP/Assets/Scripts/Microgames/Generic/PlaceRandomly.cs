@@ -9,7 +9,7 @@ public class PlaceRandomly : MonoBehaviour {
     public bool y = true;
     public bool z = true;
 
-	void Start () {
+	void Awake () {
         if (x)
             transform.position = new Vector3(Random.Range(minPos.x, maxPos.x), transform.position.y, transform.position.z);
         if (y)

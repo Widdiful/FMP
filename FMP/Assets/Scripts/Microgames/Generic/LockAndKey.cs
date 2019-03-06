@@ -73,4 +73,55 @@ public class LockAndKey : MonoBehaviour {
             }
         }
     }
+
+    private void OnTriggerEnter(Collider collision) {
+        LockAndKey other = collision.GetComponent<LockAndKey>();
+        if (!complete && !failed && other && !other.complete && type == Types.Key && other.type == Types.Lock) {
+            if (id == other.id) {
+                connectionsMade++;
+                if (other.allowMultiple)
+                    other.complete = true;
+                complete = true;
+                if (snapToLock) {
+                    transform.position = collision.transform.position;
+                }
+
+                if (disableComponents) {
+                    if (rb) {
+                        rb.gravityScale = 0;
+                        rb.velocity = Vector3.zero;
+                    }
+
+                    foreach (Behaviour comp in GetComponents<Behaviour>()) {
+                        if (comp != this) {
+                            comp.enabled = false;
+                        }
+                    }
+                }
+
+                if (connectionsMade >= connectionsRequired) {
+                    connectionsMade = 0;
+                    gameManager.instance.CompleteGame();
+                }
+            }
+
+            else if (failOnWrongLock) {
+                if (disableComponentsOnWrongLock) {
+                    if (rb) {
+                        rb.gravityScale = 0;
+                        rb.velocity = Vector3.zero;
+                    }
+
+                    foreach (Behaviour comp in GetComponents<Behaviour>()) {
+                        if (comp != this) {
+                            comp.enabled = false;
+                        }
+                    }
+                }
+
+                failed = true;
+                gameManager.instance.FailGame();
+            }
+        }
+    }
 }

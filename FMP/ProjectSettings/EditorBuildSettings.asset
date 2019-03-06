@@ -101,4 +101,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/InputCode.unity
     guid: 087d7de7b2325fc45a80f5cf997cf7ac
+  - enabled: 1
+    path: Assets/Scenes/Motion/RollBall.unity
+    guid: 7369324f7abf76046a9f814d87a5db8f
   m_configObjects: {}
