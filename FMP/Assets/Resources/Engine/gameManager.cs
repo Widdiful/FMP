@@ -307,6 +307,7 @@ public class gameManager : MonoBehaviour {
         SceneManager.LoadScene("Scenes/" + gameName);
         startingGame = true;
         currentLandscape = currentGame.isLandscape;
+        Time.timeScale = 0.0001f;
 
         if (currentLandscape) {
             Screen.orientation = ScreenOrientation.LandscapeRight;

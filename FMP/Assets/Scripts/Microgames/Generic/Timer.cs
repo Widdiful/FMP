@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour {
 	void Update () {
         if (gm && active) {
             if (gm.currentDifficulty != gameManager.DifficultyLevels.Relax && !gm.endingGame) {
-                if (!gm.startingGame) timer -= Time.deltaTime;
+                timer -= Time.deltaTime;
 
                 if (timerBar) timerBar.sizeDelta = new Vector2(timerWidth * (timer / seconds), timerBar.sizeDelta.y);
 
