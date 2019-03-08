@@ -47,7 +47,10 @@ public class SaveData : MonoBehaviour {
             if (data.gameList != null) {
                 foreach (string gameName in data.gameList.Keys) {
                     Game game = gameList.GetGame(gameName);
-                    game.unlocked = data.gameList[gameName];
+
+                    if (game != null) {
+                        game.unlocked = data.gameList[gameName];
+                    }
                 }
             }
         }

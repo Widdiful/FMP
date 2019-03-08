@@ -110,4 +110,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Motion/SteerCar.unity
     guid: 2a94408f2a8dd284785be9bc5333d342
+  - enabled: 1
+    path: Assets/Scenes/Proximity/CrushCan.unity
+    guid: 7a0b4b12c9cdd1d49bfc8906525fd8ac
   m_configObjects: {}
