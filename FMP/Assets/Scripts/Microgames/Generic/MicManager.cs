@@ -52,7 +52,7 @@ public class MicManager : MonoBehaviour {
     void StartMic() {
         deviceName = Microphone.devices[0];
         recording = Microphone.Start(deviceName, true, 10, 44100);
-        if (source) source.clip = recording;
+        if (source && enablePlayback) source.clip = recording;
     }
 
     void StopMic() {

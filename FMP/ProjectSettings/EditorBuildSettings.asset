@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 38aa2e61c115c0a498884eb3d755cb9c
   - enabled: 1
+    path: Assets/Scenes/Motion/RotateHorizontal.unity
+    guid: 1af2cba293d39304b8d15109a9d68b0d
+  - enabled: 1
+    path: Assets/Scenes/Motion/RotateVertical.unity
+    guid: 13ef4855d0bff0e45889222e43fa0a46
+  - enabled: 1
     path: Assets/Scenes/Tap/FightMonsterHorizontal.unity
     guid: 4e6a7364da8641d4ea86007a4f27ff6a
   - enabled: 1
@@ -32,12 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Motion/CombineRobots.unity
     guid: 0988cde31cbe4a1498d4d85dde3d6e99
-  - enabled: 1
-    path: Assets/Scenes/Motion/RotateHorizontal.unity
-    guid: 1af2cba293d39304b8d15109a9d68b0d
-  - enabled: 1
-    path: Assets/Scenes/Motion/RotateVertical.unity
-    guid: 13ef4855d0bff0e45889222e43fa0a46
   - enabled: 1
     path: Assets/Scenes/Proximity/PretendToSleep.unity
     guid: 200fd62b01f05144c8ab1ef37d5266f3
@@ -119,4 +119,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Proximity/InflateBalloon.unity
     guid: 380d426bd2d26544eb9b16f4e0137302
+  - enabled: 1
+    path: Assets/Scenes/Proximity/Peekaboo.unity
+    guid: e43eb7ef15f906c4a9140514f622296a
+  - enabled: 1
+    path: Assets/Scenes/Mic/Interrupt.unity
+    guid: bac85d81623db13418cfd54639f646a4
   m_configObjects: {}
