@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Proximity/CrushCan.unity
+- path: Assets/Scenes/Proximity/InflateBalloon.unity
   isLoaded: 1
   isActive: 1

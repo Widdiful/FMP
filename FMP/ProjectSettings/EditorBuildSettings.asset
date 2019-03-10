@@ -116,4 +116,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Motion/FindNorth.unity
     guid: 6cee17d9ab9a11d4992d737456e7381b
+  - enabled: 1
+    path: Assets/Scenes/Proximity/InflateBalloon.unity
+    guid: 380d426bd2d26544eb9b16f4e0137302
   m_configObjects: {}
