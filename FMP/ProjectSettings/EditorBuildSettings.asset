@@ -125,4 +125,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mic/Interrupt.unity
     guid: bac85d81623db13418cfd54639f646a4
+  - enabled: 1
+    path: Assets/Scenes/Tap/CutRope.unity
+    guid: 39eeeea2e1d7e924d8309c29aeacd990
   m_configObjects: {}
