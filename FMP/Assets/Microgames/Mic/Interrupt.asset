@@ -15,8 +15,8 @@ MonoBehaviour:
   displayName: Interrupt
   isLandscape: 0
   useTap: 0
-  useMotion: 1
-  useMic: 0
+  useMotion: 0
+  useMic: 1
   useProximity: 0
   hasExtra: 0
   hint: Interrupt!

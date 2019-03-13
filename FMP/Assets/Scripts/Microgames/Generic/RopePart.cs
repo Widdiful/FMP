@@ -66,7 +66,7 @@ public class RopePart : MonoBehaviour {
     public void Cut() {
         GetComponent<HingeJoint2D>().enabled = false;
         parts = GetChildParts();
-        line.positionCount = parts.Count;
+        line.positionCount = parts.Count + 1;
         start = true;
         for(int i = 0; i < firstPart.parts.Count; i++) {
             RopePart part = firstPart.parts[i];

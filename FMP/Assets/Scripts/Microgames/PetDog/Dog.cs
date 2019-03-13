@@ -5,8 +5,8 @@ using UnityEngine;
 public class Dog : MonoBehaviour {
 
     public List<Color> colours = new List<Color>();
-    public int rubsRequired;
-    public int rubs;
+    public float rubsRequired;
+    public float rubs;
     private float rubTime;
     public float jumpSpeed = 2;
     private bool completed;
@@ -37,7 +37,7 @@ public class Dog : MonoBehaviour {
     public void OnTapRub() {
         if (!completed) {
             jumpSpeed += Time.deltaTime * 2;
-            rubs++;
+            rubs += Time.deltaTime;
         }
         if (rubs >= rubsRequired && !completed) {
             completed = true;
