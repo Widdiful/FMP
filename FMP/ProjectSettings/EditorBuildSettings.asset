@@ -134,4 +134,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/PlugHoles.unity
     guid: 8402e905bb943ab44bbef62e17220255
+  - enabled: 1
+    path: Assets/Scenes/Tap/VocalTraining.unity
+    guid: 3b408f89b74953b4686100e2e0b06e16
   m_configObjects: {}

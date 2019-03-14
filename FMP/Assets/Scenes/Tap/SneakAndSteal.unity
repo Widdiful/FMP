@@ -765,7 +765,7 @@ MonoBehaviour:
   waitRange: {x: 0.5, y: 1}
   lookRange: {x: 0.25, y: 0.75}
   jumpHeight: 1.5
-  jumpSpeed: 30
+  jumpSpeed: 20
   jumpWait: 0.15
   gameEnd: 0
 --- !u!212 &1052072149

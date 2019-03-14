@@ -174,7 +174,9 @@ MonoBehaviour:
   disableComponents: 1
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!4 &117269434
 Transform:
   m_ObjectHideFlags: 0
@@ -421,6 +423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useVelocity: 0
+  alwaysGrabbed: 0
+  dragSpeed: 1
 --- !u!58 &271461931
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -497,7 +501,9 @@ MonoBehaviour:
   disableComponents: 1
   allowMultiple: 0
   failOnWrongLock: 0
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!4 &647667142
 Transform:
   m_ObjectHideFlags: 0
@@ -1094,7 +1100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46b5175c9bf73e4eaf287203d32d43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 2, y: 0, z: 0}
+  direction: {x: 200, y: 0, z: 0}
+  useRandom: 0
+  minRange: {x: 0, y: 0, z: 0}
+  maxRange: {x: 0, y: 0, z: 0}
   useVelocity: 1
   useY: 0
 --- !u!50 &1741543675
@@ -1111,7 +1120,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 50
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1209,7 +1218,9 @@ MonoBehaviour:
   disableComponents: 0
   allowMultiple: 0
   failOnWrongLock: 1
+  disableComponentsOnWrongLock: 0
   complete: 0
+  failed: 0
 --- !u!95 &1741543680
 Animator:
   serializedVersion: 3

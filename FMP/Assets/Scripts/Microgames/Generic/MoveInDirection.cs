@@ -22,23 +22,27 @@ public class MoveInDirection : MonoBehaviour {
     }
 
     void Update () {
-		if (useVelocity) {
+		
+
+        if (!useVelocity) {
+            transform.Translate(direction * Time.deltaTime);
+        }
+	}
+
+    private void FixedUpdate() {
+        if (useVelocity) {
             if (rb2d) {
                 if (!useY) {
                     direction.y = rb2d.velocity.y;
                 }
-                rb2d.velocity = direction;
+                rb2d.velocity = direction * Time.deltaTime;
             }
             else if (rb) {
                 if (!useY) {
                     direction.y = rb.velocity.y;
                 }
-                rb.velocity = direction;
+                rb.velocity = direction * Time.deltaTime;
             }
         }
-
-        else {
-            transform.Translate(direction * Time.deltaTime);
-        }
-	}
+    }
 }

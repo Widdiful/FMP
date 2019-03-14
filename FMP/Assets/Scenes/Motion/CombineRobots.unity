@@ -5423,7 +5423,7 @@ MonoBehaviour:
   moveSpeed: 100
   accelleration: 0.025
   connectionsRequired: 3
-  failTime: 2
+  failTime: 1
   completeCanvas: {fileID: 207425390}
   explosionObject: {fileID: 1657799725}
 --- !u!1 &1010948522
