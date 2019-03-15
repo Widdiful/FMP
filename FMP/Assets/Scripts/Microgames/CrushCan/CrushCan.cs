@@ -42,13 +42,6 @@ public class CrushCan : MonoBehaviour {
                         grabOffset.z = transform.position.z;
                     }
                 }
-
-                if (grabbed) {
-                    Vector3 dragPos = Camera.main.ScreenToWorldPoint(Input.touches[0].position) + grabOffset;
-                    dragPos.z = transform.position.z;
-                    //rb.velocity = (dragPos - transform.position) / Time.deltaTime;
-                    transform.position = dragPos;
-                }
             }
             else if (grabbed) {
                 letGo = true;
@@ -58,8 +51,14 @@ public class CrushCan : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if (Input.touchCount > 0 && grabbed) {
+            Vector3 dragPos = Camera.main.ScreenToWorldPoint(Input.touches[0].position) + grabOffset;
+            dragPos.z = transform.position.z;
+            rb.velocity = (dragPos - transform.position) / Time.deltaTime;
+            transform.position = dragPos;
+        }
+
         if (letGo) {
-            Destroy(GetComponent<HingeJoint>());
             Vector3 gravity = -9.81f * gravityScale * Vector3.up;
             rb.AddForce(gravity, ForceMode.Acceleration);
         }

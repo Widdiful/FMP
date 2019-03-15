@@ -137,4 +137,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/VocalTraining.unity
     guid: 3b408f89b74953b4686100e2e0b06e16
+  - enabled: 1
+    path: Assets/Scenes/Tap/Stacking.unity
+    guid: 6a93c876e79b86f48bea05c897fd5f37
   m_configObjects: {}

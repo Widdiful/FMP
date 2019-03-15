@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tap/PlugHoles.unity
+- path: Assets/Scenes/Tap/Stacking.unity
   isLoaded: 1
   isActive: 1
