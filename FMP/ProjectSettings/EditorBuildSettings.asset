@@ -140,4 +140,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/Stacking.unity
     guid: 6a93c876e79b86f48bea05c897fd5f37
+  - enabled: 1
+    path: Assets/Scenes/Tap/FlySwatting.unity
+    guid: 39f3af2087a76f4459dc89e168f0979e
   m_configObjects: {}
