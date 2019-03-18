@@ -143,4 +143,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/FlySwatting.unity
     guid: 39f3af2087a76f4459dc89e168f0979e
+  - enabled: 1
+    path: Assets/Scenes/Tap/RockPaperScissors.unity
+    guid: 300975f960806a54697bdf5ac799f727
   m_configObjects: {}
