@@ -146,4 +146,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/RockPaperScissors.unity
     guid: 300975f960806a54697bdf5ac799f727
+  - enabled: 1
+    path: Assets/Scenes/Motion/Skydive.unity
+    guid: 4e6327e68c7a568418280d60f7c175fe
   m_configObjects: {}
