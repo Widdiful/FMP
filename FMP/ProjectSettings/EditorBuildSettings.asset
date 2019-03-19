@@ -149,4 +149,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Motion/Skydive.unity
     guid: 4e6327e68c7a568418280d60f7c175fe
+  - enabled: 1
+    path: Assets/Scenes/Tap/ZoomAndEnhance.unity
+    guid: 874b3b615e6e55d46979cb3fc2363be2
   m_configObjects: {}
