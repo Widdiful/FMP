@@ -155,4 +155,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/UnlockChest.unity
     guid: 22ba7b189d5586a408c4abbb806bcbb7
+  - enabled: 1
+    path: Assets/Scenes/Motion/LandShip.unity
+    guid: f61dd2ea1f99a134ebfd6e2b508c8f22
   m_configObjects: {}
