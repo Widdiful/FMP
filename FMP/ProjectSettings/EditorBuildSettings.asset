@@ -161,4 +161,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/TypeOnKeyboard.unity
     guid: 85ee495ae5feeda46a5b06d99a3445b5
+  - enabled: 1
+    path: Assets/Scenes/Tap/MoveHole.unity
+    guid: cad4b90d9f0676e4981cc39705b30c70
+  - enabled: 1
+    path: Assets/Scenes/Tap/PickUpSushi.unity
+    guid: 5aba74287d5fd164e8b58cd6bf3747fe
   m_configObjects: {}
