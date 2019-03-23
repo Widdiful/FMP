@@ -50,8 +50,10 @@ public class Drawing : MonoBehaviour {
             else if (Input.GetTouch(0).phase == TouchPhase.Ended) {
                 if (points.Count > 1) {
                     finished = true;
-                    Instantiate(gameObject, transform.parent);
-                    multipleLines = false;
+                    if (multipleLines) {
+                        Instantiate(gameObject, transform.parent);
+                        multipleLines = false;
+                    }
                 }
             }
         }

@@ -28,7 +28,6 @@ public class LockAndKey : MonoBehaviour {
         if (!complete && !failed && other && !other.complete && type == Types.Key && other.type == Types.Lock) {
             if (id == other.id) {
                 connectionsMade++;
-                print(connectionsMade);
                 if (!other.allowMultiple)
                     other.complete = true;
                 complete = true;

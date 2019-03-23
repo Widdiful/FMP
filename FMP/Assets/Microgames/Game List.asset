@@ -40,6 +40,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1871bc937d677eb4a9ded44234700310, type: 2}
   - {fileID: 11400000, guid: fd8db717c7b108843a422b1e1464dbf9, type: 2}
   - {fileID: 11400000, guid: 17cea89f903bf324286a655b0d647424, type: 2}
+  - {fileID: 11400000, guid: 00c9598f75a52ab4ba4d54b4901bcc0b, type: 2}
   motionGames:
   - {fileID: 11400000, guid: ed54944861c3a09499e8bd1b0f62c033, type: 2}
   - {fileID: 11400000, guid: f7e06769f30d28c4a92d34ffe6bba74d, type: 2}

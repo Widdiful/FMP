@@ -167,4 +167,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/PickUpSushi.unity
     guid: 5aba74287d5fd164e8b58cd6bf3747fe
+  - enabled: 1
+    path: Assets/Scenes/Tap/DrawPlatformerLevel.unity
+    guid: ce213431d858fc441ae76fd1143ee21b
   m_configObjects: {}

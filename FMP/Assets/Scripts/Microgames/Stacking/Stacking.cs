@@ -14,6 +14,8 @@ public class Stacking : MonoBehaviour {
     public Rigidbody2D rb;
     CameraFollow cameraFollow;
     SpriteRenderer sprite;
+    bool canJump;
+    float jumpTimer;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -22,6 +24,7 @@ public class Stacking : MonoBehaviour {
     }
 
     private void Update() {
+        jumpTimer -= Time.deltaTime;
         if (attachedObject) {
             Vector3 newPos = Vector3.Lerp(transform.position, attachedObject.position + attachOffset, lerpSpeed * Time.deltaTime);
 
@@ -46,16 +49,26 @@ public class Stacking : MonoBehaviour {
 
             rb.velocity = velocity;
 
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && rb.velocity.y <= 0) {
+            if (CrossPlatformInputManager.GetButtonDown("Jump") && canJump && jumpTimer <= 0) {
+                jumpTimer = 0.1f;
+                canJump = false;
                 rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
                 GetComponent<Squish>().Pulse(new Vector2(-1, 2));
             }
 
-            cameraFollow.target = transform;
+            if (cameraFollow)
+                cameraFollow.target = transform;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
+        if (!canJump) {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down, 0.55f);
+            if (hit) {
+                canJump = true;
+            }
+        }
+
         if (isPlayer && rb.velocity.y < 0) {
             Stacking stack = collision.gameObject.GetComponent<Stacking>();
             if (stack && !attachedObject && !stack.attachedObject) {
@@ -75,6 +88,15 @@ public class Stacking : MonoBehaviour {
 
                 if (complete)
                     gameManager.instance.CompleteGame();
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (!canJump) {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down, 0.55f);
+            if (!hit) {
+                canJump = false;
             }
         }
     }
