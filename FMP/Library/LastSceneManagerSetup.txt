@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tap/MoveHole.unity
+- path: Assets/Scenes/Tap/ShootDucks.unity
   isLoaded: 1
   isActive: 1

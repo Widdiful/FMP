@@ -145,6 +145,8 @@ public class gameManager : MonoBehaviour {
                 currentLandscape = false;
                 break;
         }
+        gameSpeed = 1;
+        Time.timeScale = 0.0001f;
         livesLeft = totalLives;
         gamesCompleted.Clear();
         LoadGame();

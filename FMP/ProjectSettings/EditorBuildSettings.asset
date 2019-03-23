@@ -170,4 +170,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tap/DrawPlatformerLevel.unity
     guid: ce213431d858fc441ae76fd1143ee21b
+  - enabled: 1
+    path: Assets/Scenes/Tap/ShootDucks.unity
+    guid: 3f1f4b1453c1bdc4a97129976885d384
   m_configObjects: {}
