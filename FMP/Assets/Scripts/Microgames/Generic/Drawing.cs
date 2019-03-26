@@ -9,15 +9,18 @@ public class Drawing : MonoBehaviour {
     public bool finished;
     public bool allowMultiple;
     public bool multipleLines;
+    public bool pauseOnComplete;
 
     List<Vector2> v2points = new List<Vector2>();
     Vector3 lastPoint;
     LineRenderer line;
     EdgeCollider2D edgeCollider;
+    AudioSource audioSource;
 
     private void Start() {
         line = GetComponent<LineRenderer>();
         edgeCollider = GetComponent<EdgeCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         points.Clear();
         v2points.Clear();
         finished = false;
@@ -37,6 +40,8 @@ public class Drawing : MonoBehaviour {
                 points.Add(lastPoint);
                 v2points.Add(lastPoint);
                 finished = false;
+                if (audioSource)
+                    audioSource.Play();
             }
             else if (Input.GetTouch(0).phase == TouchPhase.Moved) {
                 Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
@@ -54,6 +59,10 @@ public class Drawing : MonoBehaviour {
                         Instantiate(gameObject, transform.parent);
                         multipleLines = false;
                     }
+                    if (audioSource)
+                        audioSource.Stop();
+                    if (pauseOnComplete)
+                        FindObjectOfType<Timer>().active = false;
                 }
             }
         }

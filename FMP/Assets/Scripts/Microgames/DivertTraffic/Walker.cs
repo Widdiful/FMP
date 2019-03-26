@@ -13,12 +13,15 @@ public class Walker : MonoBehaviour {
     private Vector3 pregrabPosition;
     private gameManager gm;
 
+    private AudioSource audioSource;
+
     void Start() {
         direction += new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         direction = direction.normalized;
         sprite = GetComponent<SpriteRenderer>();
         sprite.color = Color.HSVToRGB(Random.Range(0.0f, 1.0f), 1, 1);
         gm = FindObjectOfType<gameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update () {
@@ -39,7 +42,7 @@ public class Walker : MonoBehaviour {
             }
         }
 
-        if (!grabbed && !gm.endingGame) {
+        if (gm && !grabbed && !gm.endingGame) {
             transform.Translate(direction * speed * Time.deltaTime);
             pregrabPosition = transform.position;
 
@@ -53,7 +56,7 @@ public class Walker : MonoBehaviour {
 
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.01f);
         }
-        else if (gm.endingGame) {
+        else if (gm && gm.endingGame) {
             if (Time.frameCount % 10 == 0) {
                 sprite.flipX = !sprite.flipX;
             }
@@ -66,6 +69,11 @@ public class Walker : MonoBehaviour {
 
         if (collision.gameObject.CompareTag("Player")) {
             FindObjectOfType<gameManager>().FailGame();
+        }
+        else {
+            if (!audioSource.isPlaying) {
+                audioSource.Play();
+            }
         }
     }
 }

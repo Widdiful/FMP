@@ -6,9 +6,11 @@ public class DrawPathFollower : MonoBehaviour {
 
     public Drawing drawing;
     public float moveSpeed;
+    public int retriesAllowed;
 
     Vector3 targetPoint;
     int targetIndex = 0;
+    int retries;
     float targetDistance = 0.1f;
     SpriteRenderer sprite;
 
@@ -42,6 +44,12 @@ public class DrawPathFollower : MonoBehaviour {
             targetIndex %= (drawing.points.Count);
         }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        retries++;
+        if (retries >= retriesAllowed)
+            gameManager.instance.FailGame();
+    }
 
     private void OnCollisionStay2D(Collision2D collision) {
         if (drawing.points.Count > targetIndex)
