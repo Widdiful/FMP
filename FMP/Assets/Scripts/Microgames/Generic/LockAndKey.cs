@@ -18,9 +18,13 @@ public class LockAndKey : MonoBehaviour {
     public bool complete = false;
     public bool failed = false;
     Rigidbody2D rb;
+    public AudioClip successClip;
+    public AudioClip failClip;
+    AudioSource audioSource;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -50,6 +54,10 @@ public class LockAndKey : MonoBehaviour {
 
                 if (connectionsMade >= connectionsRequired) {
                     connectionsMade = 0;
+                    if (audioSource && successClip) {
+                        audioSource.clip = successClip;
+                        audioSource.Play();
+                    }
                     gameManager.instance.CompleteGame();
                 }
             }
@@ -69,6 +77,10 @@ public class LockAndKey : MonoBehaviour {
                 }
 
                 failed = true;
+                if (audioSource && failClip) {
+                    audioSource.clip = failClip;
+                    audioSource.Play();
+                }
                 gameManager.instance.FailGame();
             }
         }
