@@ -16,11 +16,13 @@ public class Stacking : MonoBehaviour {
     SpriteRenderer sprite;
     bool canJump;
     float jumpTimer;
+    AudioSource audioSource;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         cameraFollow = FindObjectOfType<CameraFollow>();
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -50,6 +52,9 @@ public class Stacking : MonoBehaviour {
             rb.velocity = velocity;
 
             if (CrossPlatformInputManager.GetButtonDown("Jump") && canJump && jumpTimer <= 0) {
+                if (!audioSource.isPlaying) {
+                    audioSource.Play();
+                }
                 jumpTimer = 0.1f;
                 canJump = false;
                 rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
