@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tap/ShootDucks.unity
+- path: Assets/Scenes/Tap/DrawPlatformerLevel.unity
   isLoaded: 1
   isActive: 1

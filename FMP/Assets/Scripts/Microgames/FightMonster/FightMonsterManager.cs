@@ -14,9 +14,13 @@ public class FightMonsterManager : MonoBehaviour {
     private List<Vector3> startPos = new List<Vector3>();
     private int turnOrder;
     private bool cleared;
+    private AudioSource audioSource;
+    public AudioClip startAttackSound;
+    public List<AudioClip> attackSounds;
 
     void Start() {
         gm = GameObject.FindObjectOfType<gameManager>();
+        audioSource = GetComponent<AudioSource>();
         foreach (Transform hero in heroes) {
             attacking.Add(-1);
             startPos.Add(hero.position);
@@ -30,6 +34,8 @@ public class FightMonsterManager : MonoBehaviour {
                     heroes[i].position = Vector3.Lerp(heroes[i].position, enemies[attacking[i]].position, Time.deltaTime * 10);
                     if (Vector3.Distance(heroes[i].position, enemies[attacking[i]].position) <= 0.1f) {
                         enemyHP[attacking[i]] -= damage;
+                        audioSource.clip = attackSounds[Random.Range(0, attackSounds.Count)];
+                        audioSource.Play();
                         if (enemyHP[attacking[i]] <= 0) {
                             enemies[attacking[i]].GetComponent<Monster>().Kill();
                         }
