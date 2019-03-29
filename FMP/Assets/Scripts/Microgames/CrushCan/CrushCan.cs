@@ -14,9 +14,11 @@ public class CrushCan : MonoBehaviour {
     bool letGo;
     Vector3 grabOffset;
     Rigidbody thisRb;
+    AudioSource audioSource;
 
     private void Start() {
         thisRb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -27,6 +29,7 @@ public class CrushCan : MonoBehaviour {
             if (ProximitySensor.instance.nearby && hasBeenFar) {
                 crushed = true;
                 meshFilter.mesh = crushedMesh;
+                audioSource.Play();
             }
         }
 
