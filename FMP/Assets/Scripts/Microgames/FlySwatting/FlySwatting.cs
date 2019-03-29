@@ -8,6 +8,7 @@ public class FlySwatting : MonoBehaviour {
     public float speedAdjust;
     public float wanderSize;
     public float maxSpeed;
+    public GameObject splat;
     Vector2 direction;
 
     private void Start() {
@@ -17,6 +18,7 @@ public class FlySwatting : MonoBehaviour {
 
     void Update () {
         transform.Translate(direction * speed * Time.deltaTime);
+        transform.right = direction;
 
         direction += new Vector2(Random.Range(-wanderSize, wanderSize), Random.Range(-wanderSize, wanderSize));
         direction = direction.normalized;
@@ -33,6 +35,8 @@ public class FlySwatting : MonoBehaviour {
                 if (FindObjectsOfType<FlySwatting>().Length <= 1) {
                     gameManager.instance.CompleteGame();
                 }
+                GameObject newSplat = Instantiate(splat, transform.position, Quaternion.identity);
+                newSplat.GetComponent<AudioSource>().Play();
                 Destroy(gameObject);
             }
         }

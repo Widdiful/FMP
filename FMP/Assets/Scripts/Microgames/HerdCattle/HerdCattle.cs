@@ -48,6 +48,7 @@ public class HerdCattle : MonoBehaviour {
 
     IEnumerator DelayedLoss() {
         FindObjectOfType<Timer>().winOnTimeOver = false;
+        GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(1);
         gameManager.instance.FailGame();
     }
