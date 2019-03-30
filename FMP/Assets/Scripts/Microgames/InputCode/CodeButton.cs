@@ -9,9 +9,11 @@ public class CodeButton : MonoBehaviour {
     public CodeManager codeManager;
     bool pushed;
     float startY;
+    AudioSource audioSource;
 
     private void Start() {
         startY = transform.localPosition.y;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update () {
@@ -22,6 +24,8 @@ public class CodeButton : MonoBehaviour {
                 codeManager.Backspace();
             else
                 codeManager.InputCode(value);
+
+            audioSource.Play();
         }
 
         if (pushed && transform.localPosition.y < startY / 2) {

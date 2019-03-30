@@ -46,7 +46,7 @@ public class MoneyPile : MonoBehaviour {
         ParticleSystem.EmissionModule emission = particles.emission;
         emission.rateOverTime = ((float)moneyThrown / (float)requiredMoney) * 20;
 
-        transform.localScale = new Vector3(1, (1.0f - ((float)moneyThrown / (float)requiredMoney)) * baseHeight, 1);
+        transform.localScale = new Vector3(transform.localScale.x, (1.0f - ((float)moneyThrown / (float)requiredMoney)) * baseHeight, transform.localScale.z);
         if (moneyThrown == requiredMoney) {
             GetComponentInChildren<Renderer>().enabled = false;
             FindObjectOfType<gameManager>().CompleteGame();
