@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tap/DrawPlatformerLevel.unity
+- path: Assets/Scenes/Tap/MakeItRain.unity
   isLoaded: 1
   isActive: 1

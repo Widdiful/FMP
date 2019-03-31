@@ -2388,7 +2388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98fb8f5181930804aa73e45c53fb6468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increment: 0.01
+  increment: 0.001
   randomAtStart: 1
 --- !u!212 &1967413391
 SpriteRenderer:
