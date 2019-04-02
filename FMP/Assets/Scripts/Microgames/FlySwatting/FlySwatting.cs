@@ -10,10 +10,13 @@ public class FlySwatting : MonoBehaviour {
     public float maxSpeed;
     public GameObject splat;
     Vector2 direction;
+    AudioSource audioSource;
 
     private void Start() {
         direction += new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         direction = direction.normalized;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.time = Random.Range(0f, 120f);
     }
 
     void Update () {
@@ -28,7 +31,7 @@ public class FlySwatting : MonoBehaviour {
 
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.01f);
 
-        if (Input.touchCount > 0) {
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.touches[0].position), Vector2.zero);
 
             if (hit && hit.transform == transform) {

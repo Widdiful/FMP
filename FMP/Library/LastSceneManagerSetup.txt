@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Tap/MakeItRain.unity
+- path: Assets/Scenes/Tap/FlySwatting.unity
   isLoaded: 1
   isActive: 1
