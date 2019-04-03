@@ -6,18 +6,22 @@ public class InfiniteJumper : MonoBehaviour {
 
     public float jumpHeight, finishVelocity;
     public ParticleSystem fireParticle, smokeParticle;
+    public AudioClip finishClip;
     Rigidbody2D rb;
     bool canJump = false;
     Animator anim;
     Squish squish;
     SpriteRenderer sprite;
     LockAndKey key;
+    AudioSource audioSource;
+    bool complete;
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         squish = GetComponent<Squish>();
         key = GetComponent<LockAndKey>();
+        audioSource = GetComponent<AudioSource>();
 
         sprite = GetComponent<SpriteRenderer>();
         sprite.color = Color.HSVToRGB(Random.Range(0.0f, 1.0f), 1, 1);
@@ -27,6 +31,8 @@ public class InfiniteJumper : MonoBehaviour {
         if (canJump) {
             rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
             squish.Pulse(new Vector2(-1, 1));
+            if (audioSource)
+                audioSource.Play();
             canJump = false;
         }
 
@@ -35,6 +41,11 @@ public class InfiniteJumper : MonoBehaviour {
             FindObjectOfType<CameraFollow>().enabled = false;
             fireParticle.Play();
             smokeParticle.Play();
+            if (!complete && audioSource) {
+                audioSource.clip = finishClip;
+                audioSource.Play();
+            }
+            complete = true;
         }
 
         anim.SetFloat("velocityY", rb.velocity.y);
