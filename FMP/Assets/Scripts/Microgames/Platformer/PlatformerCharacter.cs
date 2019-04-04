@@ -15,9 +15,12 @@ public class PlatformerCharacter : MonoBehaviour {
     private float Horizontal;
     private bool Jump;
 
+    private AudioSource audioSource;
+
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         jumps = maxJumps;
 	}
 	
@@ -46,6 +49,8 @@ public class PlatformerCharacter : MonoBehaviour {
                 rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
                 GetComponent<Squish>().Pulse(new Vector2(-2, 2));
                 jumps--;
+                if (audioSource)
+                    audioSource.Play();
             }
         }
 
