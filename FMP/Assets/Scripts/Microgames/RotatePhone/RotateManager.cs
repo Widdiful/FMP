@@ -7,6 +7,7 @@ public class RotateManager : MonoBehaviour {
 
     public enum TargetOrientation { Portrait, Landscape }
     public TargetOrientation targetOrientation;
+    public GameObject horizontalTexts, verticalTexts;
 
     private gameManager gm;
     private bool cleared = false;
@@ -27,17 +28,19 @@ public class RotateManager : MonoBehaviour {
                 Screen.autorotateToPortraitUpsideDown = false;
                 Screen.orientation = ScreenOrientation.AutoRotation;
                 cleared = true;
+                horizontalTexts.SetActive(false);
+                verticalTexts.SetActive(true);
                 gm.CompleteGame();
             }
             else if (targetOrientation == TargetOrientation.Portrait && Screen.width < Screen.height) {
                 Screen.autorotateToLandscapeLeft = false;
                 Screen.autorotateToLandscapeRight = false;
                 Screen.orientation = ScreenOrientation.AutoRotation;
-                print(Screen.autorotateToLandscapeLeft);
                 cleared = true;
+                horizontalTexts.SetActive(false);
+                verticalTexts.SetActive(true);
                 gm.CompleteGame();
             }
         }
-        GameObject.Find("Text").GetComponent<Text>().text = cleared.ToString();
     }
 }

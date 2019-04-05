@@ -14,7 +14,8 @@ public class DisableColliderOnYPos : MonoBehaviour {
     private void Start() {
         colliders = GetComponents<Collider>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.pitch = Random.Range(0.5f, 0.75f);
+        if (audioSource)
+            audioSource.pitch = Random.Range(0.5f, 0.75f);
         if (randomYRotation) {
             transform.rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
         }
