@@ -12,9 +12,11 @@ public class SneakAndStealGuard : MonoBehaviour {
     SpriteRenderer sprite;
     float time;
     float baseHeight;
+    AudioSource audioSource;
 
     private void Start() {
         sprite = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         baseHeight = transform.position.y;
 
         StartCoroutine(Wait());
@@ -25,6 +27,9 @@ public class SneakAndStealGuard : MonoBehaviour {
         if (time < 10) {
             time += Time.deltaTime * jumpSpeed;
             transform.position = new Vector3(transform.position.x, baseHeight + Mathf.Clamp01(Mathf.Sin(time) / 2 + (0.5f - jumpWait)) * jumpHeight, transform.position.z);
+            if (transform.position.y >= baseHeight && !audioSource.isPlaying) {
+                audioSource.Play();
+            }
         }
         else if (gameEnd) {
             time = 0;

@@ -11,8 +11,10 @@ public class ToiletPaper : MonoBehaviour {
 
     private float startRollSize;
     private float lastTouchYPos;
+    private AudioSource audioSource;
 
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         startRollSize = roll.transform.localScale.x;
         lastTouchYPos = 1;
         Roll(0);
@@ -39,10 +41,13 @@ public class ToiletPaper : MonoBehaviour {
             roll.localScale = new Vector3(roll.localScale.x * (1f - (speed * rollScaleSpeed)), roll.localScale.y, roll.localScale.z * (1f - (speed * rollScaleSpeed)));
             roll.Rotate(new Vector3(0, -speed * 360, 0));
             GetComponent<Renderer>().materials[0].mainTextureScale = new Vector2(transform.localScale.x * 2, 1);
+            if (!audioSource.isPlaying && speed > 0) {
+                audioSource.Play();
+            }
         }
         else {
             GetComponent<Rigidbody>().AddForce(Vector3.down * 500);
-            FindObjectOfType<gameManager>().CompleteGame();
+            gameManager.instance.CompleteGame();
         }
     }
 }

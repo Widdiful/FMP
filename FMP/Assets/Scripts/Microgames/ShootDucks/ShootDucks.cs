@@ -12,10 +12,12 @@ public class ShootDucks : MonoBehaviour {
     Vector3 direction;
     float spawnTimer;
     public bool dead;
+    Animator anim;
 
     private void Start() {
         direction = new Vector3(Random.Range(minAngle.x, maxAngle.x), Random.Range(minAngle.y, maxAngle.y), 0).normalized;
         spawnTimer = Random.Range(spawnTimeRange.x, spawnTimeRange.y);
+        anim = GetComponent<Animator>();
     }
 
     void Update () {
@@ -27,6 +29,7 @@ public class ShootDucks : MonoBehaviour {
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
                     if (hit && hit.transform == transform) {
                         dead = true;
+                        anim.SetBool("dead", true);
 
                         bool complete = true;
                         foreach (ShootDucks duck in FindObjectsOfType<ShootDucks>()) {
