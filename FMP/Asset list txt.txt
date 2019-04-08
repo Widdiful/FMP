@@ -1,4 +1,5 @@
 https://www.kenney.nl/assets/simplified-platformer-pack
+https://www.kenney.nl/assets/ui-pack
 http://bbcsfx.acropolis.org.uk
 https://opengameart.org/content/well-done
 https://freesound.org/people/tmkappelt/sounds/85703/
@@ -18,3 +19,8 @@ https://freesound.org/people/squareal/sounds/237375/
 https://freesound.org/people/soundmary/sounds/128190/
 https://freesound.org/people/Spyboticer/sounds/407178/
 https://freesound.org/people/theshaggyfreak/sounds/275004/
+https://freesound.org/people/bananplyte/sounds/452154/
+https://freesound.org/people/LittleRobotSoundFactory/sounds/274178/
+https://freesound.org/people/HenryRichard/sounds/448266/
+https://freesound.org/people/kwahmah_02/sounds/264104/
+https://freesound.org/people/sheepfilms/sounds/154795/

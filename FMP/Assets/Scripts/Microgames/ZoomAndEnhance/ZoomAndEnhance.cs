@@ -15,19 +15,25 @@ public class ZoomAndEnhance : MonoBehaviour {
     public Camera zoomCamera;
     public Camera enhanceCamera;
     public RawImage renderImage;
+    public Gradient enhanceGradient;
     float zoomBarWidth;
     float zoomAmount;
-    float zoomPercent;
+    public float zoomPercent;
     bool complete;
     float aspectRatio;
     int textureHeight;
     float previousTextureHeight = -1;
+    AudioSource zoomAudio, enhanceAudio;
+    float zoomPrev, enhancePrev;
+    float soundResetTimer;
 
 	void Start () {
         zoomBarWidth = zoomBar.sizeDelta.x;
         zoomAmount = zoomMinMax.y;
-        aspectRatio = Screen.width / Screen.height;
+        aspectRatio = (float)Screen.width / (float)Screen.height;
         textureHeight = Mathf.FloorToInt(textureHeightMinMax.x);
+        zoomAudio = zoomCamera.GetComponent<AudioSource>();
+        enhanceAudio = enhanceCamera.GetComponent<AudioSource>();
 
         renderTexture = new RenderTexture(Mathf.FloorToInt(textureHeight * aspectRatio), textureHeight, 24);
 	}
@@ -67,7 +73,7 @@ public class ZoomAndEnhance : MonoBehaviour {
 
                     float difference = prevMagnitude - magnitude;
 
-                    zoomAmount += difference * zoomSpeed * Time.deltaTime;
+                    zoomAmount += difference * zoomSpeed;
                     zoomAmount = Mathf.Clamp(zoomAmount, zoomMinMax.x, zoomMinMax.y);
                     //zoomCamera.orthographicSize = zoomAmount;
                     enhanceCamera.fieldOfView = zoomAmount;
@@ -89,5 +95,24 @@ public class ZoomAndEnhance : MonoBehaviour {
                 enhanceCanvas.enabled = false;
             }
         }
+        soundResetTimer -= Time.deltaTime;
+
+        if (zoomPercent != zoomPrev && !zoomAudio.isPlaying)
+            zoomAudio.Play();
+        else if (zoomPercent == zoomPrev && soundResetTimer <= 0 && zoomAudio.isPlaying) {
+            zoomAudio.Pause();
+            soundResetTimer = 0.1f;
+        }
+        zoomPrev = zoomPercent;
+
+        if (enhanceSlider.value != enhancePrev && !enhanceAudio.isPlaying)
+            enhanceAudio.Play();
+        else if (enhanceSlider.value == enhancePrev && soundResetTimer <= 0 && enhanceAudio.isPlaying) {
+            enhanceAudio.Pause();
+            soundResetTimer = 0.1f;
+        }
+
+        enhancePrev = enhanceSlider.value;
+
     }
 }

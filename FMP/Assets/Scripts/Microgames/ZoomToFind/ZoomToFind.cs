@@ -16,9 +16,11 @@ public class ZoomToFind : MonoBehaviour {
     Camera camera;
     float oldAngle;
     bool complete;
+    AudioSource audioSource;
 
     private void Start() {
         camera = GetComponent<Camera>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update() {
@@ -73,6 +75,8 @@ public class ZoomToFind : MonoBehaviour {
     private void OnTriggerStay2D(Collider2D collision) {
         if (camera.fieldOfView <= detectionSize && !complete && collision.transform.position.z <= 0) {
             complete = true;
+            if (audioSource)
+                audioSource.Play();
             gameManager.instance.CompleteGame();
         }
     }
