@@ -54,7 +54,7 @@ public class menuManager : MonoBehaviour {
         GameObject.Find("Sensors/Motion").GetComponent<Toggle>().isOn = gm.useMotion;
         GameObject.Find("Sensors/Mic").GetComponent<Toggle>().isOn = gm.useMic;
         GameObject.Find("Sensors/Prox").GetComponent<Toggle>().isOn = gm.useProximity;
-        GameObject.Find("Main/MoneyText").GetComponent<Text>().text = gm.money.ToString();
+        GameObject.Find("Shop/MoneyText").GetComponent<Text>().text = gm.money.ToString();
     }
 
     public void saveSettings() {

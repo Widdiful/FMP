@@ -8,6 +8,7 @@ public class VocalTraining : MonoBehaviour {
     public GameObject notePrefab;
     public VocalTrainingTrack track;
     public float allowedDistance;
+    bool hasTouched;
 
     List<VocalTrainingNote> notes = new List<VocalTrainingNote>();
     int touchPhase = 0;
@@ -15,12 +16,15 @@ public class VocalTraining : MonoBehaviour {
     private void Update() {
 
         if (Input.touchCount > 0) {
+            hasTouched = true;
             if (Input.GetTouch(0).phase == TouchPhase.Began)
                 touchPhase = 0;
             else
                 touchPhase = 1;
         }
-        else touchPhase = 2;
+        else if (hasTouched)
+            touchPhase = 2;
+        else touchPhase = -1;
         
         if (touchPhase == 0) {
             VocalTrainingNote newNote = Instantiate(notePrefab, noteCentre.position, Quaternion.identity, noteHolder).GetComponent<VocalTrainingNote>();

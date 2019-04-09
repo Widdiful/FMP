@@ -327,4 +327,15 @@ public class gameManager : MonoBehaviour {
         }
         Screen.orientation = ScreenOrientation.AutoRotation;
     }
+
+    public bool SpendMoney(int amount) {
+        bool result = false;
+        if (money >= amount) {
+            result = true;
+            money -= amount;
+            PlayerPrefs.SetInt("money", money);
+            GameObject.Find("Shop/MoneyText").GetComponent<Text>().text = money.ToString();
+        }
+        return result;
+    }
 }

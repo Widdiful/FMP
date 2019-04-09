@@ -17,8 +17,10 @@ public class HintScreen : MonoBehaviour {
     public Sprite micIcon;
     public Sprite proxIcon;
 
+    AudioSource audioSource;
+
 	void Start () {
-        gm = FindObjectOfType<gameManager>();
+        gm = gameManager.instance;
         if (gm) {
             timer = gm.hintScreenDuration;
             if (gm.currentGame.useTap) inputPanel.Find("TapIcon").GetComponent<Image>().sprite = tapIcon;
