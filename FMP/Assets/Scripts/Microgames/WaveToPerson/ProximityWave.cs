@@ -9,6 +9,8 @@ public class ProximityWave : MonoBehaviour {
     public float lerpSpeed;
     public int wavesDone;
     public int wavesRequired;
+    public Animator anim;
+    public AudioSource audioSource;
 
     private bool complete;
     private bool passedCentre;
@@ -22,6 +24,11 @@ public class ProximityWave : MonoBehaviour {
             if (passedCentre == false) {
                 wavesDone++;
                 if (wavesDone >= wavesRequired && !complete) {
+                    if (anim) {
+                        anim.SetBool("Play", true);
+                    }
+                    if (audioSource)
+                        audioSource.Play();
                     complete = true;
                     gameManager.instance.CompleteGame();
                 }

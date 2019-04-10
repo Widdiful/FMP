@@ -12,6 +12,8 @@ public class PickUpSushi : MonoBehaviour {
     bool movingDown, movingUp;
     float baseY;
     bool complete;
+    public Sprite grabSprite;
+    public SpriteRenderer spriteRenderer;
 
     private void Start() {
         baseY = transform.position.y;
@@ -51,6 +53,7 @@ public class PickUpSushi : MonoBehaviour {
         collision.transform.SetParent(transform);
         collision.GetComponent<MoveInDirection>().enabled = false;
         complete = true;
+        spriteRenderer.sprite = grabSprite;
         gameManager.instance.CompleteGame();
     }
 }

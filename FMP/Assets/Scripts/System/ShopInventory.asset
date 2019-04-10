@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - type: 0
-    price: 0
+    price: 10
   - type: 1
-    price: 110
+    price: 10
   - type: 2
-    price: 120
+    price: 10

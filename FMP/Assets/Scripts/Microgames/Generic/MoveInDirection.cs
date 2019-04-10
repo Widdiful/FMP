@@ -10,6 +10,7 @@ public class MoveInDirection : MonoBehaviour {
     public bool useVelocity;
     public bool useY;
     public bool loopAroundScreen;
+    public float loopX;
     private Rigidbody2D rb2d;
     private Rigidbody rb;
     private Renderer renderer;
@@ -29,7 +30,7 @@ public class MoveInDirection : MonoBehaviour {
             transform.Translate(direction * Time.deltaTime);
         }
 
-        if (loopAroundScreen && !renderer.isVisible && transform.position.x < 0) {
+        if (loopAroundScreen && transform.position.x < loopX) {
             transform.position = new Vector3(-transform.position.x, transform.position.y, transform.position.z);
         }
 	}
