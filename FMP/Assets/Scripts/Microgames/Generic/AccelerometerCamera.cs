@@ -30,6 +30,7 @@ public class AccelerometerCamera : MonoBehaviour {
                     if (hit.transform.CompareTag("Enemy")) {
                         scared = true;
                         character = hit.transform;
+                        character.gameObject.GetComponent<AudioSource>().Play();
                         gameManager.instance.CompleteGame();
                     }
                 }

@@ -7,11 +7,20 @@ public class LandShip : MonoBehaviour {
     public float boostSpeed;
     public float deathVelocity;
     public float rotateSpeed;
+    public ParticleSystem fireParticles, smokeParticles;
+    public AudioSource audioSource;
+    Animator anim;
     Rigidbody2D rb;
     bool complete;
+    ParticleSystem.EmissionModule fireEmitter, smokeEmitter;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        if (fireParticles)
+            fireEmitter = fireParticles.emission;
+        if (smokeParticles)
+            smokeEmitter = smokeParticles.emission;
     }
 
     private void Update() {
@@ -24,6 +33,24 @@ public class LandShip : MonoBehaviour {
             Vector2 direction = new Vector2(0, boostSpeed * Time.deltaTime);
             direction = (Vector2)transform.TransformDirection(direction);
             rb.velocity += direction;
+            if (fireParticles)
+                fireEmitter.rateOverTime = 100;
+            if (smokeParticles)
+                smokeEmitter.rateOverTime = 100;
+            if (anim)
+                anim.SetBool("RocketOn", true);
+            if (audioSource && !audioSource.isPlaying)
+                audioSource.Play();
+        }
+        else {
+            if (fireParticles)
+                fireEmitter.rateOverTime = 0;
+            if (smokeParticles)
+                smokeEmitter.rateOverTime = 0;
+            if (anim)
+                anim.SetBool("RocketOn", false);
+            if (audioSource)
+                audioSource.Stop();
         }
 	}
 

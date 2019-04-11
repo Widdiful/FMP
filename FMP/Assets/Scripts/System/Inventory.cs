@@ -8,15 +8,15 @@ public class Inventory : ScriptableObject {
 
     public List<InventoryItem> items;
 
-    public Dictionary<InventoryItem, int> GetItems() {
-        Dictionary<InventoryItem, int> dic = new Dictionary<InventoryItem, int>();
+    public Dictionary<InventoryItem.ItemType, int> GetItems() {
+        Dictionary<InventoryItem.ItemType, int> dic = new Dictionary<InventoryItem.ItemType, int>();
 
         foreach(InventoryItem item in items) {
-            if (!dic.ContainsKey(item)) {
-                dic.Add(item, 1);
+            if (!dic.ContainsKey(item.itemType)) {
+                dic.Add(item.itemType, 1);
             }
             else {
-                dic[item]++;
+                dic[item.itemType]++;
             }
         }
 
