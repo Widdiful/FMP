@@ -93,3 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 1432f05f7f8fc3043b19e2601989566c, type: 2}
+  inUseContent: {fileID: 0}
+  inventoryContent: {fileID: 0}
+  buttonPrefab: {fileID: 1164826205208016, guid: 1dc41e5ebcd4427478eeceec076e92ed,
+    type: 2}

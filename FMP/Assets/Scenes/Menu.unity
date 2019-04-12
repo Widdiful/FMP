@@ -700,7 +700,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1917982186}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1562,8 +1562,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1076498272}
   m_HandleRect: {fileID: 1076498271}
   m_Direction: 0
-  m_Value: 0.0000017951517
-  m_Size: 0.97084045
+  m_Value: 0.0000035902904
+  m_Size: 0.9708404
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1830,7 +1830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000010874982}
+  m_AnchoredPosition: {x: 0, y: -0.0000012364279}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &424172098
@@ -1901,7 +1901,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000008130062}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &425445009
@@ -3215,7 +3215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000046164023, y: -0.000048952767}
+  m_AnchoredPosition: {x: 0.000046164023, y: -0.000039044047}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &660694997
@@ -3668,7 +3668,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1253767634}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4229,7 +4229,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000046164023, y: -0.00004884417}
+  m_AnchoredPosition: {x: 0.000046164023, y: -0.000038935454}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &836917069
@@ -4654,6 +4654,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114840667566553958, guid: d72e72b43899b0c47a21e82f1708683d,
+        type: 2}
+      propertyPath: inUseContent
+      value: 
+      objectReference: {fileID: 424172097}
+    - target: {fileID: 114840667566553958, guid: d72e72b43899b0c47a21e82f1708683d,
+        type: 2}
+      propertyPath: inventoryContent
+      value: 
+      objectReference: {fileID: 425445008}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d72e72b43899b0c47a21e82f1708683d, type: 2}
   m_IsPrefabAsset: 0
@@ -5345,7 +5355,6 @@ GameObject:
   - component: {fileID: 1047520764}
   - component: {fileID: 1047520766}
   - component: {fileID: 1047520765}
-  - component: {fileID: 1047520767}
   m_Layer: 5
   m_Name: Items
   m_TagString: Untagged
@@ -5407,22 +5416,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1047520763}
   m_CullTransparentMesh: 0
---- !u!114 &1047520767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1047520763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cbf455abdbff240a52afefbd7400d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 1432f05f7f8fc3043b19e2601989566c, type: 2}
-  inUseContent: {fileID: 424172097}
-  inventoryContent: {fileID: 425445008}
-  buttonPrefab: {fileID: 1164826205208016, guid: 1dc41e5ebcd4427478eeceec076e92ed,
-    type: 2}
 --- !u!1 &1055113563
 GameObject:
   m_ObjectHideFlags: 0
@@ -8087,7 +8080,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1055113564}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8631,7 +8624,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1090192555}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10290,7 +10283,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 802836269}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

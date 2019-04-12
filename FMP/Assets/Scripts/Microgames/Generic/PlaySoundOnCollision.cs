@@ -23,4 +23,16 @@ public class PlaySoundOnCollision : MonoBehaviour {
                 audioSource.Play();
             }
     }
+
+    private void OnTriggerEnter(Collider collision) {
+        if (!target || collision.transform == target)
+            if (clip) {
+                audioSource.clip = clip;
+                audioSource.Stop();
+            }
+
+        if (!audioSource.isPlaying) {
+            audioSource.Play();
+        }
+    }
 }

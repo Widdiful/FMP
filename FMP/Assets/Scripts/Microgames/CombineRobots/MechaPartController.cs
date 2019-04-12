@@ -16,8 +16,12 @@ public class MechaPartController : MonoBehaviour {
     private int numberOfConnections;
 
     private bool completed;
-	
-	void Update () {
+
+    private void Start() {
+        numberOfConnections = 0;
+    }
+
+    void Update () {
         currentSpeed = Mathf.Lerp(currentSpeed, moveSpeed, accelleration);
 
         transform.Translate(transform.forward * currentSpeed * Time.deltaTime);
@@ -43,9 +47,11 @@ public class MechaPartController : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        numberOfConnections++;
-        other.transform.SetParent(transform);
-        other.gameObject.GetComponentInChildren<ParticleSystem>().Play();
-        other.gameObject.GetComponent<MechaPart>().moving = false;
+        if (other.transform.parent != transform && other.transform != transform) {
+            numberOfConnections++;
+            other.transform.SetParent(transform);
+            other.gameObject.GetComponentInChildren<ParticleSystem>().Play();
+            other.gameObject.GetComponent<MechaPart>().moving = false;
+        }
     }
 }
