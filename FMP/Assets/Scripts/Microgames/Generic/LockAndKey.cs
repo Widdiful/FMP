@@ -37,6 +37,7 @@ public class LockAndKey : MonoBehaviour {
                 complete = true;
                 if (snapToLock) {
                     transform.position = collision.transform.position;
+                    rb.bodyType = RigidbodyType2D.Static;
                 }
 
                 if (disableComponents) {

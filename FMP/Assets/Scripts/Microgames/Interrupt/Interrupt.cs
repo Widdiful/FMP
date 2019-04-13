@@ -9,10 +9,14 @@ public class Interrupt : MonoBehaviour {
     bool talking;
     bool completed;
     float timer;
+    public List<AudioClip> clips = new List<AudioClip>();
+    public AudioClip shushClip;
+    public Animator anim;
     AudioSource audioSource;
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clips[Random.Range(0, clips.Count)];
 
         timeBeforeSpeech = Random.Range(timeBeforeSpeechRange.x, timeBeforeSpeechRange.y);
     }
@@ -30,13 +34,21 @@ public class Interrupt : MonoBehaviour {
             else {
                 talking = true;
                 audioSource.Play();
+                anim.SetBool("Open", true);
             }
+        }
+
+        if (!completed && talking && !audioSource.isPlaying) {
+            anim.SetBool("Open", false);
         }
 
         if (!completed && MicManager.instance.levelMax >= 0.75f) {
             if (audioSource.isPlaying) {
                 completed = true;
                 audioSource.Stop();
+                audioSource.clip = shushClip;
+                audioSource.Play();
+                anim.SetBool("Open", false);
                 gameManager.instance.CompleteGame();
             }
             else {

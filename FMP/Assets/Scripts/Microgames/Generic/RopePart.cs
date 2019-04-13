@@ -40,14 +40,16 @@ public class RopePart : MonoBehaviour {
                 if ((attachEnd || attachEndTransform) && i == numberOfParts - 1) {
                     newPart.transform.position = endPoint;
 
-                    HingeJoint2D endHinge = endTransform.GetComponent<HingeJoint2D>();
-                    if (attachEndTransform && endTransform && endHinge) {
-                        endHinge.connectedBody = lastPart.GetComponent<Rigidbody2D>();
-                        JointAngleLimits2D limits = new JointAngleLimits2D();
-                        limits.max = 0;
-                        limits.min = 0;
-                        lastPart.GetComponent<HingeJoint2D>().limits = limits;
-                        endTransformBody = true;
+                    if (endTransform) {
+                        HingeJoint2D endHinge = endTransform.GetComponent<HingeJoint2D>();
+                        if (attachEndTransform && endHinge) {
+                            endHinge.connectedBody = lastPart.GetComponent<Rigidbody2D>();
+                            JointAngleLimits2D limits = new JointAngleLimits2D();
+                            limits.max = 0;
+                            limits.min = 0;
+                            lastPart.GetComponent<HingeJoint2D>().limits = limits;
+                            endTransformBody = true;
+                        }
                     }
                 }
                 else {
