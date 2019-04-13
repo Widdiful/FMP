@@ -9,9 +9,22 @@ public class VocalTraining : MonoBehaviour {
     public VocalTrainingTrack track;
     public float allowedDistance;
     bool hasTouched;
+    public List<GameObject> singers = new List<GameObject>();
+    List<Animator> anims = new List<Animator>();
+    List<Squish> squishes = new List<Squish>();
+    AudioSource audioSource;
+    public float pitchMin, pitchMax;
 
     List<VocalTrainingNote> notes = new List<VocalTrainingNote>();
     int touchPhase = 0;
+
+    private void Start() {
+        foreach(GameObject singer in singers) {
+            anims.Add(singer.GetComponentInChildren<Animator>());
+            squishes.Add(singer.GetComponent<Squish>());
+        }
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update() {
 
@@ -19,6 +32,15 @@ public class VocalTraining : MonoBehaviour {
             hasTouched = true;
             if (Input.GetTouch(0).phase == TouchPhase.Began)
                 touchPhase = 0;
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended) {
+                foreach (Animator anim in anims) {
+                    anim.SetBool("Open", false);
+                }
+                foreach (Squish squish in squishes) {
+                    squish.Pulse(new Vector2(1, -1));
+                }
+                audioSource.Stop();
+            }
             else
                 touchPhase = 1;
         }
@@ -38,6 +60,15 @@ public class VocalTraining : MonoBehaviour {
             newNote.type = VocalTrainingNote.Types.End;
             newNote.previousNote = notes[notes.Count - 1].transform;
             notes.Add(newNote);
+
+            foreach(Animator anim in anims) {
+                anim.SetBool("Open", true);
+            }
+            foreach(Squish squish in squishes) {
+                squish.Pulse(new Vector2(-1, 1));
+            }
+            audioSource.pitch = Random.Range(pitchMin, pitchMax);
+            audioSource.Play();
         }
         else if (touchPhase == 1) {
             notes[notes.Count - 1].transform.position = noteCentre.position;

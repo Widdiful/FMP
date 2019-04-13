@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaterDroplet : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Destroy(gameObject);
+        if (collision.name == "DeathZone")
+            Destroy(gameObject);
     }
 }
