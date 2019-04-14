@@ -34,8 +34,8 @@ public class CodeManager : MonoBehaviour {
         if (inputtedCode.Length == codeLength) {
             if (code == inputtedCode)
                 gameManager.instance.CompleteGame();
-            else
-                gameManager.instance.FailGame();
+            //else
+                //gameManager.instance.FailGame();
         }
     }
 

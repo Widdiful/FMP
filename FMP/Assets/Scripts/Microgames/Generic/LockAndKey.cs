@@ -25,6 +25,7 @@ public class LockAndKey : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        connectionsMade = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
