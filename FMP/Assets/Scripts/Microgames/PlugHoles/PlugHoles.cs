@@ -12,13 +12,13 @@ public class PlugHoles : MonoBehaviour {
     bool complete;
 
     private void Start() {
-        Vector3 position = new Vector3(Random.Range(minSpawnPos.x, maxSpawnPos.x), Random.Range(minSpawnPos.y, maxSpawnPos.y), 0);
-        transform.position = position;
-        if (position.x < 0) {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
-        }
-        else {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        CalculatePosition();
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+        int attempts = 0;
+        while (hits.Length > 1 && attempts < 10) {
+            CalculatePosition();
+            hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+            attempts++;
         }
     }
 
@@ -63,6 +63,21 @@ public class PlugHoles : MonoBehaviour {
                 plugged = false;
                 particles.SetActive(true);
             }
+
+            if (Input.GetKeyDown("a")) {
+                Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+            }
+        }
+    }
+
+    private void CalculatePosition() {
+        Vector3 position = new Vector3(Random.Range(minSpawnPos.x, maxSpawnPos.x), Random.Range(minSpawnPos.y, maxSpawnPos.y), 0);
+        transform.position = position;
+        if (position.x < 0) {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
+        }
+        else {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
     }
 }

@@ -8,8 +8,13 @@ public class ShushFinger : MonoBehaviour {
     public bool drag;
     bool completed;
     bool onMouth;
+    AudioSource audioSource;
 
-	void Update () {
+    private void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update () {
 		if (Input.touchCount > 0) {
             if (drag) {
                 Vector3 direction = Input.touches[0].deltaPosition;
@@ -20,12 +25,13 @@ public class ShushFinger : MonoBehaviour {
                 pos.z = transform.position.z;
                 transform.position = Vector3.MoveTowards(transform.position, pos, speed);
             }
+        }
 
-            if (onMouth) {
-                if (MicManager.instance.levelMax >= 0.75f) {
-                    completed = true;
-                    gameManager.instance.CompleteGame();
-                }
+        if (onMouth && !completed) {
+            if (MicManager.instance.levelMax >= 0.75f) {
+                completed = true;
+                audioSource.Play();
+                gameManager.instance.CompleteGame();
             }
         }
 	}
@@ -36,6 +42,7 @@ public class ShushFinger : MonoBehaviour {
         if (mouth && !completed) {
             mouth.enabled = false;
             onMouth = true;
+            mouth.GetComponent<AudioSource>().Pause();
         }
     }
 
@@ -45,6 +52,7 @@ public class ShushFinger : MonoBehaviour {
         if (mouth && !completed) {
             mouth.enabled = true;
             onMouth = false;
+            mouth.GetComponent<AudioSource>().Play();
         }
     }
 }
