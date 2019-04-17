@@ -25,5 +25,5 @@ MonoBehaviour:
     normal: 0
     hard: 0
     relax: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 8486e59897e37b6409f8106d23656da5, type: 3}
   previewImage: {fileID: 0}
