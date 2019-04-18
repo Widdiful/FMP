@@ -15,6 +15,9 @@ public class InventoryManager : MonoBehaviour {
 
     public GameObject buttonPrefab;
 
+    const float speedIncreaseAmount = 0.1f;
+    const float moneyIncreaseAmount = 0.5f;
+
     private void Awake() {
         if (!instance)
             instance = this;
@@ -67,5 +70,30 @@ public class InventoryManager : MonoBehaviour {
             newButton.itemData.type = item.Key;
             newButton.displayNumber = item.Value;
         }
+    }
+
+    public void UseItems() {
+        float speedIncrease = 0;
+        float moneyIncrease = 0;
+        int livesIncrease = 0;
+
+        foreach(KeyValuePair<InventoryItem.ItemType, int> item in inUseItems) {
+            switch (item.Key) {
+                case InventoryItem.ItemType.ExtraLife:
+                    livesIncrease += 1 * item.Value;
+                    break;
+                case InventoryItem.ItemType.SpeedIncrease:
+                    speedIncrease += speedIncreaseAmount * item.Value;
+                    break;
+                case InventoryItem.ItemType.MoneyMultiplier:
+                    moneyIncrease += moneyIncreaseAmount * item.Value;
+                    break;
+            }
+            inventory.RemoveItem(item.Key);
+        }
+
+        gameManager.instance.gameSpeed += speedIncrease;
+        gameManager.instance.moneyMultiplier += moneyIncrease;
+        gameManager.instance.livesLeft += livesIncrease;
     }
 }

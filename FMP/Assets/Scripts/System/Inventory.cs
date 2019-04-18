@@ -6,31 +6,33 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory : ScriptableObject {
 
-    public List<InventoryItem> items;
+    public Dictionary<InventoryItem.ItemType, int> items;
 
     public Dictionary<InventoryItem.ItemType, int> GetItems() {
-        Dictionary<InventoryItem.ItemType, int> dic = new Dictionary<InventoryItem.ItemType, int>();
+        //Dictionary<InventoryItem.ItemType, int> dic = new Dictionary<InventoryItem.ItemType, int>();
 
-        foreach(InventoryItem item in items) {
-            if (!dic.ContainsKey(item.itemType)) {
-                dic.Add(item.itemType, 1);
-            }
-            else {
-                dic[item.itemType]++;
-            }
-        }
+        //foreach(InventoryItem item in items) {
+        //    if (!dic.ContainsKey(item.itemType)) {
+        //        dic.Add(item.itemType, 1);
+        //    }
+        //    else {
+        //        dic[item.itemType]++;
+        //    }
+        //}
 
-        return dic;
+        return items;
     }
 
-    public void AddItem(InventoryItem item) {
-        items.Add(item);
-    }
+    //public void AddItem(InventoryItem item) {
+    //    items.Add(item);
+    //}
 
     public void AddItem(InventoryItem.ItemType type) {
-        InventoryItem item = new InventoryItem();
-        item.itemType = type;
-        AddItem(item);
+        //InventoryItem item = new InventoryItem();
+        //item.itemType = type;
+        //AddItem(item);
+
+        items[type]++;
     }
 
     public void AddExtraLife() {
@@ -46,6 +48,11 @@ public class Inventory : ScriptableObject {
     }
 
     public void RemoveItem(InventoryItem item) {
-        items.Remove(item);
+        //items.Remove(item);
+        items[item.itemType]--;
+    }
+    public void RemoveItem(InventoryItem.ItemType item) {
+        //items.Remove(item);
+        items[item]--;
     }
 }

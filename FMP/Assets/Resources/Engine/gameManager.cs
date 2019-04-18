@@ -43,7 +43,8 @@ public class gameManager : MonoBehaviour {
     private bool failedGame;
     private float startTimer;
     private float endTimer;
-    private float gameSpeed = 1;
+    public float gameSpeed = 1;
+    public float moneyMultiplier = 1;
 
     // Endless variables
 
@@ -146,9 +147,12 @@ public class gameManager : MonoBehaviour {
                 break;
         }
         gameSpeed = 1;
+        moneyMultiplier = 1;
         Time.timeScale = 0.0001f;
         livesLeft = totalLives;
         gamesCompleted.Clear();
+        if (InventoryManager.instance)
+            InventoryManager.instance.UseItems();
         LoadGame();
     }
 
