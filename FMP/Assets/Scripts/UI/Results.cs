@@ -57,7 +57,7 @@ public class Results : MonoBehaviour {
                 break;
         }
         gm.money += money;
-        PlayerPrefs.SetInt("money", gm.money);
+        //PlayerPrefs.SetInt("money", gm.money);
         SaveData.instance.Save();
     }
 	

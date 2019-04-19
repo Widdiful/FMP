@@ -12,9 +12,12 @@ public class ShopButton : MonoBehaviour {
     public ButtonTypes buttonType;
     public int displayNumber;
     public Text text;
+    public Image spriteRenderer;
+    public Sprite sprite;
 
     private void Start() {
         text.text = displayNumber.ToString();
+        spriteRenderer.sprite = sprite;
     }
 
 

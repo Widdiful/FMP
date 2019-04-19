@@ -17,7 +17,9 @@ public class SaveData : MonoBehaviour {
 
     [System.Serializable]
 	public class Data {
+        public int money;
         public Dictionary<string, Game.UnlockedDifficulties> gameList;
+        public Dictionary<InventoryItem.ItemType, int> inventory;
     }
 
     public void Save() {
@@ -27,6 +29,8 @@ public class SaveData : MonoBehaviour {
             unlocks.Add(game.name, game.unlocked);
         }
         data.gameList = unlocks;
+        data.inventory = InventoryManager.instance.inventory.items;
+        data.money = gameManager.instance.money;
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/saveFile.dat");
@@ -36,8 +40,8 @@ public class SaveData : MonoBehaviour {
     }
 
     public void Load() {
+        Data data = new Data();
         if (File.Exists(Application.persistentDataPath + "/saveFile.dat")) {
-            Data data = new Data();
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/saveFile.dat", FileMode.Open);
             data = (Data)bf.Deserialize(file);
@@ -53,6 +57,10 @@ public class SaveData : MonoBehaviour {
                     }
                 }
             }
+            if (data.inventory != null && InventoryManager.instance) {
+                InventoryManager.instance.inventory.items = data.inventory;
+            }
+            gameManager.instance.money = data.money;
         }
     }
 

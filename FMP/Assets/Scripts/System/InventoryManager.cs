@@ -51,7 +51,7 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
-    private void UpdateUI() {
+    public void UpdateUI() {
         foreach(Transform transform in inventoryContent) {
             Destroy(transform.gameObject);
         }
@@ -89,8 +89,10 @@ public class InventoryManager : MonoBehaviour {
                     moneyIncrease += moneyIncreaseAmount * item.Value;
                     break;
             }
-            inventory.RemoveItem(item.Key);
         }
+
+        inventory.items = inventoryItems;
+        SaveData.instance.Save();
 
         gameManager.instance.gameSpeed += speedIncrease;
         gameManager.instance.moneyMultiplier += moneyIncrease;

@@ -17,7 +17,7 @@ public class RotateManager : MonoBehaviour {
         Screen.autorotateToLandscapeLeft = true;
         Screen.autorotateToLandscapeRight = true;
         Screen.autorotateToPortrait = true;
-        Screen.autorotateToPortraitUpsideDown = true;
+        Screen.autorotateToPortraitUpsideDown = false;
         Screen.orientation = ScreenOrientation.AutoRotation;
     }
 	

@@ -48,7 +48,7 @@ public class menuManager : MonoBehaviour {
         gm.useMotion = intToBool(PlayerPrefs.GetInt("motion"));
         gm.useMic = intToBool(PlayerPrefs.GetInt("mic"));
         gm.useProximity = intToBool(PlayerPrefs.GetInt("prox"));
-        gm.money = PlayerPrefs.GetInt("money");
+        //gm.money = PlayerPrefs.GetInt("money");
 
         GameObject.Find("Orientations/Dropdown").GetComponent<Dropdown>().value = PlayerPrefs.GetInt("orientation");
         GameObject.Find("Sensors/Motion").GetComponent<Toggle>().isOn = gm.useMotion;
@@ -68,6 +68,8 @@ public class menuManager : MonoBehaviour {
 
     public void StartGame() {
         startingGame = true;
+        if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
+            gameManager.instance.previousLandscapeOrientation = Screen.orientation;
     }
 
     public void StartEndless() {
@@ -98,6 +100,10 @@ public class menuManager : MonoBehaviour {
         targetX = x;
         targetY = y;
         movingMenu = true;
+    }
+
+    public void ReloadInventory() {
+        InventoryManager.instance.UpdateUI();
     }
 
 

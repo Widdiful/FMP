@@ -20,6 +20,8 @@ public class ShopManager : MonoBehaviour {
         foreach (ShopInventory.ShopItem item in inventory.items) {
             ShopButton newButton = Instantiate(buttonPrefab, transform).GetComponent<ShopButton>();
             newButton.itemData = item;
+            newButton.displayNumber = item.price;
+            newButton.sprite = item.sprite;
         }
     }
 }

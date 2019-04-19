@@ -10,6 +10,7 @@ public class ShopInventory : ScriptableObject {
     public class ShopItem {
         public InventoryItem.ItemType type;
         public int price;
+        public Sprite sprite;
     }
     public List<ShopItem> items;
 }

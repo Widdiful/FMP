@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
@@ -29,8 +30,17 @@ public class Timer : MonoBehaviour {
         if (GameObject.Find("HintText")) hintText = GameObject.Find("HintText").GetComponent<Text>();
 
         if (gm) {
-            if (hintText)
-                hintText.text = gm.currentGame.hint;
+            if (SceneManager.GetActiveScene().name != "RotateHorizontal" && SceneManager.GetActiveScene().name != "RotateVertical") {
+                if (hintText)
+                    hintText.text = gm.currentGame.hint;
+
+                if (gm.currentGame.isLandscape && Screen.width < Screen.height) {
+                    Screen.orientation = gm.previousLandscapeOrientation;
+                }
+                else if (!gm.currentGame.isLandscape && Screen.width > Screen.height) {
+                    Screen.orientation = ScreenOrientation.Portrait;
+                }
+            }
 
             if (gm.currentDifficulty == gameManager.DifficultyLevels.Relax) {
                 foreach (Transform trans in transform) {

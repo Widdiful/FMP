@@ -19,6 +19,7 @@ public class gameManager : MonoBehaviour {
 
     // Settings
     public OrientationModes orientationMode;
+    public ScreenOrientation previousLandscapeOrientation = ScreenOrientation.LandscapeLeft;
     public bool useMotion;
     public bool useMic;
     public bool useProximity;
@@ -66,6 +67,18 @@ public class gameManager : MonoBehaviour {
     }
 
     void Update() {
+        switch (previousLandscapeOrientation) {
+            case ScreenOrientation.LandscapeLeft:
+                print("left");
+                break;
+            case ScreenOrientation.LandscapeRight:
+                print("right");
+                break;
+            default:
+                print("none");
+                break;
+
+        }
         if (startingGame || endingGame) {
             GameObject bg = GameObject.Find("Timer/Canvas/Background");
             if (bg) {
@@ -101,21 +114,7 @@ public class gameManager : MonoBehaviour {
                             if (completedGame) {
                                 LoadGame();
                                 completedGame = false;
-                                if (currentLandscape) {
-                                    Screen.orientation = ScreenOrientation.LandscapeRight;
-                                    Screen.autorotateToLandscapeLeft = true;
-                                    Screen.autorotateToLandscapeRight = true;
-                                    Screen.autorotateToPortrait = false;
-                                    Screen.autorotateToPortraitUpsideDown = false;
-                                }
-                                else {
-                                    Screen.orientation = ScreenOrientation.Portrait;
-                                    Screen.autorotateToLandscapeLeft = false;
-                                    Screen.autorotateToLandscapeRight = false;
-                                    Screen.autorotateToPortrait = true;
-                                    Screen.autorotateToPortraitUpsideDown = true;
-                                }
-                                Screen.orientation = ScreenOrientation.AutoRotation;
+                                EnableRotation();
                             }
                             else if (failedGame) {
                                 failedGame = false;
@@ -314,22 +313,7 @@ public class gameManager : MonoBehaviour {
         startingGame = true;
         currentLandscape = currentGame.isLandscape;
         Time.timeScale = 0.0001f;
-
-        if (currentLandscape) {
-            Screen.orientation = ScreenOrientation.LandscapeRight;
-            Screen.autorotateToLandscapeLeft = true;
-            Screen.autorotateToLandscapeRight = true;
-            Screen.autorotateToPortrait = false;
-            Screen.autorotateToPortraitUpsideDown = false;
-        }
-        else {
-            Screen.orientation = ScreenOrientation.Portrait;
-            Screen.autorotateToLandscapeLeft = false;
-            Screen.autorotateToLandscapeRight = false;
-            Screen.autorotateToPortrait = true;
-            Screen.autorotateToPortraitUpsideDown = true;
-        }
-        Screen.orientation = ScreenOrientation.AutoRotation;
+        EnableRotation();
     }
 
     public bool SpendMoney(int amount) {
@@ -337,9 +321,28 @@ public class gameManager : MonoBehaviour {
         if (money >= amount) {
             result = true;
             money -= amount;
-            PlayerPrefs.SetInt("money", money);
+            SaveData.instance.Save();
             GameObject.Find("Shop/MoneyText").GetComponent<Text>().text = money.ToString();
         }
         return result;
+    }
+
+    public void EnableRotation() {
+        if (currentLandscape) {
+            Screen.orientation = previousLandscapeOrientation;
+            Screen.autorotateToLandscapeLeft = true;
+            Screen.autorotateToLandscapeRight = true;
+            Screen.autorotateToPortrait = false;
+            Screen.autorotateToPortraitUpsideDown = false;
+        }
+        else {
+            //previousLandscapeOrientation = Screen.orientation;
+            Screen.orientation = ScreenOrientation.Portrait;
+            Screen.autorotateToLandscapeLeft = false;
+            Screen.autorotateToLandscapeRight = false;
+            Screen.autorotateToPortrait = true;
+            Screen.autorotateToPortraitUpsideDown = false;
+        }
+        Screen.orientation = ScreenOrientation.AutoRotation;
     }
 }

@@ -14,7 +14,10 @@ MonoBehaviour:
   items:
   - type: 0
     price: 10
+    sprite: {fileID: 21300000, guid: 7785e6a1e941bc745bab0142d3acffa7, type: 3}
   - type: 1
     price: 10
+    sprite: {fileID: 21300000, guid: ac30bd1b14c43f94db24d3d18763cc44, type: 3}
   - type: 2
     price: 10
+    sprite: {fileID: 21300000, guid: dad32ce31a3b61949934e7b392c351a7, type: 3}

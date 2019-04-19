@@ -6,9 +6,10 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory : ScriptableObject {
 
-    public Dictionary<InventoryItem.ItemType, int> items;
+    public Dictionary<InventoryItem.ItemType, int> items = new Dictionary<InventoryItem.ItemType, int>();
 
     public Dictionary<InventoryItem.ItemType, int> GetItems() {
+        SaveData.instance.Load();
         //Dictionary<InventoryItem.ItemType, int> dic = new Dictionary<InventoryItem.ItemType, int>();
 
         //foreach(InventoryItem item in items) {
@@ -20,6 +21,7 @@ public class Inventory : ScriptableObject {
         //    }
         //}
 
+        Debug.Log(items.Count);
         return items;
     }
 
@@ -32,7 +34,12 @@ public class Inventory : ScriptableObject {
         //item.itemType = type;
         //AddItem(item);
 
+        if (!items.ContainsKey(type)) {
+            items[type] = 0;
+        }
         items[type]++;
+
+        SaveData.instance.Save();
     }
 
     public void AddExtraLife() {
@@ -52,7 +59,12 @@ public class Inventory : ScriptableObject {
         items[item.itemType]--;
     }
     public void RemoveItem(InventoryItem.ItemType item) {
-        //items.Remove(item);
         items[item]--;
+        SaveData.instance.Save();
+    }
+
+    public void RemoveItem(InventoryItem.ItemType item, int amount) {
+        items[item] -= amount;
+        SaveData.instance.Save();
     }
 }
