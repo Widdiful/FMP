@@ -13,6 +13,6 @@
 	$colour = $_POST["colour"];
 	
 	// edit user info
-	$query = "UPDATE players SET name = '$name', avatar = '$avatar', color = '$colour' WHERE id = '$id'";
-	mysqli_query($con, $query) or die("2: Failed to create user");
+	$query = "UPDATE players SET name = '$name', avatar = '$avatar', colour = '$colour' WHERE id = '$id'";
+	mysqli_query($con, $query) or die("2: Failed to edit user");
 ?>

@@ -16,10 +16,19 @@ public class menuManager : MonoBehaviour {
     private Canvas currentCanvas;
     private Button currentButton;
 
-    public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas;
+    public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas, practiseMenuCanvas, editUserCanvas;
     public Button mainButton, practiseButton, shopButton, scoresButton, optionsButton;
 
-	void Start() {
+    public static menuManager instance;
+
+    private void Awake() {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(this);
+    }
+
+    void Start() {
         gm = GameObject.FindObjectOfType<gameManager>();
         bg = GameObject.Find("Timer/Canvas/Background");
         menu = GameObject.Find("Menus/Menus");
@@ -34,6 +43,7 @@ public class menuManager : MonoBehaviour {
 
         if (mainCanvas)
             OpenMain();
+
     }
 
     void Update() {
@@ -99,6 +109,10 @@ public class menuManager : MonoBehaviour {
         InventoryManager.instance.UpdateUI();
     }
 
+    public void ChangePage(int amount) {
+        DatabaseManager.instance.ChangePage(amount);
+    }
+
     public void OpenMain() {
         if (currentCanvas)
             currentCanvas.enabled = false;
@@ -154,6 +168,19 @@ public class menuManager : MonoBehaviour {
         currentCanvas = optionsCanvas;
         optionsButton.interactable = false;
         currentButton = optionsButton;
+    }
+
+    public void OpenPractiseMenu() {
+        currentCanvas = practiseMenuCanvas;
+    }
+
+    public void OpenProfileMenu() {
+        if (currentCanvas)
+            currentCanvas.enabled = false;
+        currentCanvas = editUserCanvas;
+        editUserCanvas.enabled = true;
+
+        DatabaseManager.instance.UpdatePlayerData();
     }
 
 

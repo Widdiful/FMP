@@ -60,7 +60,9 @@ public class gameManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-        if (SaveData.instance) SaveData.instance.Load();
+        if (SaveData.instance) {
+            SaveData.instance.Load();
+        }
     }
 
     void Start() {

@@ -15,6 +15,7 @@ public class MicrogameButton : MonoBehaviour {
     }
 
     public void PlayGame() {
+        menuManager.instance.OpenPractiseMenu();
         //FindObjectOfType<gameManager>().PractiseGame(name);
         FindObjectOfType<PracticeMenu>().SelectGame(game);
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SaveData : MonoBehaviour {
 
@@ -70,10 +71,16 @@ public class SaveData : MonoBehaviour {
             gameManager.instance.score = data.score;
             userID = data.userID;
 
+            GameObject moneyText = GameObject.Find("Shop/MoneyText");
+            if (moneyText) {
+                Text moneyTextText = moneyText.GetComponent<Text>();
+                if (moneyTextText) moneyTextText.text = data.money.ToString();
+            }
+
             if (userID == null) {
                 StartCoroutine(Registration());
             }
-            else {
+            else if (DatabaseManager.instance) {
                 DatabaseManager.instance.UpdateScore(data.score);
             }
         }

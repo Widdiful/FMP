@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DatabaseManager : MonoBehaviour {
@@ -22,6 +23,7 @@ public class DatabaseManager : MonoBehaviour {
     public static DatabaseManager instance;
 
     private void Awake() {
+        
         if (!instance)
             instance = this;
         else
@@ -42,6 +44,10 @@ public class DatabaseManager : MonoBehaviour {
 
     public void UpdatePlayerData() {
         StartCoroutine(GetPlayerData(SaveData.userID));
+    }
+
+    public void EditUserInfo(string newName, int newAvatar, string newColour) {
+        StartCoroutine(EditUser(newName, newAvatar, newColour));
     }
 
     public void UpdateLeaderboard(int pageNum) {
@@ -75,9 +81,35 @@ public class DatabaseManager : MonoBehaviour {
         dbLines = www.text;
         fetchingComplete = true;
 
-        playerInfo.UpdateUI(GetDBLineValue(dbLines, "name"), int.Parse(GetDBLineValue(dbLines, "score")), int.Parse(GetDBLineValue(dbLines, "rank")), int.Parse(GetDBLineValue(dbLines, "avatar")), GetDBLineValue(dbLines, "colour"));
+        string name = GetDBLineValue(dbLines, "name");
+        int score = int.Parse(GetDBLineValue(dbLines, "score"));
+        int rank = int.Parse(GetDBLineValue(dbLines, "rank"));
+        int avatar = int.Parse(GetDBLineValue(dbLines, "avatar"));
+        string colour = GetDBLineValue(dbLines, "colour");
+        playerInfo.UpdateUI(name, score, rank, avatar, colour);
+        ProfileEditor.instance.Initialise(name, avatar, colour);
         pageNumber = 1;
         UpdateLeaderboard(pageNumber);
+    }
+
+    IEnumerator EditUser(string newName, int newAvatar, string newColour) {
+        while (!fetchingComplete) {
+            yield return new WaitForEndOfFrame();
+        }
+
+        fetchingComplete = false;
+
+        WWWForm form = new WWWForm();
+        form.AddField("id", SaveData.userID);
+        form.AddField("name", newName);
+        form.AddField("avatar", newAvatar.ToString());
+        form.AddField("colour", newColour);
+
+        WWW www = new WWW(hostURL + "EditUser.php", form);
+        yield return www;
+
+        dbLines = www.text;
+        fetchingComplete = true;
     }
 
     IEnumerator GetLeaderboardData(int pageNum) {

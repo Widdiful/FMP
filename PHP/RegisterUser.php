@@ -8,7 +8,7 @@
 	}
 	
 	// add new user
-	$query = "INSERT INTO players (name, avatar, colour) VALUES ('New player', '1', '111111')";
+	$query = "INSERT INTO players (name, avatar, colour) VALUES ('New player', '0', 'FFFFFF')";
 	mysqli_query($con, $query) or die("2: Failed to create user");
 	$last_id = mysqli_insert_id($con);
 	echo "ID" . $last_id;
