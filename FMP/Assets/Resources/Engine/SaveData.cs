@@ -10,6 +10,8 @@ public class SaveData : MonoBehaviour {
 
     public static SaveData instance;
 
+    public static string userID;
+
     private void Awake() {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(this);
@@ -17,7 +19,9 @@ public class SaveData : MonoBehaviour {
 
     [System.Serializable]
 	public class Data {
+        public string userID;
         public int money;
+        public int score;
         public Dictionary<string, Game.UnlockedDifficulties> gameList;
         public Dictionary<InventoryItem.ItemType, int> inventory;
     }
@@ -31,6 +35,8 @@ public class SaveData : MonoBehaviour {
         data.gameList = unlocks;
         data.inventory = InventoryManager.instance.inventory.items;
         data.money = gameManager.instance.money;
+        data.score = gameManager.instance.score;
+        data.userID = userID;
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/saveFile.dat");
@@ -61,6 +67,15 @@ public class SaveData : MonoBehaviour {
                 InventoryManager.instance.inventory.items = data.inventory;
             }
             gameManager.instance.money = data.money;
+            gameManager.instance.score = data.score;
+            userID = data.userID;
+
+            if (userID == null) {
+                StartCoroutine(Registration());
+            }
+            else {
+                DatabaseManager.instance.UpdateScore(data.score);
+            }
         }
     }
 
@@ -82,5 +97,19 @@ public class SaveData : MonoBehaviour {
             game.unlocked.relax = true;
         }
         Save();
+    }
+
+    IEnumerator Registration() {
+        WWW www = new WWW(DatabaseManager.hostURL + "RegisterUser.php");
+        yield return www;
+
+        if (www.text.StartsWith("ID")) { // SUCCESSFUL REGISTRATION
+            Debug.Log("Registration successful");
+            userID = www.text.Replace("ID", "");
+            Save();
+        }
+        else {
+            Debug.Log("Registration failed. Error " + www.text);
+        }
     }
 }

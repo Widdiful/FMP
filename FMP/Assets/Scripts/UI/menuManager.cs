@@ -13,6 +13,11 @@ public class menuManager : MonoBehaviour {
     private int targetX;
     private int targetY;
     private bool movingMenu;
+    private Canvas currentCanvas;
+    private Button currentButton;
+
+    public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas;
+    public Button mainButton, practiseButton, shopButton, scoresButton, optionsButton;
 
 	void Start() {
         gm = GameObject.FindObjectOfType<gameManager>();
@@ -26,6 +31,9 @@ public class menuManager : MonoBehaviour {
         Screen.autorotateToPortraitUpsideDown = false;
         Screen.orientation = ScreenOrientation.LandscapeRight;
         Screen.orientation = ScreenOrientation.AutoRotation;
+
+        if (mainCanvas)
+            OpenMain();
     }
 
     void Update() {
@@ -87,23 +95,65 @@ public class menuManager : MonoBehaviour {
         SceneManager.LoadScene("Scenes/Menu");
     }
 
-    public void MenuMain() {
-        loadSettings();
-        MoveMenu(0, 0);
-    }
-
-    public void MenuOptions() {
-        MoveMenu(0, 600);
-    }
-
-    private void MoveMenu(int x, int y) {
-        targetX = x;
-        targetY = y;
-        movingMenu = true;
-    }
-
     public void ReloadInventory() {
         InventoryManager.instance.UpdateUI();
+    }
+
+    public void OpenMain() {
+        if (currentCanvas)
+            currentCanvas.enabled = false;
+        if (currentButton)
+            currentButton.interactable = true;
+        mainCanvas.enabled = true;
+        currentCanvas = mainCanvas;
+        mainButton.interactable = false;
+        currentButton = mainButton;
+    }
+
+    public void OpenPractise() {
+        if (currentCanvas)
+            currentCanvas.enabled = false;
+        if (currentButton)
+            currentButton.interactable = true;
+        practiseCanvas.enabled = true;
+        currentCanvas = practiseCanvas;
+        practiseButton.interactable = false;
+        currentButton = practiseButton;
+    }
+
+    public void OpenShop() {
+        if (currentCanvas)
+            currentCanvas.enabled = false;
+        if (currentButton)
+            currentButton.interactable = true;
+        shopCanvas.enabled = true;
+        currentCanvas = shopCanvas;
+        shopButton.interactable = false;
+        currentButton = shopButton;
+    }
+
+    public void OpenScores() {
+        if (currentCanvas)
+            currentCanvas.enabled = false;
+        if (currentButton)
+            currentButton.interactable = true;
+        scoresCanvas.enabled = true;
+        currentCanvas = scoresCanvas;
+        scoresButton.interactable = false;
+        currentButton = scoresButton;
+
+        DatabaseManager.instance.UpdatePlayerData();
+    }
+
+    public void OpenOptions() {
+        if (currentCanvas)
+            currentCanvas.enabled = false;
+        if (currentButton)
+            currentButton.interactable = true;
+        optionsCanvas.enabled = true;
+        currentCanvas = optionsCanvas;
+        optionsButton.interactable = false;
+        currentButton = optionsButton;
     }
 
 

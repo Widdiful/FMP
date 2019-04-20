@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4846580592316620}
   - component: {fileID: 114718087017039378}
   - component: {fileID: 114321117735259506}
-  - component: {fileID: 114840667566553958}
   m_Layer: 0
   m_Name: gameManager
   m_TagString: Untagged
@@ -67,10 +66,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameList: {fileID: 11400000, guid: f89984f58a546fa448277d662acf558d, type: 2}
   orientationMode: 2
+  previousLandscapeOrientation: 3
   useMotion: 0
   useMic: 0
   useProximity: 0
   money: 0
+  score: 0
   hintScreenDuration: 1
   gameType: 0
   currentDifficulty: 1
@@ -80,20 +81,6 @@ MonoBehaviour:
   livesLeft: 0
   startingGame: 0
   endingGame: 0
+  gameSpeed: 1
+  moneyMultiplier: 1
   challengeLength: 10
---- !u!114 &114840667566553958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1973470622299818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01cbf455abdbff240a52afefbd7400d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 1432f05f7f8fc3043b19e2601989566c, type: 2}
-  inUseContent: {fileID: 0}
-  inventoryContent: {fileID: 0}
-  buttonPrefab: {fileID: 1164826205208016, guid: 1dc41e5ebcd4427478eeceec076e92ed,
-    type: 2}

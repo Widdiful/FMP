@@ -39,24 +39,26 @@ public class Results : MonoBehaviour {
         else if (noCleared >= 5) result.sprite = results[1];
         else if (noCleared >= 0) result.sprite = results[0];
 
-        switch (difficulty) {
-            case gameManager.DifficultyLevels.Relax:
-                money = 0;
-                break;
-            case gameManager.DifficultyLevels.Easy:
-                money = noCleared * 5;
-                break;
-            case gameManager.DifficultyLevels.Normal:
-                money = noCleared * 10;
-                break;
-            case gameManager.DifficultyLevels.Hard:
-                money = noCleared * 15;
-                break;
-            case gameManager.DifficultyLevels.Extra:
-                money = noCleared * 20;
-                break;
-        }
+        //switch (difficulty) {
+        //    case gameManager.DifficultyLevels.Relax:
+        //        money = 0;
+        //        break;
+        //    case gameManager.DifficultyLevels.Easy:
+        //        money = noCleared * 5;
+        //        break;
+        //    case gameManager.DifficultyLevels.Normal:
+        //        money = noCleared * 10;
+        //        break;
+        //    case gameManager.DifficultyLevels.Hard:
+        //        money = noCleared * 15;
+        //        break;
+        //    case gameManager.DifficultyLevels.Extra:
+        //        money = noCleared * 20;
+        //        break;
+        //}
+        money = noCleared * 5;
         gm.money += money;
+        gm.score += money;
         //PlayerPrefs.SetInt("money", gm.money);
         SaveData.instance.Save();
     }

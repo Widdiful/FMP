@@ -34,11 +34,13 @@ public class Timer : MonoBehaviour {
                 if (hintText)
                     hintText.text = gm.currentGame.hint;
 
-                if (gm.currentGame.isLandscape && Screen.width < Screen.height) {
-                    Screen.orientation = gm.previousLandscapeOrientation;
-                }
-                else if (!gm.currentGame.isLandscape && Screen.width > Screen.height) {
-                    Screen.orientation = ScreenOrientation.Portrait;
+                if (gm.currentGame) {
+                    if (gm.currentGame.isLandscape && Screen.width < Screen.height) {
+                        Screen.orientation = gm.previousLandscapeOrientation;
+                    }
+                    else if (!gm.currentGame.isLandscape && Screen.width > Screen.height) {
+                        Screen.orientation = ScreenOrientation.Portrait;
+                    }
                 }
             }
 

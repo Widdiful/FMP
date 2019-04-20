@@ -21,7 +21,6 @@ public class Inventory : ScriptableObject {
         //    }
         //}
 
-        Debug.Log(items.Count);
         return items;
     }
 

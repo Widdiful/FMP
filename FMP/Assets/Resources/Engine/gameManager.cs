@@ -25,6 +25,7 @@ public class gameManager : MonoBehaviour {
     public bool useProximity;
     private GameContainer gc;
     public int money;
+    public int score;
     public float hintScreenDuration = 1;
 
     // Generic variables
@@ -67,18 +68,6 @@ public class gameManager : MonoBehaviour {
     }
 
     void Update() {
-        switch (previousLandscapeOrientation) {
-            case ScreenOrientation.LandscapeLeft:
-                print("left");
-                break;
-            case ScreenOrientation.LandscapeRight:
-                print("right");
-                break;
-            default:
-                print("none");
-                break;
-
-        }
         if (startingGame || endingGame) {
             GameObject bg = GameObject.Find("Timer/Canvas/Background");
             if (bg) {
