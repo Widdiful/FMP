@@ -294,6 +294,7 @@ MonoBehaviour:
   rubsRequired: 10
   rubs: 0
   jumpSpeed: -1
+  maxJumpSpeed: 0
   runOntoScreen: 0
   runLocation: {x: 0.614, y: 0, z: -1.178}
 --- !u!23 &463058470
@@ -544,9 +545,10 @@ MonoBehaviour:
   - {r: 0.27450982, g: 0.16470589, b: 0.11764706, a: 1}
   - {r: 0.7411765, g: 0.627451, b: 0.3137255, a: 1}
   - {r: 0.8666667, g: 0.8666667, b: 0.8666667, a: 1}
-  rubsRequired: 100
+  rubsRequired: 3.5
   rubs: 0
   jumpSpeed: 0
+  maxJumpSpeed: 20
   runOntoScreen: 1
   runLocation: {x: 0, y: 0, z: 0}
 --- !u!114 &638684156
@@ -729,6 +731,7 @@ MonoBehaviour:
   rubsRequired: 10
   rubs: 0
   jumpSpeed: -1
+  maxJumpSpeed: 0
   runOntoScreen: 0
   runLocation: {x: -0.812, y: 0, z: 0.659}
 --- !u!23 &694214266
@@ -849,6 +852,7 @@ MonoBehaviour:
   rubsRequired: 10
   rubs: 0
   jumpSpeed: -1
+  maxJumpSpeed: 0
   runOntoScreen: 0
   runLocation: {x: 0.563, y: 0, z: 0.366}
 --- !u!23 &973145048
@@ -969,6 +973,7 @@ MonoBehaviour:
   rubsRequired: 10
   rubs: 0
   jumpSpeed: -1
+  maxJumpSpeed: 0
   runOntoScreen: 0
   runLocation: {x: 1.565, y: 0, z: -0.706}
 --- !u!23 &1418636921

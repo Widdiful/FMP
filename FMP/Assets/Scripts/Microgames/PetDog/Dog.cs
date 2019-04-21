@@ -9,13 +9,14 @@ public class Dog : MonoBehaviour {
     public float rubs;
     private float rubTime;
     public float jumpSpeed = 2;
+    public float maxJumpSpeed;
     private bool completed;
     public bool runOntoScreen;
     public Vector3 runLocation;
 
     void Start() {
         if (jumpSpeed == -1) {
-            jumpSpeed = Random.Range(5.0f, 15.0f);
+            jumpSpeed = Random.Range(5.0f, 20.0f);
         }
         GetComponentInChildren<Renderer>().material.color = colours[Random.Range(0, colours.Count)];
         if (Random.Range(0, 2) == 0) {
@@ -32,12 +33,21 @@ public class Dog : MonoBehaviour {
         if (runOntoScreen) {
             transform.position = Vector3.Lerp(transform.position, runLocation, 0.2f);
         }
+
+        if (Input.touchCount > 0) {
+            if (Input.touches[0].phase == TouchPhase.Moved) {
+                RaycastHit hit;
+                if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Camera.main.transform.forward, out hit) && hit.transform == transform) {
+                    Rub();
+                }
+            }
+        }
     }
 
-    public void OnTapRub() {
+    public void Rub() {
         if (!completed) {
-            jumpSpeed += Time.deltaTime * 2;
             rubs += Time.deltaTime;
+            jumpSpeed = (rubs / rubsRequired) * maxJumpSpeed;
         }
         if (rubs >= rubsRequired && !completed) {
             completed = true;

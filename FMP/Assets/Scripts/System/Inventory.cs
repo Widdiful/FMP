@@ -9,7 +9,7 @@ public class Inventory : ScriptableObject {
     public Dictionary<InventoryItem.ItemType, int> items = new Dictionary<InventoryItem.ItemType, int>();
 
     public Dictionary<InventoryItem.ItemType, int> GetItems() {
-        SaveData.instance.Load();
+        //SaveData.instance.Load();
         //Dictionary<InventoryItem.ItemType, int> dic = new Dictionary<InventoryItem.ItemType, int>();
 
         //foreach(InventoryItem item in items) {

@@ -6,6 +6,6 @@ public class WaterDroplet : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.name == "DeathZone")
-            Destroy(gameObject);
+            gameObject.SetActive(false);
     }
 }

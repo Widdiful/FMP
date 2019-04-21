@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DatabaseManager : MonoBehaviour {
 
-    public static string hostURL = "widdiful.co.uk/php/widgamesCollection/";
+    public static string hostURL = "http://www.widdiful.co.uk/php/widgamesCollection/";
 
     public GameObject leaderboardItem;
     public Transform leaderboardTransform;
@@ -23,7 +23,6 @@ public class DatabaseManager : MonoBehaviour {
     public static DatabaseManager instance;
 
     private void Awake() {
-        
         if (!instance)
             instance = this;
         else

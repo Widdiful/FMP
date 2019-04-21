@@ -259,9 +259,10 @@ GameObject:
   - component: {fileID: 327614339}
   - component: {fileID: 327614338}
   - component: {fileID: 327614340}
+  - component: {fileID: 327614341}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,6 +435,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &327614341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327614335}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000002, y: 3, z: 9.999999}
+  m_Center: {x: 2.2737368e-13, y: -0.0000019073486, z: 0}
 --- !u!1 &717484787
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,9 +517,10 @@ GameObject:
   - component: {fileID: 904299134}
   - component: {fileID: 904299133}
   - component: {fileID: 904299135}
+  - component: {fileID: 904299136}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -679,6 +693,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &904299136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 904299130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000002, y: 3, z: 10}
+  m_Center: {x: 4.3655746e-11, y: 0, z: -0.00000023841858}
 --- !u!1 &930913128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,9 +1227,10 @@ GameObject:
   - component: {fileID: 1618005674}
   - component: {fileID: 1618005673}
   - component: {fileID: 1618005675}
+  - component: {fileID: 1618005676}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,6 +1403,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1618005676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1618005670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000005, y: 3, z: 9.999999}
+  m_Center: {x: -0.0000038146973, y: -0.0000038146973, z: 0}
 --- !u!1 &1692748651
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,9 +1427,10 @@ GameObject:
   - component: {fileID: 1692748655}
   - component: {fileID: 1692748654}
   - component: {fileID: 1692748656}
+  - component: {fileID: 1692748657}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1563,3 +1603,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1692748657
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692748651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.000002, y: 3, z: 9.999999}
+  m_Center: {x: -0.0000038146973, y: -0.0000009536743, z: 0.00000047683716}

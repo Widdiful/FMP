@@ -156,6 +156,7 @@ public class menuManager : MonoBehaviour {
         scoresButton.interactable = false;
         currentButton = scoresButton;
 
+        DatabaseManager.instance.UpdateScore(gameManager.instance.score);
         DatabaseManager.instance.UpdatePlayerData();
     }
 

@@ -77,12 +77,12 @@ public class SaveData : MonoBehaviour {
                 if (moneyTextText) moneyTextText.text = data.money.ToString();
             }
 
-            if (userID == null) {
-                StartCoroutine(Registration());
-            }
-            else if (DatabaseManager.instance) {
+            if (DatabaseManager.instance) {
                 DatabaseManager.instance.UpdateScore(data.score);
             }
+        }
+        if (userID == null || userID == "") {
+            StartCoroutine(Registration());
         }
     }
 
@@ -117,6 +117,12 @@ public class SaveData : MonoBehaviour {
         }
         else {
             Debug.Log("Registration failed. Error " + www.text);
+            var file = File.CreateText(Application.persistentDataPath + "/log.txt");
+            file.WriteLine(www.text);
+            file.WriteLine("end of log");
+            file.WriteLine(www.error);
+            file.WriteLine("end of error");
+            file.Close();
         }
     }
 }

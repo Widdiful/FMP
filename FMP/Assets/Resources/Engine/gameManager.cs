@@ -59,13 +59,12 @@ public class gameManager : MonoBehaviour {
         else if (instance != this) Destroy(this);
 
         DontDestroyOnLoad(gameObject);
-
-        if (SaveData.instance) {
-            SaveData.instance.Load();
-        }
     }
 
     void Start() {
+        if (SaveData.instance) {
+            SaveData.instance.Load();
+        }
         gc = GameContainer.Load(path);
     }
 
