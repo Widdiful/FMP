@@ -47,6 +47,10 @@ public class InventoryManager : MonoBehaviour {
             inventoryItems[item]++;
             inUseItems[item]--;
 
+            if (inUseItems[item] <= 0) {
+                inUseItems.Remove(item);
+            }
+
             UpdateUI();
         }
     }

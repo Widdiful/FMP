@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4846580592316620}
   - component: {fileID: 114718087017039378}
   - component: {fileID: 114321117735259506}
-  - component: {fileID: 114497147219313894}
   m_Layer: 0
   m_Name: gameManager
   m_TagString: Untagged
@@ -54,35 +53,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameList: {fileID: 11400000, guid: f89984f58a546fa448277d662acf558d, type: 2}
---- !u!114 &114497147219313894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1973470622299818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b754c41422fd59a4c9194ba2a97cd6ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaderboardItem: {fileID: 1270820735216530, guid: d3ceec58c8d8c654cbe751e6b06d6cdf,
-    type: 2}
-  leaderboardTransform: {fileID: 0}
-  playerInfo: {fileID: 0}
-  pageNumber: 1
-  avatars:
-  - {fileID: 21300000, guid: d298becaf4b808a45bd6c08db683f148, type: 3}
-  - {fileID: 21300000, guid: 6e511d78c1133504c8407ff4d2da6d72, type: 3}
-  - {fileID: 21300004, guid: 6e511d78c1133504c8407ff4d2da6d72, type: 3}
-  - {fileID: 21300000, guid: 753b7b437ee18724398eb4297dbf3ead, type: 3}
-  - {fileID: 21300002, guid: 753b7b437ee18724398eb4297dbf3ead, type: 3}
-  - {fileID: 21300004, guid: 753b7b437ee18724398eb4297dbf3ead, type: 3}
-  - {fileID: 21300000, guid: efcfb8e7eb37c7649bcfbc371f05945f, type: 3}
-  - {fileID: 21300002, guid: efcfb8e7eb37c7649bcfbc371f05945f, type: 3}
-  - {fileID: 21300000, guid: 75e9b69ed12179a458a668393a63a2e1, type: 3}
-  - {fileID: 21300000, guid: 892f346e4dc3858428fe3cab47546659, type: 3}
-  - {fileID: 21300000, guid: 97785a4db10cd4446a29289722a9b6c0, type: 3}
-  dbLines: 
 --- !u!114 &114718087017039378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -103,6 +73,7 @@ MonoBehaviour:
   money: 0
   score: 0
   hintScreenDuration: 1
+  enableHints: 1
   gameType: 0
   currentDifficulty: 1
   totalLives: 4

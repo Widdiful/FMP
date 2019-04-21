@@ -27,6 +27,7 @@ public class gameManager : MonoBehaviour {
     public int money;
     public int score;
     public float hintScreenDuration = 1;
+    public bool enableHints;
 
     // Generic variables
     public GameTypes gameType;

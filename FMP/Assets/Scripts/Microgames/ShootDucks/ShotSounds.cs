@@ -5,15 +5,20 @@ using UnityEngine;
 public class ShotSounds : MonoBehaviour {
 
     AudioSource audioSource;
+    float audioCountdown;
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
+        audioCountdown -= Time.deltaTime;
         if (Input.touchCount > 0) {
             foreach (Touch touch in Input.touches) {
-                audioSource.Play();
+                if (audioCountdown <= 0) {
+                    audioSource.Play();
+                    audioCountdown = 0.1f;
+                }
             }
         }
     }

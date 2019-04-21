@@ -25,7 +25,7 @@ public class PickUpSushi : MonoBehaviour {
             timer += Time.deltaTime * moveSpeed;
             transform.position = new Vector3(Mathf.Sin(timer) * moveSize, transform.position.y, transform.position.z);
 
-            if (Input.touchCount > 0 && !complete) {
+            if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began && !complete) {
                 movingDown = true;
             }
         }

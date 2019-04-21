@@ -10,14 +10,14 @@ public class menuManager : MonoBehaviour {
     private GameObject bg;
     private GameObject menu;
     private bool startingGame;
-    private int targetX;
-    private int targetY;
-    private bool movingMenu;
     private Canvas currentCanvas;
     private Button currentButton;
 
     public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas, practiseMenuCanvas, editUserCanvas;
     public Button mainButton, practiseButton, shopButton, scoresButton, optionsButton;
+
+    public Dropdown orientationDropdown;
+    public Toggle motionToggle, micToggle, proxToggle, hintToggle;
 
     public static menuManager instance;
 
@@ -55,10 +55,6 @@ public class menuManager : MonoBehaviour {
                 gm.StartGame();
             }
         }
-        if (movingMenu && menu) {
-            menu.GetComponent<RectTransform>().offsetMin = Vector2.Lerp(menu.GetComponent<RectTransform>().offsetMin, new Vector2(targetX, targetY), 0.1f);
-            menu.GetComponent<RectTransform>().offsetMax = Vector2.Lerp(menu.GetComponent<RectTransform>().offsetMax, new Vector2(-targetX, -targetY), 0.1f);
-        }
     }
 
     private void loadSettings() {
@@ -66,20 +62,23 @@ public class menuManager : MonoBehaviour {
         gm.useMotion = intToBool(PlayerPrefs.GetInt("motion"));
         gm.useMic = intToBool(PlayerPrefs.GetInt("mic"));
         gm.useProximity = intToBool(PlayerPrefs.GetInt("prox"));
+        gm.enableHints = intToBool(PlayerPrefs.GetInt("hints"));
         //gm.money = PlayerPrefs.GetInt("money");
 
-        GameObject.Find("Orientations/Dropdown").GetComponent<Dropdown>().value = PlayerPrefs.GetInt("orientation");
-        GameObject.Find("Sensors/Motion").GetComponent<Toggle>().isOn = gm.useMotion;
-        GameObject.Find("Sensors/Mic").GetComponent<Toggle>().isOn = gm.useMic;
-        GameObject.Find("Sensors/Prox").GetComponent<Toggle>().isOn = gm.useProximity;
+        orientationDropdown.value = PlayerPrefs.GetInt("orientation");
+        motionToggle.isOn = gm.useMotion;
+        micToggle.isOn = gm.useMic;
+        proxToggle.isOn = gm.useProximity;
+        hintToggle.isOn = gm.enableHints;
         GameObject.Find("Shop/MoneyText").GetComponent<Text>().text = gm.money.ToString();
     }
 
     public void saveSettings() {
-        PlayerPrefs.SetInt("orientation", GameObject.Find("Orientations/Dropdown").GetComponent<Dropdown>().value);
-        PlayerPrefs.SetInt("motion", Convert.ToInt32(GameObject.Find("Sensors/Motion").GetComponent<Toggle>().isOn));
-        PlayerPrefs.SetInt("mic", Convert.ToInt32(GameObject.Find("Sensors/Mic").GetComponent<Toggle>().isOn));
-        PlayerPrefs.SetInt("prox", Convert.ToInt32(GameObject.Find("Sensors/Prox").GetComponent<Toggle>().isOn));
+        PlayerPrefs.SetInt("orientation", orientationDropdown.value);
+        PlayerPrefs.SetInt("motion", Convert.ToInt32(motionToggle.isOn));
+        PlayerPrefs.SetInt("mic", Convert.ToInt32(micToggle.isOn));
+        PlayerPrefs.SetInt("prox", Convert.ToInt32(proxToggle.isOn));
+        PlayerPrefs.SetInt("hints", Convert.ToInt32(hintToggle.isOn));
         loadSettings();
         //MenuMain();
     }
