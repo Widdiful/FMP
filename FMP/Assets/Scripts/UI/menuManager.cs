@@ -63,6 +63,7 @@ public class menuManager : MonoBehaviour {
         gm.useMic = intToBool(PlayerPrefs.GetInt("mic"));
         gm.useProximity = intToBool(PlayerPrefs.GetInt("prox"));
         gm.enableHints = intToBool(PlayerPrefs.GetInt("hints"));
+        gm.micSensitivity = PlayerPrefs.GetFloat("micSensitivity");
         //gm.money = PlayerPrefs.GetInt("money");
 
         orientationDropdown.value = PlayerPrefs.GetInt("orientation");
@@ -104,6 +105,11 @@ public class menuManager : MonoBehaviour {
         SceneManager.LoadScene("Scenes/Menu");
     }
 
+    public void OpenInputTest() {
+        startingGame = false;
+        SceneManager.LoadScene("Scenes/TestLevel");
+    }
+
     public void ReloadInventory() {
         InventoryManager.instance.UpdateUI();
     }
@@ -121,6 +127,8 @@ public class menuManager : MonoBehaviour {
         currentCanvas = mainCanvas;
         mainButton.interactable = false;
         currentButton = mainButton;
+
+        InventoryManager.instance.UpdateUI();
     }
 
     public void OpenPractise() {

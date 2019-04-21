@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: 38aa2e61c115c0a498884eb3d755cb9c
   - enabled: 1
+    path: Assets/Scenes/TestLevel.unity
+    guid: 87fd8e4ef6845d042b5f39ca39e048c3
+  - enabled: 1
     path: Assets/Scenes/Motion/RotateHorizontal.unity
     guid: 1af2cba293d39304b8d15109a9d68b0d
   - enabled: 1

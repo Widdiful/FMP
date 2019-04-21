@@ -39,7 +39,7 @@ public class VocalTraining : MonoBehaviour {
                 foreach (Squish squish in squishes) {
                     squish.Pulse(new Vector2(1, -1));
                 }
-                audioSource.Stop();
+                audioSource.Pause();
             }
             else
                 touchPhase = 1;

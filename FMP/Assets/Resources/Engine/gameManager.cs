@@ -28,6 +28,7 @@ public class gameManager : MonoBehaviour {
     public int score;
     public float hintScreenDuration = 1;
     public bool enableHints;
+    public float micSensitivity = 1;
 
     // Generic variables
     public GameTypes gameType;

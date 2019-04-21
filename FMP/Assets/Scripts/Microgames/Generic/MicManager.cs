@@ -5,6 +5,7 @@ using UnityEngine;
 public class MicManager : MonoBehaviour {
 
     public float levelMax;
+    public float levelMaxRaw;
     public bool enablePlayback;
 
     private string deviceName;
@@ -42,6 +43,9 @@ public class MicManager : MonoBehaviour {
             }
         }
         levelMax = tempMax;
+        levelMaxRaw = levelMax;
+        if (gameManager.instance)
+            levelMax /= gameManager.instance.micSensitivity;
 
         if (source && !source.isPlaying && enablePlayback) {
             source.clip = recording;

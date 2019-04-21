@@ -27,8 +27,6 @@ public class InventoryManager : MonoBehaviour {
 
     private void Start() {
         inventoryItems = inventory.GetItems();
-
-        UpdateUI();
     }
 
     public void AddItem(InventoryItem.ItemType item) {
