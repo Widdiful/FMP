@@ -29,8 +29,11 @@ public class Game : ScriptableObject {
 
     public UnlockedDifficulties unlocked;
 
+    public int unlockCost;
+
     public Sprite icon;
     public Sprite previewImage;
+    public Sprite lockedImage;
 
     public bool IsUnlocked() {
         return unlocked.easy || unlocked.normal || unlocked.hard || unlocked.relax;

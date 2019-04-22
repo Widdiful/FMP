@@ -7,16 +7,25 @@ public class MicrogameButton : MonoBehaviour {
 
     public Game game;
     public Image icon;
+    public Image lockSprite;
 
     void Start() {
         //transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>("GameIcons/" + game.name);
-        icon.sprite = game.icon;
-        //GetComponent<Button>().interactable = game.IsUnlocked();
+        if (!game.IsUnlocked()) {
+            lockSprite.enabled = true;
+            icon.sprite = game.lockedImage;
+        }
+        else {
+            icon.sprite = game.icon;
+        }
     }
 
     public void PlayGame() {
         menuManager.instance.OpenPractiseMenu();
         //FindObjectOfType<gameManager>().PractiseGame(name);
-        FindObjectOfType<PracticeMenu>().SelectGame(game);
+        if (game.IsUnlocked())
+            FindObjectOfType<PracticeMenu>().SelectGame(game);
+        else
+            menuManager.instance.BuyGame(game);
     }
 }

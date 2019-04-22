@@ -13,8 +13,9 @@ public class menuManager : MonoBehaviour {
     private Canvas currentCanvas;
     private Button currentButton;
 
-    public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas, practiseMenuCanvas, editUserCanvas;
+    public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas, practiseMenuCanvas, editUserCanvas, buyGameCanvas;
     public Button mainButton, practiseButton, shopButton, scoresButton, optionsButton;
+    public BuyGameMenu buyGameMenu;
 
     public Dropdown orientationDropdown;
     public Toggle motionToggle, micToggle, proxToggle, hintToggle;
@@ -77,7 +78,7 @@ public class menuManager : MonoBehaviour {
         micToggle.isOn = gm.useMic;
         proxToggle.isOn = gm.useProximity;
         hintToggle.isOn = gm.enableHints;
-        GameObject.Find("Shop/MoneyText").GetComponent<Text>().text = gm.money.ToString();
+        GameObject.Find("Money/MoneyText").GetComponent<Text>().text = gm.money.ToString();
     }
 
     public void saveSettings() {
@@ -122,6 +123,15 @@ public class menuManager : MonoBehaviour {
         DatabaseManager.instance.ChangePage(amount);
     }
 
+    public void BuyGame(Game game) {
+        if (currentCanvas)
+            currentCanvas.enabled = false;
+
+        buyGameCanvas.enabled = true;
+        currentCanvas = buyGameCanvas;
+        buyGameMenu.OpenGame(game);
+    }
+
     public void OpenMain() {
         if (currentCanvas)
             currentCanvas.enabled = false;
@@ -144,6 +154,8 @@ public class menuManager : MonoBehaviour {
         currentCanvas = practiseCanvas;
         practiseButton.interactable = false;
         currentButton = practiseButton;
+
+        GameSelect.instance.UpdateMenu();
     }
 
     public void OpenShop() {

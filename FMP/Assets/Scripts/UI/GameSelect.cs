@@ -9,15 +9,24 @@ public class GameSelect : MonoBehaviour {
     public GameObject microgameButton;
     //private GameContainer gc;
 
-	void Start () {
+    public static GameSelect instance;
+
+    private void Awake() {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(this);
+    }
+
+    void Start () {
         //gc = GameContainer.Load("Engine/Microgames");
-        UpdateMenu();
+        //UpdateMenu();
 	}
 
-    private void UpdateMenu() {
+    public void UpdateMenu() {
         // Clears list
         foreach(Transform child in transform) {
-            Destroy(child);
+            Destroy(child.gameObject);
         }
 
         foreach(Game game in gameList.GetAllGames()) {

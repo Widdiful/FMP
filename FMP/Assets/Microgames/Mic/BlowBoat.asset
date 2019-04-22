@@ -25,5 +25,7 @@ MonoBehaviour:
     normal: 0
     hard: 0
     relax: 0
+  unlockCost: 50
   icon: {fileID: 21300000, guid: 7ff081c2a20bcc64ea6ac2199be3041a, type: 3}
   previewImage: {fileID: 0}
+  lockedImage: {fileID: 21300000, guid: f7c961684f1071f43a567f16796f9267, type: 3}
