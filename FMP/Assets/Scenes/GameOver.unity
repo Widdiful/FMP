@@ -405,6 +405,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d929e0dbd8f44e34686f6a4c76e05428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCanvas: {fileID: 0}
+  practiseCanvas: {fileID: 0}
+  shopCanvas: {fileID: 0}
+  scoresCanvas: {fileID: 0}
+  optionsCanvas: {fileID: 0}
+  practiseMenuCanvas: {fileID: 0}
+  editUserCanvas: {fileID: 0}
+  mainButton: {fileID: 0}
+  practiseButton: {fileID: 0}
+  shopButton: {fileID: 0}
+  scoresButton: {fileID: 0}
+  optionsButton: {fileID: 0}
+  orientationDropdown: {fileID: 0}
+  motionToggle: {fileID: 0}
+  micToggle: {fileID: 0}
+  proxToggle: {fileID: 0}
+  hintToggle: {fileID: 0}
 --- !u!4 &461434502
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,6 +1298,21 @@ Prefab:
     - target: {fileID: 224929211187069516, guid: 60341c54c7bca3645beac9ec25249a2f,
         type: 2}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114933009189600872, guid: 60341c54c7bca3645beac9ec25249a2f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224529781444985332, guid: 60341c54c7bca3645beac9ec25249a2f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114068968833840930, guid: 60341c54c7bca3645beac9ec25249a2f,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

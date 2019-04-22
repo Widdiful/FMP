@@ -60,4 +60,8 @@ public class TestRoom : MonoBehaviour {
     private void OnDestroy() {
         Physics2D.gravity = defaultGravity;
     }
+
+    public void ReturnToMenu() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/Menu");
+    }
 }

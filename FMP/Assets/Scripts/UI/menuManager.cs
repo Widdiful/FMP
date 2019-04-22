@@ -26,6 +26,12 @@ public class menuManager : MonoBehaviour {
             instance = this;
         else
             Destroy(this);
+
+        Screen.autorotateToLandscapeLeft = true;
+        Screen.autorotateToLandscapeRight = true;
+        Screen.autorotateToPortrait = true;
+        Screen.autorotateToPortraitUpsideDown = false;
+        Screen.orientation = ScreenOrientation.AutoRotation;
     }
 
     void Start() {
@@ -59,11 +65,11 @@ public class menuManager : MonoBehaviour {
 
     private void loadSettings() {
         gm.orientationMode = (gameManager.OrientationModes) PlayerPrefs.GetInt("orientation");
-        gm.useMotion = intToBool(PlayerPrefs.GetInt("motion"));
-        gm.useMic = intToBool(PlayerPrefs.GetInt("mic"));
-        gm.useProximity = intToBool(PlayerPrefs.GetInt("prox"));
-        gm.enableHints = intToBool(PlayerPrefs.GetInt("hints"));
-        gm.micSensitivity = PlayerPrefs.GetFloat("micSensitivity");
+        gm.useMotion = intToBool(PlayerPrefs.GetInt("motion", 1));
+        gm.useMic = intToBool(PlayerPrefs.GetInt("mic", 1));
+        gm.useProximity = intToBool(PlayerPrefs.GetInt("prox", 1));
+        gm.enableHints = intToBool(PlayerPrefs.GetInt("hints", 1));
+        gm.micSensitivity = PlayerPrefs.GetFloat("micSensitivity", 1);
         //gm.money = PlayerPrefs.GetInt("money");
 
         orientationDropdown.value = PlayerPrefs.GetInt("orientation");
@@ -86,8 +92,6 @@ public class menuManager : MonoBehaviour {
 
     public void StartGame() {
         startingGame = true;
-        if (Screen.orientation == ScreenOrientation.LandscapeLeft || Screen.orientation == ScreenOrientation.LandscapeRight)
-            gameManager.instance.previousLandscapeOrientation = Screen.orientation;
     }
 
     public void StartEndless() {

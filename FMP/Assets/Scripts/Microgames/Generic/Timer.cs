@@ -16,13 +16,17 @@ public class Timer : MonoBehaviour {
     private Text countdown;
     private Text lives;
     private Text hintText;
-    private float timerWidth = 600;
+    private float timerWidth = 512;
     private string prevTime;
     public bool active = true;
 
+    public Canvas pauseMenu, quitMenu;
+    public Text streakText;
+    public Button pauseButton;
+
 	void Start () {
         timer = seconds;
-        gm = GameObject.FindObjectOfType<gameManager>();
+        gm = gameManager.instance;
 
         if (GameObject.Find("TimerBar")) timerBar = GameObject.Find("TimerBar").GetComponent<RectTransform>();
         if (GameObject.Find("Countdown")) countdown = GameObject.Find("Countdown").GetComponent<Text>();
@@ -35,8 +39,13 @@ public class Timer : MonoBehaviour {
                     hintText.text = gm.currentGame.hint;
 
                 if (gm.currentGame) {
-                    if (gm.currentGame.isLandscape && Screen.width < Screen.height) {
-                        Screen.orientation = gm.previousLandscapeOrientation;
+                    if (gm.currentGame.isLandscape) {
+                        if (Screen.width < Screen.height) {
+                            Screen.orientation = gm.previousLandscapeOrientation;
+                        }
+                        else {
+                            gm.previousLandscapeOrientation = Screen.orientation;
+                        }
                     }
                     else if (!gm.currentGame.isLandscape && Screen.width > Screen.height) {
                         Screen.orientation = ScreenOrientation.Portrait;
@@ -50,6 +59,13 @@ public class Timer : MonoBehaviour {
                         trans.gameObject.SetActive(false);
                         break;
                     }
+                }
+            }
+
+            if (lives) {
+                lives.text = gm.livesLeft.ToString();
+                if (lives.text == "1") {
+                    lives.color = Color.red;
                 }
             }
         }
@@ -81,13 +97,6 @@ public class Timer : MonoBehaviour {
                     prevTime = timer.ToString("#");
                 }
 
-                if (lives) {
-                    lives.text = gm.livesLeft.ToString();
-                    if (lives.text == "1") {
-                        lives.color = Color.red;
-                    }
-                }
-
                 if (timer <= 0) {
                     active = false;
                     if (winOnTimeOver) gm.CompleteGame();
@@ -96,4 +105,36 @@ public class Timer : MonoBehaviour {
             }
         }
 	}
+
+    public void Pause() {
+        Time.timeScale = 0;
+        pauseMenu.enabled = true;
+        pauseButton.interactable = false;
+        streakText.text = "Current streak: " + gm.gamesCompleted.Count;
+    }
+
+    public void Resume() {
+        Time.timeScale = gm.gameSpeed;
+        pauseMenu.enabled = false;
+        pauseButton.interactable = true;
+    }
+
+    public void QuitMenu() {
+        pauseMenu.enabled = false;
+        quitMenu.enabled = true;
+    }
+
+    public void DontQuit() {
+        quitMenu.enabled = false;
+        pauseMenu.enabled = true;
+    }
+
+    public void QuitGame() {
+        quitMenu.enabled = false;
+        Time.timeScale = gm.gameSpeed;
+        if (gm.gameType == gameManager.GameTypes.Practice)
+            gm.gameType = gameManager.GameTypes.Endless;
+        gm.livesLeft = 0;
+        gm.FailGame();
+    }
 }

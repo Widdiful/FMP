@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 87983019}
   - component: {fileID: 87983018}
   m_Layer: 0
-  m_Name: Calibrate
+  m_Name: Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1197730351}
+      - m_Target: {fileID: 1859790791}
         m_MethodName: ReturnToMenu
         m_Mode: 1
         m_Arguments:
@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97c5f81f05383c41a83eae8c8c787b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: -90
+  rotateSpeed: 90
   moveSpeed: 0
   DontChangePosition: 1
 --- !u!1 &855651854
@@ -3183,7 +3183,6 @@ GameObject:
   - component: {fileID: 1197730349}
   - component: {fileID: 1197730348}
   - component: {fileID: 1197730350}
-  - component: {fileID: 1197730351}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3291,34 +3290,6 @@ MonoBehaviour:
   minX: -27
   maxX: 27
   useOrthographic: 1
---- !u!114 &1197730351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1197730343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d929e0dbd8f44e34686f6a4c76e05428, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCanvas: {fileID: 0}
-  practiseCanvas: {fileID: 0}
-  shopCanvas: {fileID: 0}
-  scoresCanvas: {fileID: 0}
-  optionsCanvas: {fileID: 0}
-  practiseMenuCanvas: {fileID: 0}
-  editUserCanvas: {fileID: 0}
-  mainButton: {fileID: 0}
-  practiseButton: {fileID: 0}
-  shopButton: {fileID: 0}
-  scoresButton: {fileID: 0}
-  optionsButton: {fileID: 0}
-  orientationDropdown: {fileID: 0}
-  motionToggle: {fileID: 0}
-  micToggle: {fileID: 0}
-  proxToggle: {fileID: 0}
-  hintToggle: {fileID: 0}
 --- !u!1001 &1198648935
 Prefab:
   m_ObjectHideFlags: 0
@@ -4061,7 +4032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e97c5f81f05383c41a83eae8c8c787b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: -90
+  rotateSpeed: 90
   moveSpeed: 0
   DontChangePosition: 1
 --- !u!212 &1450173147

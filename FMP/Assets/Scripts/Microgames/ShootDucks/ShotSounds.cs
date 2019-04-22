@@ -15,7 +15,7 @@ public class ShotSounds : MonoBehaviour {
         audioCountdown -= Time.deltaTime;
         if (Input.touchCount > 0) {
             foreach (Touch touch in Input.touches) {
-                if (audioCountdown <= 0) {
+                if (touch.phase == TouchPhase.Began && audioCountdown <= 0) {
                     audioSource.Play();
                     audioCountdown = 0.2f;
                 }

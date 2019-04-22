@@ -78,7 +78,8 @@ public class gameManager : MonoBehaviour {
                     startTimer += Time.unscaledDeltaTime;
                     if (startTimer >= hintScreenDuration) {
                         bg.transform.localPosition = Vector3.Lerp(bg.transform.localPosition, new Vector3(1600, 0, 0), 0.2f);
-                        Time.timeScale = gameSpeed;
+                        if (Time.timeScale != 0)
+                            Time.timeScale = gameSpeed;
                         if (1600 - bg.transform.localPosition.x <= 0.01) {
                             bg.transform.localPosition = new Vector3(1600, 0, 0);
                             startingGame = false;
@@ -110,7 +111,7 @@ public class gameManager : MonoBehaviour {
                             }
                             else if (failedGame) {
                                 failedGame = false;
-                                if (livesLeft > 0) {
+                                if (livesLeft > 0 || gameType == GameTypes.Practice) {
                                     LoadGame();
                                 }
                                 else {
@@ -301,7 +302,17 @@ public class gameManager : MonoBehaviour {
         livesLeft = 1;
         gamesCompleted.Clear();
         currentGame = gameList.GetGame(gameName);
-        SceneManager.LoadScene("Scenes/" + gameName);
+        if (currentGame.isLandscape && Screen.width < Screen.height) {
+            SceneManager.LoadScene("Scenes/Motion/RotateHorizontal");
+            currentLandscape = true;
+        }
+        else if (!currentGame.isLandscape && Screen.width > Screen.height) {
+            SceneManager.LoadScene("Scenes/Motion/RotateVertical");
+            currentLandscape = false;
+        }
+        else {
+            SceneManager.LoadScene("Scenes/" + gameName);
+        }
         startingGame = true;
         currentLandscape = currentGame.isLandscape;
         Time.timeScale = 0.0001f;

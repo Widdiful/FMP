@@ -972,7 +972,7 @@ MonoBehaviour:
   noteHolder: {fileID: 1145018686}
   notePrefab: {fileID: 796156728}
   track: {fileID: 712342112}
-  allowedDistance: 100
+  allowedDistance: 20
   singers:
   - {fileID: 289714146}
   - {fileID: 587098154}
