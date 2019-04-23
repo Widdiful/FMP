@@ -21,9 +21,6 @@ public class Spawner : MonoBehaviour {
             newDroplet.SetActive(false);
             droplets.Add(newDroplet);
         }
-
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 20;
     }
 
     void Update() {

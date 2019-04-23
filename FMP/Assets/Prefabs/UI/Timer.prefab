@@ -1276,10 +1276,12 @@ MonoBehaviour:
   timer: 0
   font1: {fileID: 12800000, guid: f4a817d4485738a439ec737875f570b5, type: 3}
   font2: {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b, type: 3}
+  timerBar: {fileID: 224387285923630390}
   active: 1
   pauseMenu: {fileID: 223835348364244844}
   quitMenu: {fileID: 223278442356385588}
   streakText: {fileID: 114431211865308368}
+  countdown: {fileID: 114181601513444180}
   pauseButton: {fileID: 114025837646894846}
 --- !u!114 &114431211865308368
 MonoBehaviour:

@@ -71,10 +71,16 @@ public class SaveData : MonoBehaviour {
             gameManager.instance.score = data.score;
             userID = data.userID;
 
-            GameObject moneyText = GameObject.Find("Shop/MoneyText");
+            GameObject moneyText = GameObject.Find("Money/MoneyText");
             if (moneyText) {
                 Text moneyTextText = moneyText.GetComponent<Text>();
                 if (moneyTextText) moneyTextText.text = data.money.ToString();
+            }
+
+            GameObject pointsText = GameObject.Find("Points/PointsText");
+            if (moneyText) {
+                Text pointsTextText = pointsText.GetComponent<Text>();
+                if (pointsTextText) pointsTextText.text = data.score.ToString();
             }
 
             if (DatabaseManager.instance) {

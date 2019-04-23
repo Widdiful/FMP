@@ -56,7 +56,7 @@ public class Results : MonoBehaviour {
         //        money = noCleared * 20;
         //        break;
         //}
-        money = noCleared * 5;
+        money = gm.pointsEarned;
         gm.money += (int)((float)money * gm.moneyMultiplier);
         gm.score += money;
         //PlayerPrefs.SetInt("money", gm.money);

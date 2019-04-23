@@ -37,7 +37,7 @@ public class BuyGameMenu : MonoBehaviour {
         if (newGame.useProximity) proxIconImage.sprite = proxIcon;
         else proxIconImage.sprite = blankIcon;
 
-        if (gameManager.instance.money > game.unlockCost) {
+        if (gameManager.instance.money < game.unlockCost) {
             buyButton.interactable = false;
         }
     }

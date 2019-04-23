@@ -11,38 +11,56 @@ public class HintScreen : MonoBehaviour {
     public float speed = 10;
     public Transform hintText;
     public Transform inputPanel;
+    public Text hintTextText, livesText;
 
     public Sprite tapIcon;
     public Sprite motionIcon;
     public Sprite micIcon;
     public Sprite proxIcon;
 
+    public Image tapIconImage, motionIconImage, micIconImage, proxIconImage;
+
     AudioSource audioSource;
 
-	void Start () {
+    public static HintScreen instance;
+    bool active;
+
+    private void Awake() {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(this);
+    }
+
+    void Start () {
         gm = gameManager.instance;
         if (gm) {
             timer = gm.hintScreenDuration;
-            if (gm.currentGame.useTap) inputPanel.Find("TapIcon").GetComponent<Image>().sprite = tapIcon;
-            if (gm.currentGame.useMotion) inputPanel.Find("MotionIcon").GetComponent<Image>().sprite = motionIcon;
-            if (gm.currentGame.useMic) inputPanel.Find("MicIcon").GetComponent<Image>().sprite = micIcon;
-            if (gm.currentGame.useProximity) inputPanel.Find("ProxIcon").GetComponent<Image>().sprite = proxIcon;
+            if (gm.currentGame.useTap) tapIconImage.sprite = tapIcon;
+            if (gm.currentGame.useMotion) motionIconImage.sprite = motionIcon;
+            if (gm.currentGame.useMic) micIconImage.sprite = micIcon;
+            if (gm.currentGame.useProximity) proxIconImage.sprite = proxIcon;
         }
         else
             timer = 1;
 	}
 	
 	void Update () {
-        timer -= Time.unscaledDeltaTime;
+        if (active) {
+            timer -= Time.unscaledDeltaTime;
 
-        if (timer <= 0) {
-            if (hintText) {
-                hintText.transform.Translate(Vector3.right * speed * Time.unscaledDeltaTime);
-            }
+            if (timer <= 0) {
+                if (hintText) {
+                    hintText.transform.Translate(Vector3.right * speed * Time.unscaledDeltaTime);
+                }
 
-            if (inputPanel) {
-                inputPanel.transform.Translate(-Vector3.up * speed * Time.unscaledDeltaTime);
+                if (inputPanel) {
+                    inputPanel.transform.Translate(-Vector3.up * speed * Time.unscaledDeltaTime);
+                }
             }
+        }
+        else {
+            active = true;
         }
 	}
 }

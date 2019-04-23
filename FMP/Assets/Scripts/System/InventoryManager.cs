@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour {
     public Dictionary<InventoryItem.ItemType, int> inventoryItems = new Dictionary<InventoryItem.ItemType, int>();
 
     public GameObject buttonPrefab;
+    public Sprite extraLifeSprite, speedIncreaseSprite, moneyMultiplierSprite;
 
     const float speedIncreaseAmount = 0.1f;
     const float moneyIncreaseAmount = 0.5f;
@@ -54,6 +55,9 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void UpdateUI() {
+        if (inventoryItems.Count == 0) {
+            inventoryItems = inventory.GetItems();
+        }
         foreach(Transform transform in inventoryContent) {
             Destroy(transform.gameObject);
         }
@@ -65,12 +69,34 @@ public class InventoryManager : MonoBehaviour {
             newButton.buttonType = ShopButton.ButtonTypes.Inventory;
             newButton.itemData.type = item.Key;
             newButton.displayNumber = item.Value;
+            switch (item.Key) {
+                case InventoryItem.ItemType.ExtraLife:
+                    newButton.sprite = extraLifeSprite;
+                    break;
+                case InventoryItem.ItemType.SpeedIncrease:
+                    newButton.sprite = speedIncreaseSprite;
+                    break;
+                case InventoryItem.ItemType.MoneyMultiplier:
+                    newButton.sprite = moneyMultiplierSprite;
+                    break;
+            }
         }
         foreach (KeyValuePair<InventoryItem.ItemType, int> item in inUseItems) {
             ShopButton newButton = Instantiate(buttonPrefab, inUseContent).GetComponent<ShopButton>();
             newButton.buttonType = ShopButton.ButtonTypes.Use;
             newButton.itemData.type = item.Key;
             newButton.displayNumber = item.Value;
+            switch (item.Key) {
+                case InventoryItem.ItemType.ExtraLife:
+                    newButton.sprite = extraLifeSprite;
+                    break;
+                case InventoryItem.ItemType.SpeedIncrease:
+                    newButton.sprite = speedIncreaseSprite;
+                    break;
+                case InventoryItem.ItemType.MoneyMultiplier:
+                    newButton.sprite = moneyMultiplierSprite;
+                    break;
+            }
         }
     }
 

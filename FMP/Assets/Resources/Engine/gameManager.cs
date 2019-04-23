@@ -49,6 +49,8 @@ public class gameManager : MonoBehaviour {
     private float endTimer;
     public float gameSpeed = 1;
     public float moneyMultiplier = 1;
+    public int pointsEarned;
+    private const int basePointsPerClear = 5;
 
     // Endless variables
 
@@ -140,6 +142,7 @@ public class gameManager : MonoBehaviour {
         }
         gameSpeed = 1;
         moneyMultiplier = 1;
+        pointsEarned = 0;
         Time.timeScale = 0.0001f;
         livesLeft = totalLives;
         gamesCompleted.Clear();
@@ -157,13 +160,16 @@ public class gameManager : MonoBehaviour {
         if (!endingGame) {
             gamesCompleted.Add(currentGame);
             gamesPlayed.Add(currentGame);
+            if (gameType != GameTypes.Practice) {
+                int bonusPoints = Mathf.FloorToInt(gamesCompleted.Count / 5.0f);
+                pointsEarned += basePointsPerClear + bonusPoints;
+            }
+            else {
+                pointsEarned += basePointsPerClear;
+            }
             UnlockGame(currentGame, currentDifficulty);
             endingGame = true;
             completedGame = true;
-
-            if (gamesCompleted.Count % 5 == 0) {
-                gameSpeed += 0.1f;
-            }
         }
     }
 
@@ -205,18 +211,22 @@ public class gameManager : MonoBehaviour {
 
                 // Manage difficulty
                 if (gameType == GameTypes.Challenge) {
-                    float completionPercentage = (float)gamesCompleted.Count / (float)challengeLength;
-                    if (completionPercentage >= 0.9f) {
-                        currentDifficulty = DifficultyLevels.Extra;
-                    }
-                    if (completionPercentage >= 0.75f) {
-                        currentDifficulty = DifficultyLevels.Hard;
-                    }
-                    if (completionPercentage >= 0.5f) {
-                        currentDifficulty = DifficultyLevels.Normal;
-                    }
-                    if (completionPercentage >= 0.25f) {
-                        currentDifficulty = DifficultyLevels.Easy;
+                    //float completionPercentage = (float)gamesCompleted.Count / (float)challengeLength;
+                    //if (completionPercentage >= 0.9f) {
+                    //    currentDifficulty = DifficultyLevels.Extra;
+                    //}
+                    //if (completionPercentage >= 0.75f) {
+                    //    currentDifficulty = DifficultyLevels.Hard;
+                    //}
+                    //if (completionPercentage >= 0.5f) {
+                    //    currentDifficulty = DifficultyLevels.Normal;
+                    //}
+                    //if (completionPercentage >= 0.25f) {
+                    //    currentDifficulty = DifficultyLevels.Easy;
+                    //}
+
+                    if (gamesCompleted.Count % 5 == 0) {
+                        gameSpeed += 0.1f;
                     }
                 }
 
@@ -301,6 +311,7 @@ public class gameManager : MonoBehaviour {
         gameType = GameTypes.Practice;
         livesLeft = 1;
         gamesCompleted.Clear();
+        pointsEarned = 0;
         currentGame = gameList.GetGame(gameName);
         if (currentGame.isLandscape && Screen.width < Screen.height) {
             SceneManager.LoadScene("Scenes/Motion/RotateHorizontal");
@@ -316,6 +327,7 @@ public class gameManager : MonoBehaviour {
         startingGame = true;
         currentLandscape = currentGame.isLandscape;
         Time.timeScale = 0.0001f;
+        gameSpeed = 1;
         EnableRotation();
     }
 
@@ -325,7 +337,7 @@ public class gameManager : MonoBehaviour {
             result = true;
             money -= amount;
             SaveData.instance.Save();
-            GameObject.Find("Shop/MoneyText").GetComponent<Text>().text = money.ToString();
+            GameObject.Find("Money/MoneyText").GetComponent<Text>().text = money.ToString();
         }
         return result;
     }

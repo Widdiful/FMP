@@ -14,8 +14,10 @@ public class GenericSteering : MonoBehaviour {
     }
 	
 	void Update () {
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, (Input.gyro.gravity.x) * -rotateSpeed);
-        if (!DontChangePosition)
-            transform.position = new Vector3((Input.gyro.gravity.x) * moveSpeed, transform.position.y, transform.position.z);
+        if (Time.timeScale > 0) {
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, (Input.gyro.gravity.x) * -rotateSpeed);
+            if (!DontChangePosition)
+                transform.position = new Vector3((Input.gyro.gravity.x) * moveSpeed, transform.position.y, transform.position.z);
+        }
     }
 }

@@ -218,11 +218,16 @@ Prefab:
     - target: {fileID: 114603788923440296, guid: 9b592e816553f9d40a7a9dc7478a4904,
         type: 2}
       propertyPath: m_Text
-      value: Rotate!
+      value: 00
       objectReference: {fileID: 0}
     - target: {fileID: 1056835907398792, guid: 9b592e816553f9d40a7a9dc7478a4904, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114592647366753774, guid: 9b592e816553f9d40a7a9dc7478a4904,
+        type: 2}
+      propertyPath: m_Text
+      value: Rotate!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b592e816553f9d40a7a9dc7478a4904, type: 2}

@@ -79,6 +79,7 @@ public class menuManager : MonoBehaviour {
         proxToggle.isOn = gm.useProximity;
         hintToggle.isOn = gm.enableHints;
         GameObject.Find("Money/MoneyText").GetComponent<Text>().text = gm.money.ToString();
+        GameObject.Find("Points/PointsText").GetComponent<Text>().text = gm.score.ToString();
     }
 
     public void saveSettings() {

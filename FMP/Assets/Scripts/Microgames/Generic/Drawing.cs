@@ -27,51 +27,53 @@ public class Drawing : MonoBehaviour {
     }
 
     private void Update() {
-        if (finished && !allowMultiple) {
-            return;
-        }
+        if (Time.timeScale > 0) {
+            if (finished && !allowMultiple) {
+                return;
+            }
 
-        if (Input.touchCount > 0) {
-            if (Input.GetTouch(0).phase == TouchPhase.Began) {
-                points.Clear();
-                v2points.Clear();
-                lastPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                lastPoint.z = transform.position.z;
-                points.Add(lastPoint);
-                v2points.Add(lastPoint);
-                finished = false;
-                if (audioSource)
-                    audioSource.Play();
-            }
-            else if (Input.GetTouch(0).phase == TouchPhase.Moved) {
-                Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                newPoint.z = transform.position.z;
-                if (Vector3.Distance(lastPoint, newPoint) >= stepSize) {
-                    points.Add(newPoint);
-                    v2points.Add(newPoint);
-                    lastPoint = newPoint;
-                }
-            }
-            else if (Input.GetTouch(0).phase == TouchPhase.Ended) {
-                if (points.Count > 1) {
-                    finished = true;
-                    if (multipleLines) {
-                        Instantiate(gameObject, transform.parent);
-                        multipleLines = false;
-                    }
+            if (Input.touchCount > 0) {
+                if (Input.GetTouch(0).phase == TouchPhase.Began) {
+                    points.Clear();
+                    v2points.Clear();
+                    lastPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    lastPoint.z = transform.position.z;
+                    points.Add(lastPoint);
+                    v2points.Add(lastPoint);
+                    finished = false;
                     if (audioSource)
-                        audioSource.Stop();
-                    if (pauseOnComplete)
-                        FindObjectOfType<Timer>().active = false;
+                        audioSource.Play();
+                }
+                else if (Input.GetTouch(0).phase == TouchPhase.Moved) {
+                    Vector3 newPoint = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    newPoint.z = transform.position.z;
+                    if (Vector3.Distance(lastPoint, newPoint) >= stepSize) {
+                        points.Add(newPoint);
+                        v2points.Add(newPoint);
+                        lastPoint = newPoint;
+                    }
+                }
+                else if (Input.GetTouch(0).phase == TouchPhase.Ended) {
+                    if (points.Count > 1) {
+                        finished = true;
+                        if (multipleLines) {
+                            Instantiate(gameObject, transform.parent);
+                            multipleLines = false;
+                        }
+                        if (audioSource)
+                            audioSource.Stop();
+                        if (pauseOnComplete)
+                            FindObjectOfType<Timer>().active = false;
+                    }
                 }
             }
-        }
 
-        line.positionCount = points.Count;
-        line.SetPositions(points.ToArray());
+            line.positionCount = points.Count;
+            line.SetPositions(points.ToArray());
 
-        if (edgeCollider) {
-            edgeCollider.points = v2points.ToArray();
+            if (edgeCollider) {
+                edgeCollider.points = v2points.ToArray();
+            }
         }
     }
 }
