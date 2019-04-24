@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UnityStandardAssets.CrossPlatformInput
 {
@@ -7,6 +8,9 @@ namespace UnityStandardAssets.CrossPlatformInput
     {
 
         public string Name;
+
+        public Image img;
+        public Sprite upSprite, downSprite;
 
         void OnEnable()
         {
@@ -16,12 +20,18 @@ namespace UnityStandardAssets.CrossPlatformInput
         public void SetDownState()
         {
             CrossPlatformInputManager.SetButtonDown(Name);
+            if (img) {
+                img.sprite = downSprite;
+            }
         }
 
 
         public void SetUpState()
         {
             CrossPlatformInputManager.SetButtonUp(Name);
+            if (img) {
+                img.sprite = upSprite;
+            }
         }
 
 

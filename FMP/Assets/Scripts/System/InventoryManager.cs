@@ -17,7 +17,7 @@ public class InventoryManager : MonoBehaviour {
     public Sprite extraLifeSprite, speedIncreaseSprite, moneyMultiplierSprite;
 
     const float speedIncreaseAmount = 0.1f;
-    const float moneyIncreaseAmount = 0.5f;
+    const float moneyIncreaseAmount = 0.2f;
 
     private void Awake() {
         if (!instance)

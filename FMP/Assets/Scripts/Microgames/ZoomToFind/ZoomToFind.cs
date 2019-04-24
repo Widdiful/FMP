@@ -24,7 +24,7 @@ public class ZoomToFind : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.touchCount > 0 && !complete) {
+        if (Input.touchCount > 0 && !complete && Time.timeScale > 0) {
             Vector2 deltaMove = Input.touches[0].deltaPosition;
             float speedPercent = camera.fieldOfView / maxSize;
 
@@ -56,15 +56,15 @@ public class ZoomToFind : MonoBehaviour {
                 float angle = Mathf.Atan2(posDifference.y, posDifference.x) * Mathf.Rad2Deg;
                 float deltaAngle = Mathf.DeltaAngle(angle, oldAngle);
                 //transform.Rotate(0, 0, deltaAngle);
-                axisZ.Rotate(0, 0, -deltaAngle * moveSpeed * rollSpeed * Time.deltaTime, Space.World);
+                axisZ.Rotate(0, 0, -deltaAngle * rollSpeed * Time.deltaTime, Space.World);
                 oldAngle = angle;
 
                 //sphere.Rotate(0, 0, deltaAngle);
             }
 
             if (rotateSphere) {
-                axisX.Rotate(deltaMove.y * moveSpeed * speedPercent * Time.deltaTime, 0, 0, Space.World);
-                axisY.Rotate(0, -deltaMove.x * moveSpeed * speedPercent * Time.deltaTime, 0, Space.World);
+                axisX.Rotate((deltaMove.y / Screen.width) * moveSpeed * speedPercent, 0, 0, Space.World);
+                axisY.Rotate(0, (-deltaMove.x / Screen.height) * moveSpeed * speedPercent, 0, Space.World);
             }
             else {
                 transform.Translate(-deltaMove * moveSpeed * camera.fieldOfView);

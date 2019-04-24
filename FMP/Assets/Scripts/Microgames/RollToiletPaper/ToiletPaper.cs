@@ -21,7 +21,7 @@ public class ToiletPaper : MonoBehaviour {
     }
 
 	void Update () {
-        if (Input.touchCount > 0) {
+        if (Input.touchCount > 0 && Time.timeScale > 0) {
             if (Input.touches[0].phase == TouchPhase.Began) {
                 lastTouchYPos = Input.touches[0].position.y / Screen.height;
             }

@@ -59,10 +59,12 @@ public class gameManager : MonoBehaviour {
     public int challengeLength;
 
     void Awake() {
-        if (instance == null) instance = this;
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else if (instance != this) Destroy(this);
 
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start() {
@@ -140,6 +142,10 @@ public class gameManager : MonoBehaviour {
                 currentLandscape = false;
                 break;
         }
+        if (Screen.width > Screen.height) {
+            previousLandscapeOrientation = Screen.orientation;
+        }
+
         gameSpeed = 1;
         moneyMultiplier = 1;
         pointsEarned = 0;

@@ -18,16 +18,18 @@ public class MoneyPile : MonoBehaviour {
     }
 
     private void Update() {
-        if (moneyThrown < requiredMoney && Input.touchCount > 0) {
-            if (Input.touches[0].phase == TouchPhase.Began) {
-                touchStartY = Input.touches[0].position.y / Screen.height;
-                canThrow = true;
-            }
-            if (Input.touches[0].phase == TouchPhase.Moved) {
-                float touchCurrentY = Input.touches[0].position.y / Screen.height;
-                if (Mathf.Abs(touchCurrentY - touchStartY) > 0.1f && canThrow) {
-                    ThrowMoney();
-                    canThrow = false;
+        if (Time.timeScale > 0) {
+            if (moneyThrown < requiredMoney && Input.touchCount > 0) {
+                if (Input.touches[0].phase == TouchPhase.Began) {
+                    touchStartY = Input.touches[0].position.y / Screen.height;
+                    canThrow = true;
+                }
+                if (Input.touches[0].phase == TouchPhase.Moved) {
+                    float touchCurrentY = Input.touches[0].position.y / Screen.height;
+                    if (Mathf.Abs(touchCurrentY - touchStartY) > 0.1f && canThrow) {
+                        ThrowMoney();
+                        canThrow = false;
+                    }
                 }
             }
         }

@@ -42,10 +42,13 @@ public class MicManager : MonoBehaviour {
                 tempMax = wavePeak;
             }
         }
-        levelMax = tempMax;
-        levelMaxRaw = levelMax;
-        if (gameManager.instance)
-            levelMax /= gameManager.instance.micSensitivity;
+
+        if (Time.timeScale > 0) {
+            levelMax = tempMax;
+            levelMaxRaw = levelMax;
+            if (gameManager.instance)
+                levelMax /= gameManager.instance.micSensitivity;
+        }
 
         if (source && !source.isPlaying && enablePlayback) {
             source.clip = recording;

@@ -21,7 +21,7 @@ public class ShootDucks : MonoBehaviour {
     }
 
     void Update () {
-        if (spawnTimer <= 0 && !dead) {
+        if (spawnTimer <= 0 && !dead && Time.timeScale > 0) {
             transform.Translate(direction * speed * Time.deltaTime);
 
             if (Input.touchCount > 0) {

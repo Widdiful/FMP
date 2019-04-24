@@ -20,27 +20,29 @@ public class FlySwatting : MonoBehaviour {
     }
 
     void Update () {
-        transform.Translate(direction * speed * Time.deltaTime);
-        transform.right = direction;
+        if (Time.timeScale > 0) {
+            transform.Translate(direction * speed * Time.deltaTime);
+            transform.right = direction;
 
-        direction += new Vector2(Random.Range(-wanderSize, wanderSize), Random.Range(-wanderSize, wanderSize));
-        direction = direction.normalized;
+            direction += new Vector2(Random.Range(-wanderSize, wanderSize), Random.Range(-wanderSize, wanderSize));
+            direction = direction.normalized;
 
-        speed += Random.Range(-speedAdjust, speedAdjust);
-        speed = Mathf.Clamp(speed, 0, maxSpeed);
+            speed += Random.Range(-speedAdjust, speedAdjust);
+            speed = Mathf.Clamp(speed, 0, maxSpeed);
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.01f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y * 0.01f);
 
-        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.touches[0].position), Vector2.zero);
+            if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began) {
+                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.touches[0].position), Vector2.zero);
 
-            if (hit && hit.transform == transform) {
-                if (FindObjectsOfType<FlySwatting>().Length <= 1) {
-                    gameManager.instance.CompleteGame();
+                if (hit && hit.transform == transform) {
+                    if (FindObjectsOfType<FlySwatting>().Length <= 1) {
+                        gameManager.instance.CompleteGame();
+                    }
+                    GameObject newSplat = Instantiate(splat, transform.position, Quaternion.identity);
+                    newSplat.GetComponent<AudioSource>().Play();
+                    Destroy(gameObject);
                 }
-                GameObject newSplat = Instantiate(splat, transform.position, Quaternion.identity);
-                newSplat.GetComponent<AudioSource>().Play();
-                Destroy(gameObject);
             }
         }
     }

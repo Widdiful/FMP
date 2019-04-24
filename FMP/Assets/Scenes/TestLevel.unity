@@ -2437,6 +2437,7 @@ MonoBehaviour:
   endingGame: 0
   gameSpeed: 1
   moneyMultiplier: 1
+  pointsEarned: 0
   challengeLength: 0
 --- !u!4 &634679971
 Transform:
@@ -3290,6 +3291,7 @@ MonoBehaviour:
   minX: -27
   maxX: 27
   useOrthographic: 1
+  speed: 25
 --- !u!1001 &1198648935
 Prefab:
   m_ObjectHideFlags: 0

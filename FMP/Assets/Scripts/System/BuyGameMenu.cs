@@ -40,6 +40,9 @@ public class BuyGameMenu : MonoBehaviour {
         if (gameManager.instance.money < game.unlockCost) {
             buyButton.interactable = false;
         }
+        else {
+            buyButton.interactable = true;
+        }
     }
 
     public void BuyGame() {

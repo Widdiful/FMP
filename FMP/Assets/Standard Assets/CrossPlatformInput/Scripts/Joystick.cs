@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace UnityStandardAssets.CrossPlatformInput
 {
@@ -24,6 +25,11 @@ namespace UnityStandardAssets.CrossPlatformInput
 		bool m_UseY; // Toggle for using the Y axis
 		CrossPlatformInputManager.VirtualAxis m_HorizontalVirtualAxis; // Reference to the joystick in the cross platform input
 		CrossPlatformInputManager.VirtualAxis m_VerticalVirtualAxis; // Reference to the joystick in the cross platform input
+
+        public Image img;
+        public Sprite leftArrow;
+        public Sprite rightArrow;
+        public Sprite bothArrow;
 
 		void OnEnable()
 		{
@@ -49,7 +55,19 @@ namespace UnityStandardAssets.CrossPlatformInput
 			{
 				m_VerticalVirtualAxis.Update(delta.y);
 			}
-		}
+
+            if (img) {
+                if (delta.x < -0.25) {
+                    img.sprite = rightArrow;
+                }
+                else if (delta.x > 0.25) {
+                    img.sprite = leftArrow;
+                }
+                else {
+                    img.sprite = bothArrow;
+                }
+            }
+        }
 
 		void CreateVirtualAxes()
 		{

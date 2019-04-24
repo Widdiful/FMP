@@ -11,6 +11,8 @@ public class ShopInventory : ScriptableObject {
         public InventoryItem.ItemType type;
         public int price;
         public Sprite sprite;
+        public string displayName;
+        public string description;
     }
     public List<ShopItem> items;
 }

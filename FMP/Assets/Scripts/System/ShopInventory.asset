@@ -15,9 +15,15 @@ MonoBehaviour:
   - type: 0
     price: 50
     sprite: {fileID: 21300000, guid: 1fdf9885155f13146add0297d49379ab, type: 3}
+    displayName: Extra Life
+    description: Get one extra life.
   - type: 1
     price: 20
     sprite: {fileID: 21300000, guid: eb2312c8d80f1d341b00d14254476037, type: 3}
+    displayName: Speed Increase
+    description: Play games 110% faster.
   - type: 2
     price: 100
     sprite: {fileID: 21300000, guid: d4cada1c93da0c8478507b945b842ee5, type: 3}
+    displayName: Money Multiplier
+    description: Earn 120% as much money.

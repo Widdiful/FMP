@@ -7,7 +7,7 @@ public class CutRope : MonoBehaviour {
     bool hasCut;
 
 	void Update () {
-		if (!hasCut) {
+		if (!hasCut && Time.timeScale > 0) {
             if (Input.touchCount > 0) {
                 if (Input.GetTouch(0).phase == TouchPhase.Moved) {
                     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position), Vector2.zero);

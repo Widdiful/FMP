@@ -50,6 +50,10 @@ public class InfiniteJumper : MonoBehaviour {
 
         anim.SetFloat("velocityY", rb.velocity.y);
         anim.SetBool("grounded", canJump);
+
+        Vector3 newPos = transform.position;
+        newPos.x = Mathf.Clamp(newPos.x, -3, 3);
+        transform.position = newPos;
     }
 
     void OnCollisionEnter2D(Collision2D col) {

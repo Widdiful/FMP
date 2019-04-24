@@ -16,6 +16,7 @@ public class menuManager : MonoBehaviour {
     public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas, practiseMenuCanvas, editUserCanvas, buyGameCanvas;
     public Button mainButton, practiseButton, shopButton, scoresButton, optionsButton;
     public BuyGameMenu buyGameMenu;
+    public GridLayoutGroup mainGrid;
 
     public Dropdown orientationDropdown;
     public Toggle motionToggle, micToggle, proxToggle, hintToggle;
@@ -41,13 +42,6 @@ public class menuManager : MonoBehaviour {
         menu = GameObject.Find("Menus/Menus");
         if (menu) loadSettings();
 
-        Screen.autorotateToLandscapeLeft = true;
-        Screen.autorotateToLandscapeRight = true;
-        Screen.autorotateToPortrait = false;
-        Screen.autorotateToPortraitUpsideDown = false;
-        Screen.orientation = ScreenOrientation.LandscapeRight;
-        Screen.orientation = ScreenOrientation.AutoRotation;
-
         if (mainCanvas)
             OpenMain();
 
@@ -61,6 +55,13 @@ public class menuManager : MonoBehaviour {
                 bg.transform.localPosition = new Vector3(-400, 0, 0);
                 gm.StartGame();
             }
+        }
+
+        if (Screen.width > Screen.height) {
+            mainGrid.constraintCount = 2;
+        }
+        else {
+            mainGrid.constraintCount = 1;
         }
     }
 

@@ -19,6 +19,9 @@ public class SteerCar : MonoBehaviour {
         if (!lost) {
             transform.Translate(Input.acceleration.x * turnSpeed * Time.deltaTime, 0, 0);
             transform.rotation = Quaternion.Euler(0, 0, Input.acceleration.x * rotateAmount);
+            Vector3 newPos = transform.position;
+            newPos.x = Mathf.Clamp(newPos.x, -9, 9);
+            transform.position = newPos;
         }
 	}
 

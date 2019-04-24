@@ -23,6 +23,7 @@ public class SaveData : MonoBehaviour {
         public string userID;
         public int money;
         public int score;
+        public ScreenOrientation landscapeOrientation;
         public Dictionary<string, Game.UnlockedDifficulties> gameList;
         public Dictionary<InventoryItem.ItemType, int> inventory;
     }
@@ -38,6 +39,7 @@ public class SaveData : MonoBehaviour {
         data.money = gameManager.instance.money;
         data.score = gameManager.instance.score;
         data.userID = userID;
+        data.landscapeOrientation = gameManager.instance.previousLandscapeOrientation;
 
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/saveFile.dat");
@@ -69,6 +71,8 @@ public class SaveData : MonoBehaviour {
             }
             gameManager.instance.money = data.money;
             gameManager.instance.score = data.score;
+            if (data.landscapeOrientation == ScreenOrientation.LandscapeLeft || data.landscapeOrientation == ScreenOrientation.LandscapeRight)
+                gameManager.instance.previousLandscapeOrientation = data.landscapeOrientation;
             userID = data.userID;
 
             GameObject moneyText = GameObject.Find("Money/MoneyText");

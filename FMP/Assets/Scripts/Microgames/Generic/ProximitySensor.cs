@@ -24,7 +24,9 @@ public class ProximitySensor : MonoBehaviour {
     }
 
     void SetScaleByProximity(PAProximity.Proximity arg) {
-        if (arg == PAProximity.Proximity.NEAR) nearby = true;
-        else nearby = false;
+        if (Time.timeScale > 0) {
+            if (arg == PAProximity.Proximity.NEAR) nearby = true;
+            else nearby = false;
+        }
     }
 }

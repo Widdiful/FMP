@@ -30,41 +30,47 @@ public class RockPaperScissors : MonoBehaviour {
     }
 
     public void PlayRock() {
-        playerRock.GetComponent<Animator>().SetBool("Play", true);
-        if (enemyType == HandTypes.Scissors) {
-            audioSource.clip = winClip;
-            audioSource.Play();
-            GetComponent<Canvas>().enabled = false;
-            gameManager.instance.CompleteGame();
-        }
-        else {
-            StartCoroutine(FailGame());
+        if (Time.timeScale > 0) {
+            playerRock.GetComponent<Animator>().SetBool("Play", true);
+            if (enemyType == HandTypes.Scissors) {
+                audioSource.clip = winClip;
+                audioSource.Play();
+                GetComponent<Canvas>().enabled = false;
+                gameManager.instance.CompleteGame();
+            }
+            else {
+                StartCoroutine(FailGame());
+            }
         }
     }
 
     public void PlayPaper() {
-        playerPaper.GetComponent<Animator>().SetBool("Play", true);
-        if (enemyType == HandTypes.Rock) {
-            audioSource.clip = winClip;
-            audioSource.Play();
-            GetComponent<Canvas>().enabled = false;
-            gameManager.instance.CompleteGame();
-        }
-        else {
-            StartCoroutine(FailGame());
+        if (Time.timeScale > 0) {
+            playerPaper.GetComponent<Animator>().SetBool("Play", true);
+            if (enemyType == HandTypes.Rock) {
+                audioSource.clip = winClip;
+                audioSource.Play();
+                GetComponent<Canvas>().enabled = false;
+                gameManager.instance.CompleteGame();
+            }
+            else {
+                StartCoroutine(FailGame());
+            }
         }
     }
 
     public void PlayScissors() {
-        playerScissors.GetComponent<Animator>().SetBool("Play", true);
-        if (enemyType == HandTypes.Paper) {
-            audioSource.clip = winClip;
-            audioSource.Play();
-            GetComponent<Canvas>().enabled = false;
-            gameManager.instance.CompleteGame();
-        }
-        else {
-            StartCoroutine(FailGame());
+        if (Time.timeScale > 0) {
+            playerScissors.GetComponent<Animator>().SetBool("Play", true);
+            if (enemyType == HandTypes.Paper) {
+                audioSource.clip = winClip;
+                audioSource.Play();
+                GetComponent<Canvas>().enabled = false;
+                gameManager.instance.CompleteGame();
+            }
+            else {
+                StartCoroutine(FailGame());
+            }
         }
     }
 

@@ -23,7 +23,7 @@ public class PlugHoles : MonoBehaviour {
     }
 
     void Update() {
-        if (!complete) {
+        if (!complete && Time.timeScale > 0) {
             bool isTouched = false;
             foreach (Touch touch in Input.touches) {
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);

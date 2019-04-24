@@ -35,7 +35,7 @@ public class PracticeMenu : MonoBehaviour {
 
     public void SelectGame(Game game) {
         selectedGame = game;
-        selectCanvas.enabled = false;
+        //selectCanvas.enabled = false;
         thisCanvas.enabled = true;
 
         gameName.text = selectedGame.displayName;

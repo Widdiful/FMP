@@ -24,9 +24,7 @@ public class ShopButton : MonoBehaviour {
     public void Click() {
         switch (buttonType) {
             case ButtonTypes.Shop:
-                if (gameManager.instance.SpendMoney(itemData.price)) {
-                    InventoryManager.instance.inventory.AddItem(itemData.type);
-                }
+                BuyItemMenu.instance.OpenShop(itemData);
                 break;
 
             case ButtonTypes.Inventory:

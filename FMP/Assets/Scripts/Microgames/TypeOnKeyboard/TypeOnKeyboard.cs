@@ -18,7 +18,7 @@ public class TypeOnKeyboard : MonoBehaviour {
     }
 
     public void Type() {
-        if (!complete) {
+        if (!complete && Time.timeScale > 0) {
             if (audioSource)
                 audioSource.Play();
             if (text.text.Length < message.Length) {
