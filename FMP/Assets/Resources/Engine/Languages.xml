@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LanguageLines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Lines>
+		<Line name="MENU_TABS_PLAY">
+			<English>Play</English>
+			<Japanese>ホーム</Japanese>
+		</Line>
+		<Line name="MENU_TABS_PRACTISE">
+			<English>Practise</English>
+			<Japanese>リハーサル</Japanese>
+		</Line>
+		<Line name="MENU_TABS_SHOP">
+			<English>Shop</English>
+			<Japanese>ショップ</Japanese>
+		</Line>
+		<Line name="MENU_TABS_SCORES">
+			<English>Scores</English>
+			<Japanese>スコア</Japanese>
+		</Line>
+		<Line name="MENU_TABS_OPTIONS">
+			<English>Options</English>
+			<Japanese>オプション</Japanese>
+		</Line>
+		<Line name="MENU_GENERAL_PLAY">
+			<English>Play</English>
+			<Japanese>始める</Japanese>
+		</Line>
+		<Line name="MENU_GENERAL_CANCEL">
+			<English>Cancel</English>
+			<Japanese>キャンセル</Japanese>
+		</Line>
+		<Line name="MENU_GENERAL_BUY">
+			<English>Buy</English>
+			<Japanese>購入</Japanese>
+		</Line>
+		<Line name="MENU_GENERAL_SAVE">
+			<English>Save</English>
+			<Japanese>セーブ</Japanese>
+		</Line>
+		<Line name="MENU_ENDLESS_NAME">
+			<English>Endless</English>
+			<Japanese>エンドレス</Japanese>
+		</Line>
+		<Line name="MENU_ENDLESS_DESC">
+			<English>Play until you run out of lives!</English>
+			<Japanese>ライフを使い果たすまで楽しもう！</Japanese>
+		</Line>
+		<Line name="MENU_CHALLENGE_NAME">
+			<English>Challenge</English>
+			<Japanese>加速挑戦</Japanese>
+		</Line>
+		<Line name="MENU_CHALLENGE_DESC">
+			<English>Play games at increasing speeds!</English>
+			<Japanese>加速度的にゲームを楽しもう！</Japanese>
+		</Line>
+		<Line name="MENU_ITEMS_INUSE">
+			<English>In use</English>
+			<Japanese>使うアイテム</Japanese>
+		</Line>
+		<Line name="MENU_ITEMS_INVENTORY">
+			<English>Inventory</English>
+			<Japanese>アイテム在庫</Japanese>
+		</Line>
+		<Line name="OPTIONS_PROFILE">
+			<English>Profile</English>
+			<Japanese>プロフィール</Japanese>
+		</Line>
+		<Line name="OPTIONS_INPUTTEST">
+			<English>Input test</English>
+			<Japanese>入力テスト</Japanese>
+		</Line>
+	</Lines>
+</LanguageLines>

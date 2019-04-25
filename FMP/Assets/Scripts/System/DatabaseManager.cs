@@ -46,6 +46,7 @@ public class DatabaseManager : MonoBehaviour {
     }
 
     public void EditUserInfo(string newName, int newAvatar, string newColour) {
+        newName = newName.Replace(";", string.Empty).Replace(":", string.Empty);
         StartCoroutine(EditUser(newName, newAvatar, newColour));
     }
 

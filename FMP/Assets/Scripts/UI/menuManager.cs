@@ -57,11 +57,13 @@ public class menuManager : MonoBehaviour {
             }
         }
 
-        if (Screen.width > Screen.height) {
-            mainGrid.constraintCount = 2;
-        }
-        else {
-            mainGrid.constraintCount = 1;
+        if (mainGrid) {
+            if (Screen.width > Screen.height) {
+                mainGrid.constraintCount = 2;
+            }
+            else {
+                mainGrid.constraintCount = 1;
+            }
         }
     }
 

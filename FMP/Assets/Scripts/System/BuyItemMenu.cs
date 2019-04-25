@@ -37,7 +37,7 @@ public class BuyItemMenu : MonoBehaviour {
         }
     }
 
-    public void BuyGame() {
+    public void BuyItem() {
         if (gameManager.instance.SpendMoney(item.price)) {
             InventoryManager.instance.inventory.AddItem(item.type);
             thisCanvas.enabled = false;
