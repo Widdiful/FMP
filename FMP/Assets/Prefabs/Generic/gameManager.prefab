@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4846580592316620}
   - component: {fileID: 114718087017039378}
   - component: {fileID: 114321117735259506}
+  - component: {fileID: 114721986672062912}
   m_Layer: 0
   m_Name: gameManager
   m_TagString: Untagged
@@ -74,6 +75,8 @@ MonoBehaviour:
   score: 0
   hintScreenDuration: 1
   enableHints: 1
+  micSensitivity: 1
+  currentFont: {fileID: 0}
   gameType: 0
   currentDifficulty: 1
   totalLives: 4
@@ -84,4 +87,20 @@ MonoBehaviour:
   endingGame: 0
   gameSpeed: 1
   moneyMultiplier: 1
+  pointsEarned: 0
   challengeLength: 10
+--- !u!114 &114721986672062912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973470622299818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1df633ce3920340bf32c6a0477d009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFont: {fileID: 0}
+  fontData:
+  - {fileID: 11400000, guid: ac37b7d42093a5844b224b3665556493, type: 2}
+  - {fileID: 11400000, guid: 00ca0ef4faeb3f24887b326803441cf1, type: 2}

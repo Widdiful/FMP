@@ -7,9 +7,18 @@ using UnityEngine.UI;
 
 public class FontChanger : MonoBehaviour {
 
-    private Dictionary<Text, FontInfo> defaultData = new Dictionary<Text, FontInfo>();
+    // Font and font size for default text setting
+    private class TextInfo {
+        public Font font;
+        public int size;
+    }
+
+    private Dictionary<Text, TextInfo> defaultData = new Dictionary<Text, TextInfo>();
 
     public static FontChanger instance;
+
+    public FontData currentFont;
+    public List<FontData> fontData = new List<FontData>();
 
     private void Awake() {
         if (!instance)
@@ -18,34 +27,30 @@ public class FontChanger : MonoBehaviour {
             Destroy(this);
     }
 
-    private class FontInfo {
-        public Font font;
-        public int size;
-    }
-
     public void Start() {
         SceneManager.activeSceneChanged += ChangedActiveScene;
-        ChangeFonts();
+        StartCoroutine(DelayedChangeFonts());
     }
 
     private void ChangedActiveScene(Scene current, Scene next) {
-        ChangeFonts();
+        StartCoroutine(DelayedChangeFonts());
     }
 
+    // Change font and font size of all text according to selected font
     private void ChangeFonts() {
         List<Text> texts = new List<Text>();
         SceneManager.GetActiveScene().GetRootGameObjects().ToList().ForEach(i => texts.AddRange(i.GetComponentsInChildren<Text>(true)));
-        if (gameManager.instance.currentFont) {
+        if (currentFont) {
             foreach (Text text in texts) {
                 if (!defaultData.ContainsKey(text)) {
-                    FontInfo info = new FontInfo();
+                    TextInfo info = new TextInfo();
                     info.font = text.font;
                     info.size = text.fontSize;
                     defaultData[text] = info;
                 }
 
-                text.font = gameManager.instance.currentFont.font;
-                text.fontSize = (int)((float)defaultData[text].size * gameManager.instance.currentFont.scale);
+                text.font = currentFont.font;
+                text.fontSize = (int)((float)defaultData[text].size * currentFont.scale);
             }
         }
         else {
@@ -56,5 +61,26 @@ public class FontChanger : MonoBehaviour {
                 }
             }
         }
+    }
+
+    // Change fonts after one frame to set pooled items
+    IEnumerator DelayedChangeFonts() {
+        yield return new WaitForEndOfFrame();
+        ChangeFonts();
+    }
+
+    public void SetFont(FontData font) {
+        currentFont = font;
+        ChangeFonts();
+    }
+
+    public void SetFont(int index) {
+        if (index >= 0 && index < fontData.Count) {
+            currentFont = fontData[index];
+        }
+        else {
+            currentFont = null;
+        }
+        ChangeFonts();
     }
 }

@@ -69,5 +69,9 @@
 			<English>Input test</English>
 			<Japanese>入力テスト</Japanese>
 		</Line>
+		<Line name="OPTIONS_CLEARDATA">
+			<English>Clear data</English>
+			<Japanese>データ削除</Japanese>
+		</Line>
 	</Lines>
 </LanguageLines>

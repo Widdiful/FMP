@@ -22,7 +22,7 @@ public class menuManager : MonoBehaviour {
     public GridLayoutGroup mainGrid;
     public InputField hintDurationText;
 
-    public Dropdown orientationDropdown;
+    public Dropdown orientationDropdown, fontDropdown, languageDropdown;
     public Toggle motionToggle, micToggle, proxToggle, hintToggle;
     public Slider masterAudio, sfxAudio, musicAudio;
 
@@ -73,7 +73,7 @@ public class menuManager : MonoBehaviour {
     }
 
     public void loadSettings() {
-        gm.orientationMode = (gameManager.OrientationModes) PlayerPrefs.GetInt("orientation");
+        gm.orientationMode = (gameManager.OrientationModes) PlayerPrefs.GetInt("orientation", 0);
         gm.useMotion = intToBool(PlayerPrefs.GetInt("motion", 1));
         gm.useMic = intToBool(PlayerPrefs.GetInt("mic", 1));
         gm.useProximity = intToBool(PlayerPrefs.GetInt("prox", 1));
@@ -83,9 +83,11 @@ public class menuManager : MonoBehaviour {
         sfxAudio.value = PlayerPrefs.GetFloat("sfxVol", 0);
         musicAudio.value = PlayerPrefs.GetFloat("musicVol", 0);
         hintDurationText.text = PlayerPrefs.GetFloat("hintDuration", 1.0f).ToString();
+        FontChanger.instance.SetFont(PlayerPrefs.GetInt("font", 0) - 1);
+        LanguageManager.instance.language = (LanguageManager.Languages) PlayerPrefs.GetInt("language", 0);
         //gm.money = PlayerPrefs.GetInt("money");
 
-        orientationDropdown.value = PlayerPrefs.GetInt("orientation");
+        orientationDropdown.value = PlayerPrefs.GetInt("orientation", 0);
         motionToggle.isOn = gm.useMotion;
         micToggle.isOn = gm.useMic;
         proxToggle.isOn = gm.useProximity;
@@ -93,10 +95,14 @@ public class menuManager : MonoBehaviour {
         gameManager.instance.hintScreenDuration = float.Parse(hintDurationText.text);
         GameObject.Find("Money/MoneyText").GetComponent<Text>().text = gm.money.ToString();
         GameObject.Find("Points/PointsText").GetComponent<Text>().text = gm.score.ToString();
+        fontDropdown.value = PlayerPrefs.GetInt("font", 0);
+        languageDropdown.value = PlayerPrefs.GetInt("language", 0);
 
         mixer.SetFloat("masterVol", masterAudio.value);
         mixer.SetFloat("sfxVol", sfxAudio.value);
         mixer.SetFloat("musicVol", musicAudio.value);
+        LanguageManager.instance.UpdateAll();
+
     }
 
     public void saveSettings() {
@@ -109,6 +115,8 @@ public class menuManager : MonoBehaviour {
         PlayerPrefs.SetFloat("sfxVol", sfxAudio.value);
         PlayerPrefs.SetFloat("musicVol", musicAudio.value);
         PlayerPrefs.SetFloat("hintDuration", float.Parse(hintDurationText.text));
+        PlayerPrefs.SetInt("font", fontDropdown.value);
+        PlayerPrefs.SetInt("language", languageDropdown.value);
         loadSettings();
         //MenuMain();
     }

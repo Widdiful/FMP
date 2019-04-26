@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: OpenDyslexic
   m_EditorClassIdentifier: 
   font: {fileID: 12800000, guid: bc68fc5aa39a471499a3b4e0c8081b73, type: 3}
-  scale: 0.7
+  scale: 0.8
