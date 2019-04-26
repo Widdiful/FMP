@@ -17,6 +17,9 @@ public class gameManager : MonoBehaviour {
 
     public GameList gameList;
 
+    public AudioClip menuMusic, gameMusic;
+    private AudioSource audioSource;
+
     // Settings
     public OrientationModes orientationMode;
     public ScreenOrientation previousLandscapeOrientation = ScreenOrientation.LandscapeLeft;
@@ -64,7 +67,7 @@ public class gameManager : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if (instance != this) Destroy(this);
+        else if (instance != this) Destroy(gameObject);
 
     }
 
@@ -73,6 +76,15 @@ public class gameManager : MonoBehaviour {
             SaveData.instance.Load();
         }
         gc = GameContainer.Load(path);
+
+        audioSource = GetComponent<AudioSource>();
+
+        SceneManager.activeSceneChanged += ChangedActiveScene;
+        StartCoroutine(UpdateMusic());
+    }
+
+    private void ChangedActiveScene(Scene current, Scene next) {
+        StartCoroutine(UpdateMusic());
     }
 
     void Update() {
@@ -366,5 +378,24 @@ public class gameManager : MonoBehaviour {
             Screen.autorotateToPortraitUpsideDown = false;
         }
         Screen.orientation = ScreenOrientation.AutoRotation;
+    }
+
+    IEnumerator UpdateMusic() {
+        yield return new WaitForEndOfFrame();
+
+        if (!menuManager.instance) {
+            if (audioSource.clip != gameMusic) {
+                audioSource.Stop();
+                audioSource.clip = gameMusic;
+                audioSource.Play();
+            }
+        }
+        else {
+            if (audioSource.clip != menuMusic) {
+                audioSource.Stop();
+                audioSource.clip = menuMusic;
+                audioSource.Play();
+            }
+        }
     }
 }

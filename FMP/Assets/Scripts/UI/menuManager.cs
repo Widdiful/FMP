@@ -50,6 +50,8 @@ public class menuManager : MonoBehaviour {
         if (mainCanvas)
             OpenMain();
 
+        if (GameSelect.instance)
+            GameSelect.instance.UpdateMenu();
     }
 
     void Update() {
