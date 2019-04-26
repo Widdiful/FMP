@@ -110,6 +110,8 @@ MonoBehaviour:
     type: 0
     price: 0
     sprite: {fileID: 0}
+    displayName: 
+    description: 
   buttonType: 0
   displayNumber: 0
   text: {fileID: 114429638018485852}
@@ -163,7 +165,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: f4a817d4485738a439ec737875f570b5, type: 3}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2

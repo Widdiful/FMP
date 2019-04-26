@@ -11,6 +11,7 @@ public class HintScreen : MonoBehaviour {
     public float speed = 10;
     public Transform hintText;
     public Transform inputPanel;
+    public Transform lives;
     public Text hintTextText, livesText;
 
     public Sprite tapIcon;
@@ -52,6 +53,10 @@ public class HintScreen : MonoBehaviour {
             if (timer <= 0) {
                 if (hintText) {
                     hintText.transform.Translate(Vector3.right * speed * Time.unscaledDeltaTime);
+                }
+
+                if (lives) {
+                    lives.transform.Translate(Vector3.up * speed * Time.unscaledDeltaTime);
                 }
 
                 if (inputPanel) {

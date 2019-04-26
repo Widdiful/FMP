@@ -29,6 +29,7 @@ public class gameManager : MonoBehaviour {
     public float hintScreenDuration = 1;
     public bool enableHints;
     public float micSensitivity = 1;
+    public FontData currentFont;
 
     // Generic variables
     public GameTypes gameType;
