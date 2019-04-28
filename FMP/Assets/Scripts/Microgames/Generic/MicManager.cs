@@ -29,6 +29,7 @@ public class MicManager : MonoBehaviour {
     }
 
     private void Update() {
+        // Get wave data of current position of microphone recording
         float tempMax = 0;
         float[] waveData = new float[sampleWindow];
         int micPosition = Microphone.GetPosition(null) - (sampleWindow + 1);
@@ -36,6 +37,8 @@ public class MicManager : MonoBehaviour {
             return;
         }
         recording.GetData(waveData, micPosition);
+
+        // Get volume of audio peak
         for (int i = 0; i < sampleWindow; ++i) {
             float wavePeak = waveData[i] * waveData[i];
             if (tempMax < wavePeak) {
@@ -43,6 +46,7 @@ public class MicManager : MonoBehaviour {
             }
         }
 
+        // Update raw and max values if game isn't paused
         if (Time.timeScale > 0) {
             levelMax = tempMax;
             levelMaxRaw = levelMax;
@@ -50,6 +54,7 @@ public class MicManager : MonoBehaviour {
                 levelMax /= gameManager.instance.micSensitivity;
         }
 
+        // Playback audio
         if (source && !source.isPlaying && enablePlayback) {
             source.clip = recording;
             source.Play();
@@ -57,6 +62,7 @@ public class MicManager : MonoBehaviour {
     }
 
     void StartMic() {
+        // Get default microphone information and start recording for 10 seconds
         deviceName = Microphone.devices[0];
         recording = Microphone.Start(deviceName, true, 10, 44100);
         if (source && enablePlayback) source.clip = recording;

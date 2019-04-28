@@ -14,7 +14,6 @@ public class PickUpChopsticks : MonoBehaviour {
     }
 
     private void Update() {
-        print(Input.touchCount);
         if (Input.touchCount > 0) {
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.touches[0].position), Vector2.zero);

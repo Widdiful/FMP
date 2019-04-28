@@ -14,7 +14,6 @@ public class FixNaNPos : MonoBehaviour {
 	
 	void Update () {
         if (float.IsNaN(transform.position.x)) {
-            print("nan fix");
             transform.position = previousPosition;
             if (rb) rb.velocity = Vector3.zero;
         }

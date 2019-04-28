@@ -16,7 +16,7 @@ public class SneakAndStealPlayer : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.touchCount > 0) {
+        if (Input.touchCount > 0 || Input.anyKey) {
             Run();
         }
 
@@ -36,14 +36,12 @@ public class SneakAndStealPlayer : MonoBehaviour {
             transform.Translate(speed * Time.deltaTime, 0, 0);
             if (guard.looking) {
                 RunAway();
-                print("lost");
                 StartCoroutine(FailGame());
             }
             else if (transform.position.x >= targetX) {
                 treasure.SetParent(transform);
                 treasure.localPosition = new Vector3(0, 1, 0);
                 RunAway();
-                print("won");
                 gameManager.instance.CompleteGame();
             }
         }

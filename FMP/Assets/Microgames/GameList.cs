@@ -10,6 +10,7 @@ public class GameList : ScriptableObject {
     public List<Game> micGames;
     public List<Game> proximityGames;
 
+    // Returns a game given a name
     public Game GetGame(string name) {
         foreach (Game game in GetAllGames()) {
             if (game.name == name) {
@@ -19,6 +20,7 @@ public class GameList : ScriptableObject {
         return null;
     }
 
+    // Returns all games
     public List<Game> GetAllGames() {
         List<Game> allGames = new List<Game>();
         allGames.AddRange(tapGames);

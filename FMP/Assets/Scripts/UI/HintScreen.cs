@@ -44,6 +44,9 @@ public class HintScreen : MonoBehaviour {
         }
         else
             timer = 1;
+
+        if (gm.gameType == gameManager.GameTypes.Practice)
+            hintText.gameObject.SetActive(false);
 	}
 	
 	void Update () {

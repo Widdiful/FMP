@@ -24,7 +24,7 @@ public class Game : ScriptableObject {
     public bool useMic;
     public bool useProximity;
 
-    public bool hasExtra;
+    public bool hasExtraDifficulty;
     public string hint;
 
     public UnlockedDifficulties unlocked;

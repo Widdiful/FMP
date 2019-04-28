@@ -14,6 +14,7 @@ public class TapInfo
     public float tapDuration;
     public Vector2 tapMovement;
 
+    // Set start information for tap
     public void setStart(float time, Vector2 pos) {
         startTime = time;
         startPos = pos;
@@ -25,6 +26,7 @@ public class TapInfo
         //Debug.Log("Start Time " + startTime + "\nStart Pos" + startPos);
     }
 
+    // Set end information for tap
     public void setEnd(float time, Vector2 pos) {
         endTime = time;
         endPos = pos;
@@ -116,6 +118,7 @@ public class MobileInput : MonoBehaviour {
         }
     }
 
+    // Run functions on game object
     void InvokeFunction(string function, GameObject obj) {
         foreach (MonoBehaviour component in obj.GetComponents<MonoBehaviour>()) {
             if (component.GetType().GetMethod(function) != null) {

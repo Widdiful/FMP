@@ -57,7 +57,7 @@ public class LandShip : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         if (rb.velocity.magnitude >= deathVelocity) {
             // die
-            print("die");
+            //print("die");
         }
         else {
             if (collision.transform.CompareTag("Finish")) {

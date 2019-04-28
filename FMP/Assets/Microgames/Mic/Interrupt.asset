@@ -18,7 +18,7 @@ MonoBehaviour:
   useMotion: 0
   useMic: 1
   useProximity: 0
-  hasExtra: 0
+  hasExtraDifficulty: 0
   hint: Interrupt!
   unlocked:
     easy: 0

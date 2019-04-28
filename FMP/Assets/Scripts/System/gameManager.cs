@@ -261,7 +261,7 @@ public class gameManager : MonoBehaviour {
                         }
                     }
 
-                    if (currentDifficulty == DifficultyLevels.Extra && !game.hasExtra) {
+                    if (currentDifficulty == DifficultyLevels.Extra && !game.hasExtraDifficulty) {
                         currentGames.RemoveAt(id);
                         id--;
                     }

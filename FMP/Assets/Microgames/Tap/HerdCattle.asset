@@ -18,7 +18,7 @@ MonoBehaviour:
   useMotion: 0
   useMic: 0
   useProximity: 0
-  hasExtra: 0
+  hasExtraDifficulty: 0
   hint: Herd!
   unlocked:
     easy: 0
