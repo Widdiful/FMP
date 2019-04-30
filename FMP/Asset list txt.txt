@@ -2,8 +2,8 @@ https://www.kenney.nl/assets/simplified-platformer-pack
 https://www.kenney.nl/assets/ui-pack
 http://bbcsfx.acropolis.org.uk
 https://opengameart.org/content/well-done
-https://freesound.org/people/tmkappelt/sounds/85703/
 https://opengameart.org/content/punch-slap-n-kick
+https://freesound.org/people/tmkappelt/sounds/85703/
 https://freesound.org/people/Blu_150058/sounds/326211/
 https://freesound.org/people/simenfo1/sounds/343711/
 https://freesound.org/people/P%C3%B3l/sounds/385938/
@@ -31,6 +31,7 @@ https://freesound.org/people/M-RED/sounds/41176/
 https://freesound.org/people/klankbeeld/sounds/169946/
 https://freesound.org/people/15050_Francois/sounds/325764/
 https://freesound.org/people/cydon/sounds/268557/
+https://freesound.org/people/acclivity/sounds/33849/
 https://pixabay.com/photos/asian-cucumber-dish-fish-food-1239271/
 https://pixabay.com/photos/salmon-fish-nigiri-sushi-raw-rice-716430/
 https://pixabay.com/photos/maki-fish-rice-salmon-raw-sushi-716433/

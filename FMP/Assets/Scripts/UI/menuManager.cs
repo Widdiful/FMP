@@ -16,7 +16,7 @@ public class menuManager : MonoBehaviour {
     private Button currentButton;
     public AudioMixer mixer;
 
-    public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas, practiseMenuCanvas, editUserCanvas, buyGameCanvas, clearDataCanvas;
+    public Canvas mainCanvas, practiseCanvas, shopCanvas, scoresCanvas, optionsCanvas, practiseMenuCanvas, editUserCanvas, buyGameCanvas, clearDataCanvas, creditsCanvas;
     public Button mainButton, practiseButton, shopButton, scoresButton, optionsButton;
     public BuyGameMenu buyGameMenu;
     public GridLayoutGroup mainGrid;
@@ -224,12 +224,17 @@ public class menuManager : MonoBehaviour {
     }
 
     public void OpenProfileMenu() {
-        if (currentCanvas)
-            currentCanvas.enabled = false;
+        CloseCanvases();
         currentCanvas = editUserCanvas;
         editUserCanvas.enabled = true;
 
         DatabaseManager.instance.UpdatePlayerData();
+    }
+
+    public void OpenCredits() {
+        CloseCanvases();
+        currentCanvas = creditsCanvas;
+        creditsCanvas.enabled = true;
     }
 
     public void OpenClearMenu() {
