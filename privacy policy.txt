@@ -1,0 +1,6 @@
+widgames Collection
+Privacy Policy
+
+Microphone input is recorded by this game for the exclusive purpose of gameplay. No recordings are stored locally on the device or on our servers.
+
+Local data is sent and recorded on servers for the purpose of player accounts and high scores. No personal data is uploaded, only the necessary data that is used for the leaderboards.
