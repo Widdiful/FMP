@@ -13,7 +13,7 @@ public class PlaySoundOnCollision : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (!target || collision.transform == target)
+        if (!target || collision.transform == target) {
             if (clip) {
                 audioSource.clip = clip;
                 audioSource.Stop();
@@ -22,17 +22,19 @@ public class PlaySoundOnCollision : MonoBehaviour {
             if (!audioSource.isPlaying) {
                 audioSource.Play();
             }
+        }
     }
 
     private void OnTriggerEnter(Collider collision) {
-        if (!target || collision.transform == target)
+        if (!target || collision.transform == target) {
             if (clip) {
                 audioSource.clip = clip;
                 audioSource.Stop();
             }
 
-        if (!audioSource.isPlaying) {
-            audioSource.Play();
+            if (!audioSource.isPlaying) {
+                audioSource.Play();
+            }
         }
     }
 }

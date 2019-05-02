@@ -13,7 +13,7 @@ public class PlatformerCharacter : MonoBehaviour {
     private float maxSpeed = 10;
 
     private float Horizontal;
-    private bool Jump;
+    private bool jumping;
 
     private AudioSource audioSource;
 
@@ -28,7 +28,7 @@ public class PlatformerCharacter : MonoBehaviour {
         Debug.DrawLine(transform.position, transform.position - (transform.up * 1.5f), Color.yellow);
         // Input
         Horizontal = Mathf.Clamp(CrossPlatformInputManager.GetAxis("Horizontal") + Input.GetAxis("Horizontal"), -1, 1);
-        Jump = CrossPlatformInputManager.GetButtonDown("Jump") || Input.GetButtonDown("Jump");
+        jumping = CrossPlatformInputManager.GetButtonDown("Jump") || Input.GetButtonDown("Jump");
 
         // Movement
         if (Horizontal != 0) {
@@ -44,13 +44,9 @@ public class PlatformerCharacter : MonoBehaviour {
                 }
             }
         }
-        if (Jump) {
+        if (jumping) {
             if (jumps > 0 && rb.velocity.y <= 0) {
-                rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
-                GetComponent<Squish>().Pulse(new Vector2(-2, 2));
-                jumps--;
-                if (audioSource)
-                    audioSource.Play();
+                Jump();
             }
         }
 
@@ -83,10 +79,19 @@ public class PlatformerCharacter : MonoBehaviour {
         if (col.GetComponent<PlatformerEnemy>()) {
             if (rb.velocity.y <= 0) {
                 col.GetComponent<PlatformerEnemy>().Kill();
-                rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
-                GetComponent<Squish>().Pulse(new Vector2(-2, 2));
-                jumps--;
+                Jump();
             }
         }
+    }
+
+    private void Jump() {
+        Vector2 velocity = rb.velocity;
+        velocity.y = 0;
+        rb.velocity = velocity;
+        rb.velocity += new Vector2((transform.up * jumpHeight).x, (transform.up * jumpHeight).y);
+        GetComponent<Squish>().Pulse(new Vector2(-2, 2));
+        jumps--;
+        if (audioSource)
+            audioSource.Play();
     }
 }

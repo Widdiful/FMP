@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlaySoundOnVelocity : MonoBehaviour {
 
     public float velocity;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     AudioSource audioSource;
     bool canPlay = true;
 
     private void Start() {
-        rb = GetComponent<Rigidbody2D>();
+        if (!rb)
+            rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
 

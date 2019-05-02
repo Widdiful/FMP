@@ -115,6 +115,10 @@ public class LockAndKey : MonoBehaviour {
 
                 if (connectionsMade >= connectionsRequired) {
                     connectionsMade = 0;
+                    if (audioSource && successClip) {
+                        audioSource.clip = successClip;
+                        audioSource.Play();
+                    }
                     gameManager.instance.CompleteGame();
                 }
             }

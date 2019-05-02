@@ -10,8 +10,11 @@ public class PlugHoles : MonoBehaviour {
     public GameObject particles;
     bool hasBeenPlugged;
     bool complete;
+    AudioSource audioSource;
 
     private void Start() {
+        audioSource = GetComponent<AudioSource>();
+
         CalculatePosition();
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
         int attempts = 0;
@@ -36,6 +39,11 @@ public class PlugHoles : MonoBehaviour {
                         }
                         hasBeenPlugged = true;
                     }
+
+                    if (!plugged) {
+                        audioSource.Play();
+                    }
+
                     isTouched = true;
                     plugged = true;
                     particles.SetActive(false);
@@ -62,10 +70,6 @@ public class PlugHoles : MonoBehaviour {
             if (!isTouched) {
                 plugged = false;
                 particles.SetActive(true);
-            }
-
-            if (Input.GetKeyDown("a")) {
-                Instantiate(gameObject, Vector3.zero, Quaternion.identity);
             }
         }
     }

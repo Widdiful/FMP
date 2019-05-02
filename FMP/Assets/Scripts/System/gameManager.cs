@@ -75,6 +75,7 @@ public class gameManager : MonoBehaviour {
         if (SaveData.instance) {
             SaveData.instance.Load();
         }
+        print(SaveData.userID);
         gc = GameContainer.Load(path);
 
         audioSource = GetComponent<AudioSource>();

@@ -17,6 +17,7 @@ public class Stacking : MonoBehaviour {
     bool canJump;
     float jumpTimer;
     AudioSource audioSource;
+    public AudioClip stackClip;
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
@@ -83,6 +84,12 @@ public class Stacking : MonoBehaviour {
                 stack.isPlayer = true;
                 GetComponent<Collider2D>().isTrigger = true;
                 GetComponent<Rigidbody2D>().gravityScale = 0;
+
+                if (audioSource) {
+                    audioSource.Stop();
+                    audioSource.clip = stackClip;
+                    audioSource.Play();
+                }
 
                 bool complete = true;
                 foreach(Stacking stacking in FindObjectsOfType<Stacking>()) {
